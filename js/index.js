@@ -124,3 +124,4 @@ function show_posistion(position) {
     }
 }
 
+wordle();
