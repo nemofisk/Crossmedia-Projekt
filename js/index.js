@@ -13,10 +13,6 @@
 // Phone page
 // Guess the villain
 
-navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position.coords.longitude);
-    console.log(position.coords.latitude);
-});
 coords();
 
 function coords () {
@@ -48,11 +44,12 @@ function show_posistion(position) {
         radius: 150
     }).addTo(map);
 
+    //55.602451, 12.98938
     var park_circle = L.circle([55.602451, 12.98938], {
         color: 'green',
         fillColor: 'lime',
         fillOpacity: 0.5,
-        radius: 350
+        radius: 300
     }).addTo(map);
 
     var popup = L.popup();
@@ -95,7 +92,7 @@ function show_posistion(position) {
             leftInside = true
             console.log(leftInside)
         }
-        if(y_player > y_park && bottom_player > bottom_park){
+        if(y_player > y_park && y_player < bottom_park){
             topInside = true
             console.log(topInside)
         }
