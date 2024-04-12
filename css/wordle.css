@@ -1,0 +1,109 @@
+#wordle-game {
+    height: 600px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #121213;
+    padding: 10px;
+}
+
+.row-container {
+    height: 50%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-row {
+    display: flex;
+    gap: 10px;
+}
+
+.letter-box {
+    height: 60px;
+    width: 60px;
+    background: transparent;
+    border: 1px solid #3a3a3c;
+    color: white;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+.letter-box.active {
+    border: 1px solid #9f9fa1;
+}
+
+.row-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.row-container::-webkit-scrollbar {
+    display: none;
+}
+
+.keyboard-wrapper {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.keyboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 70%;
+}
+
+.key-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    width: 25px;
+    height: 40px;
+    border-radius: 2px;
+    background-color: rgb(167, 165, 165);
+}
+
+.key-box p {
+    margin: 0;
+    padding: 0;
+
+    pointer-events: none;
+    user-select: none;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.erase-key,
+.enter-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    width: 80px;
+    height: 40px;
+    background-color: rgb(167, 165, 165);
+    border-radius: 2px;
+}
