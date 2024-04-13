@@ -156,6 +156,36 @@ function wordle() {
         let wordGuess = "";
         let answerLetters = [...wordAnswer]
 
+        let letterCount = [];
+
+        answerLetters.forEach(letterX => {
+            let letterExists = false;
+            letterCount.forEach(letterObj => {
+                if (letterObj.letter == letterX) {
+                    letterExists = true;
+                }
+            })
+
+            if (!letterExists) {
+                const letterObj = {
+                    letter: letterX,
+                    count: 1,
+                }
+
+                letterCount.push(letterObj);
+            }
+
+            if (letterExists) {
+                letterCount.forEach(letterObj => {
+                    if (letterObj.letter == letterX) {
+                        letterObj.count += letterObj.count
+                    }
+                })
+            }
+        })
+
+        console.log(letterCount);
+
         const activeRowChildren = document.querySelector(".word-row.active").childNodes;
 
         activeRowChildren.forEach(child => {
@@ -167,6 +197,14 @@ function wordle() {
 
             let inWord = false;
             let rightPlace = false;
+            let letterExists = false;
+
+            letterCount.forEach(letterObj => {
+                if (boxLetter == letterObj.letter && letterObj.count > 0) {
+                    letterObj.count--
+                    letterExists = true;
+                }
+            })
 
             if (boxLetter == answerLetters[index]) {
                 rightPlace = true;
@@ -178,9 +216,9 @@ function wordle() {
                 }
             })
 
-            if (inWord == true && rightPlace == true) {
+            if (inWord && rightPlace && letterExists) {
                 child.classList.add("right");
-            } else if (inWord) {
+            } else if (inWord && letterExists) {
                 child.classList.add("wrong");
             } else {
                 child.classList.add("nothing")
@@ -190,7 +228,7 @@ function wordle() {
         createNewRow();
     }
 
-    const wordAnswer = "AVLIV"
+    const wordAnswer = "HÖNÖS"
 
     const gameDiv = document.createElement("div");
     gameDiv.setAttribute("id", "wordle-game");
