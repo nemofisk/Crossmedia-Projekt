@@ -123,9 +123,7 @@ function wordle() {
 
             keyBox.dataset.letter = letter;
 
-            keyBox.innerHTML = `
-                <p>${letter}</p>
-            `
+            keyBox.textContent = letter
 
             keyBox.addEventListener("click", keyEvent)
 
@@ -153,7 +151,6 @@ function wordle() {
     }
 
     function checkAnswer() {
-        let wordGuess = "";
         let answerLetters = [...wordAnswer]
 
         let letterCount = [];
@@ -188,20 +185,15 @@ function wordle() {
 
         const activeRowChildren = document.querySelector(".word-row.active").childNodes;
 
-        activeRowChildren.forEach(child => {
-            wordGuess += child.textContent;
-        })
 
         activeRowChildren.forEach((child, index) => {
             const boxLetter = child.textContent;
 
-            let inWord = false;
-            let rightPlace = false;
             let letterExists = false;
+            let rightPlace = false;
 
             letterCount.forEach(letterObj => {
                 if (boxLetter == letterObj.letter && letterObj.count > 0) {
-                    letterObj.count--
                     letterExists = true;
                 }
             })
@@ -210,25 +202,79 @@ function wordle() {
                 rightPlace = true;
             }
 
+            if (rightPlace && letterExists) {
+                child.classList.add("right");
+                letterCount.forEach(letterObj => {
+                    if (boxLetter == letterObj.letter) {
+                        letterObj.count--
+                    }
+                })
+
+                const keyboardKeys = document.querySelectorAll(".key-box");
+
+                keyboardKeys.forEach(key => {
+
+
+                    if (key.textContent == boxLetter) {
+                        key.classList.remove("wrong");
+                        key.classList.add("right");
+                    }
+                })
+            }
+        })
+
+        activeRowChildren.forEach((child, index) => {
+            const boxLetter = child.textContent;
+
+            let letterExists = false;
+            let inWord = false;
+
+            letterCount.forEach(letterObj => {
+                if (boxLetter == letterObj.letter && letterObj.count > 0 && !child.classList.contains("right")) {
+                    letterExists = true;
+                }
+            })
+
             answerLetters.forEach(letter => {
                 if (letter == boxLetter) {
                     inWord = true;
                 }
             })
 
-            if (inWord && rightPlace && letterExists) {
-                child.classList.add("right");
-            } else if (inWord && letterExists) {
+            if (inWord && letterExists) {
                 child.classList.add("wrong");
-            } else {
-                child.classList.add("nothing")
+                letterCount.forEach(letterObj => {
+                    if (boxLetter == letterObj.letter) {
+                        letterObj.count--
+                    }
+                })
+
+                const keyboardKeys = document.querySelectorAll(".key-box");
+
+                keyboardKeys.forEach(key => {
+                    if (key.textContent == boxLetter && !key.classList.contains("right")) {
+                        key.classList.add("wrong");
+                    }
+                })
+            }
+
+            if (!child.classList.contains("right") && !child.classList.contains("wrong")) {
+                child.classList.add("nothing");
+
+                const keyboardKeys = document.querySelectorAll(".key-box");
+
+                keyboardKeys.forEach(key => {
+                    if (key.textContent == boxLetter && !key.classList.contains("right") && !key.classList.contains("wrong")) {
+                        key.classList.add("nothing");
+                    }
+                })
             }
         })
 
         createNewRow();
     }
 
-    const wordAnswer = "HÖNÖS"
+    const wordAnswer = "KOSSA"
 
     const gameDiv = document.createElement("div");
     gameDiv.setAttribute("id", "wordle-game");
