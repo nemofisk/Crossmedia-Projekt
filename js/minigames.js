@@ -72,5 +72,72 @@ function maze() { }
 
 function puzzle() { }
 
-function quiz() { }
+// Example of quiz-question obeject
+// {
+//     question: "Vad är 1+1?",
+//     answers: [
+//         {
+//             answer: 1,
+//             true: false
+//         },
+//         {
+//             answer: 2,
+//             true: true
+//         },
+//         {
+//             answer: 3,
+//             true: false
+//         },
+//         {
+//             answer: 4,
+//             true: false
+//         }
+//     ]
+// }
+
+//parent should have class parent_quiz
+function render_quiz(parent, quiz) {
+    parent.innerHTML = `
+        <h3 class="quiz_question">${quiz[0].question}</h3>
+    `
+    let button_container = document.createElement("div");
+    button_container.classList.add("button_container");
+    let current_question = 0;
+    let points = 0;
+    parent.append(button_container)
+    update_quiz(quiz, current_question);
+
+    function update_quiz(quiz, current_question) {
+        if(quiz[current_question] == "end") {
+            alert(`YOU WIN. You got ${points} points.`);
+            parent.innerHTML = ``;
+            return;
+        }
+        
+        button_container.innerHTML = ``;
+
+        quiz[current_question].answers.forEach(( answer => {
+            document.querySelector(".quiz_question").textContent = quiz[current_question].question;
+            let button = document.createElement("button");
+            button.classList.add("answer");
+            button.innerHTML = answer.answer;
+            button_container.append(button);
+            
+            button.addEventListener( "click", e => {
+                if(answer.true) {
+                    console.log("correct")
+                    points++;
+                    current_question++;
+                    console.log("Points: " + points);
+                    update_quiz(quiz, current_question);
+                }
+                else {
+                    console.log("false");
+                    current_question++;
+                    update_quiz(quiz, current_question);
+                }
+            })
+        }))
+    }
+}
 
