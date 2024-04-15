@@ -274,7 +274,7 @@ function wordle() {
         createNewRow();
     }
 
-    const wordAnswer = "KOSSA"
+    const wordAnswer = "FUNNY"
 
     const gameDiv = document.createElement("div");
     gameDiv.setAttribute("id", "wordle-game");
