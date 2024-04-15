@@ -1,0 +1,55 @@
+.memory_parent {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.memory_container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    background: lightgray;
+    padding: 40px 60px;
+}
+
+.memory_game {
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.memory_item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    opacity: 1;
+    transition: 0.25s;
+}
+
+.memory_item.memory_box_open {
+    opacity: 1;
+}
+
+.memory_item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: gray;
+    transition: 0.25s;
+    opacity: 1;
+}
+
+.memory_box_open:after ,
+.memory_box_match:after {
+    opacity: 0;
+}
