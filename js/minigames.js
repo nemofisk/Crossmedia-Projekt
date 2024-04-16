@@ -73,36 +73,54 @@ function maze() {
 
     // Ide till gruppen - Designa minigames som om man spelade dom IRL, gameboy till maze, alfapet till wordle, lägga pussel på ett bord, quiz som tipsrunda, memory på ett bord.
 
-    const playerObject = {
-        col: 2,
-        row: 30
+    function checkTargetCell(conditionCol, conditionRow) {
+        for (cell of allCells) {
+            const cellCol = parseInt(cell.dataset.gridCol);
+            const cellRow = parseInt(cell.dataset.gridRow);
+
+            if (cellCol == conditionCol && cellRow == conditionRow) {
+                if (!cell.classList.contains("wall")) {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 
     function goUp(event) {
-        const player = document.querySelector(".player");
+        const cellIsPath = checkTargetCell(playerObject.col, playerObject.row - 1);
 
-        const cellAbovePlayer = allCells.find(cell => cell.dataset.gridCol)
-
-        playerObject.row--;
-        player.style.gridRow = playerObject.row;
+        if (cellIsPath) {
+            playerObject.row--;
+            player.style.gridRow = playerObject.row;
+        }
     }
-    function goRight(event) {
-        const player = document.querySelector(".player");
 
-        playerObject.col++;
-        player.style.gridColumn = playerObject.col;
-    }
     function goDown(event) {
-        const player = document.querySelector(".player");
+        const cellIsPath = checkTargetCell(playerObject.col, playerObject.row + 1);
 
-        playerObject.row++;
-        player.style.gridRow = playerObject.row;
+        if (cellIsPath) {
+            playerObject.row++;
+            player.style.gridRow = playerObject.row;
+        }
     }
-    function goLeft(event) {
-        const player = document.querySelector(".player");
 
-        playerObject.col--;
-        player.style.gridColumn = playerObject.col;
+    function goRight(event) {
+        const cellIsPath = checkTargetCell(playerObject.col + 1, playerObject.row);
+
+        if (cellIsPath) {
+            playerObject.col++;
+            player.style.gridColumn = playerObject.col;
+        }
+    }
+
+    function goLeft(event) {
+        const cellIsPath = checkTargetCell(playerObject.col - 1, playerObject.row);
+
+        if (cellIsPath) {
+            playerObject.col--;
+            player.style.gridColumn = playerObject.col;
+        }
     }
 
     function createControls() {
@@ -141,7 +159,6 @@ function maze() {
     let mapArray = "WWWWWWWWWWWWWWWWWWWWWWWWWWPPPPPWPPPPPPPPPPPWPPPPPWWPWWWWWPWPWWWWWWWPWWWWWPWWPWPPPWPWPPPWPWPPPWPPPWPWWPWPWPWPWWWPWPWPWWWPWPWPWWPWPWPPPWPWPWPWPPPWPWPWPWWPWPWWWWWPWPWPWWWPWPWPWPWWPWPWPPPPPWPWPPPPPPPWPPPWWPWPWPWWWPWPWWWWWWWWWWWPWWPPPPPWPPPWPPPPPPPWPWPPPWWPWWWWWWWWWPWWWWWPWPWPWWWWPWPPPPPPPWPWPPPPPWPWPPPWWPWPWWWWWPWPWPWWWWWPWWWPWWPWPPPWPPPWPWPWPPPPPPPWPWWWWWWPWPWWWWWPWPWPWWWWWPWWPPPPPWPPPPPPPWPWPPPPPPPWWPWWWWWPWWWWWWWPWWWWWWWWWWPPPWPPPWPPPWPWPPPPPPPWPWWWWPWPWWWPWPWPWPWWWWWPWPWWPPPWPPPWPWPWPPPWPPPWPPPWWPWWWWWWWPWWWWWWWPWPWWWPWWPWPPPPPPPWPWPWPWPWPWPPPWWPWPWWWWWWWPWPWPWPWPWWWWWWPWPWPPPPPWPWPWPPPWPPPPPWWPWPWWWPWPWWWPWWWWWWWWWPWWPWPPPPPWPPPWPPPWPPPPPWPWWPWWWWWWWWWPWWWPWPWWWWWPWWPPPWPPPPPWPPPPPWPWPPPPPWWPWWWPWPWWWWWWWWWPWPWWWWWWPPPPPWPPPPPPPPPPPPPPPPPWWWWWWWWWWWWWWWWWWWWWWWWWW"
 
     mapArray = [...mapArray];
-    console.log(mapArray);
 
     const rows = 31;
     const columns = 25;
@@ -172,6 +189,11 @@ function maze() {
         if (mapArray[i] == "P") {
             currentCell.classList.add("path");
         }
+    }
+
+    const playerObject = {
+        col: 2,
+        row: 30
     }
 
     const player = document.createElement("div");
