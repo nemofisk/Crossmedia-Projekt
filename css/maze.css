@@ -1,0 +1,25 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#mazeGame {
+    margin-top: 5vh;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(25, 3.5vw);
+    grid-template-rows: repeat(31, 3.5vw);
+}
+
+.cell.wall {
+    background-color: black;
+}
+
+.player {
+    border-radius: 50%;
+    height: 2vw;
+    width: 2vw;
+}

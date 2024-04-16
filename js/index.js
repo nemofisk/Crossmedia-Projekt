@@ -13,9 +13,9 @@
 // Phone page
 // Guess the villain
 
-coords();
+// coords();
 
-function coords () {
+function coords() {
     navigator.geolocation.getCurrentPosition(
         show_posistion,
         null,
@@ -24,7 +24,8 @@ function coords () {
             timeout: 5000,
             maximumAge: 0
         }
-)};
+    )
+};
 
 function show_posistion(position) {
     let longitude = position.coords.longitude;
@@ -84,26 +85,26 @@ function show_posistion(position) {
         let rightInside = false;
         let leftInside = false;
 
-        if(bottom_player > y_park && bottom_player < bottom_park){
+        if (bottom_player > y_park && bottom_player < bottom_park) {
             bottomInside = true;
             console.log(bottomInside)
         }
-        if(x_player < right_park && x_player > x_park){
+        if (x_player < right_park && x_player > x_park) {
             leftInside = true
             console.log(leftInside)
         }
-        if(y_player > y_park && y_player < bottom_park){
+        if (y_player > y_park && y_player < bottom_park) {
             topInside = true
             console.log(topInside)
         }
-        if(right_player < right_park && right_player > x_park){
+        if (right_player < right_park && right_player > x_park) {
             rightInside = true
             console.log(rightInside)
         }
     }
 
     navigator.geolocation.watchPosition(update_player_location);
-    
+
     function update_player_location(position) {
         let longitude = position.coords.longitude;
         let latitude = position.coords.latitude;
@@ -121,3 +122,4 @@ function show_posistion(position) {
     }
 }
 
+maze()
