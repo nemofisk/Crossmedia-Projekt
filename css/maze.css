@@ -22,4 +22,7 @@ body {
     border-radius: 50%;
     height: 2vw;
     width: 2vw;
+    background-color: red;
+    justify-self: center;
+    align-self: center;
 }

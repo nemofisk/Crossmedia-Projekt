@@ -49,7 +49,7 @@
     opacity: 1;
 }
 
-.memory_box_open:after ,
+.memory_box_open:after,
 .memory_box_match:after {
     opacity: 0;
 }

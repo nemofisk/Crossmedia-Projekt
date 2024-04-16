@@ -73,6 +73,66 @@ function maze() {
 
     // Ide till gruppen - Designa minigames som om man spelade dom IRL, gameboy till maze, alfapet till wordle, lägga pussel på ett bord, quiz som tipsrunda, memory på ett bord.
 
+    const playerObject = {
+        col: 2,
+        row: 30
+    }
+
+    function goUp(event) {
+        const player = document.querySelector(".player");
+
+        const cellAbovePlayer = allCells.find(cell => cell.dataset.gridCol)
+
+        playerObject.row--;
+        player.style.gridRow = playerObject.row;
+    }
+    function goRight(event) {
+        const player = document.querySelector(".player");
+
+        playerObject.col++;
+        player.style.gridColumn = playerObject.col;
+    }
+    function goDown(event) {
+        const player = document.querySelector(".player");
+
+        playerObject.row++;
+        player.style.gridRow = playerObject.row;
+    }
+    function goLeft(event) {
+        const player = document.querySelector(".player");
+
+        playerObject.col--;
+        player.style.gridColumn = playerObject.col;
+    }
+
+    function createControls() {
+        const container = document.createElement("div");
+        document.querySelector("body").append(container);
+
+        let arrows = ["←", "↑", "→", "↓"]
+
+        for (let arrow of arrows) {
+            const controlButton = document.createElement("button");
+            controlButton.textContent = arrow;
+            container.append(controlButton);
+
+            if (arrow == "↓") {
+                controlButton.addEventListener("click", goDown);
+            }
+
+            if (arrow == "→") {
+                controlButton.addEventListener("click", goRight);
+            }
+
+            if (arrow == "←") {
+                controlButton.addEventListener("click", goLeft);
+            }
+
+            if (arrow == "↑") {
+                controlButton.addEventListener("click", goUp);
+            }
+        }
+    }
 
     const gameArea = document.createElement("div");
     gameArea.setAttribute("id", "mazeGame");
@@ -92,6 +152,9 @@ function maze() {
             mazeCell.classList.add("cell");
             mazeCell.style.gridColumn = col;
             mazeCell.style.gridRow = row;
+
+            mazeCell.dataset.gridRow = row;
+            mazeCell.dataset.gridCol = col
 
             gameArea.append(mazeCell);
         }
@@ -113,10 +176,12 @@ function maze() {
 
     const player = document.createElement("div");
     player.classList.add("player");
-    player.style.gridColumn = 2;
-    player.style.gridRow = 30;
+    player.style.gridColumn = playerObject.col;
+    player.style.gridRow = playerObject.row;
 
     gameArea.append(player)
+
+    createControls();
 }
 
 function puzzle() { }
