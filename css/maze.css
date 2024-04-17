@@ -1,13 +1,18 @@
 body {
     height: 100vh;
     margin: 0;
+}
+
+#mazeGameWrapper {
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
 }
 
 #mazeGame {
-    margin-top: 5vh;
     border: 1px solid black;
     display: grid;
     grid-template-columns: repeat(25, 3.5vw);
@@ -25,4 +30,38 @@ body {
     background-color: red;
     justify-self: center;
     align-self: center;
+}
+
+.controlsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 15vw);
+    grid-template-rows: repeat(3, 15vw);
+}
+
+.controlButton {
+    border: 2px solid grey;
+}
+
+.controlButton:active {
+    border: none;
+}
+
+.up {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.down {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.right {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.left {
+    grid-row: 2;
+    grid-column: 1;
 }
