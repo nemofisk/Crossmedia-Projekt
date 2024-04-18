@@ -1,5 +1,6 @@
 // Minigames
 
+//WORDLE
 function wordle() {
     function keyEvent(event) {
         const activeBox = document.querySelector(".letter-box.active");
@@ -291,7 +292,6 @@ function wordle() {
     createNewRow()
 }
 
-
 //MEMORY
 //parent should have class memory_parent
 function render_memory(parent) {
@@ -358,6 +358,7 @@ function render_memory(parent) {
     }
 }
 
+//MAZE
 function maze() {
     // https://keesiemeijer.github.io/maze-generator/#generate
 
