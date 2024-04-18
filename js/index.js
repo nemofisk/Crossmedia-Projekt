@@ -121,5 +121,3 @@ function show_posistion(position) {
         check_collision();
     }
 }
-
-maze()
