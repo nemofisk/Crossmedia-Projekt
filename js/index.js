@@ -1,69 +1,25 @@
 // TODO:
-// Startup/Startpage
-// Map function
-// Minigames:
-//      Wordle Ossian
-//      Memory Isak
-//      Maze vi får se
-//      Puzzle Ossian
-//      Quiz Isak
+// Startup/Startpage - Loading screen > Click start to begin > välj namn > gå till karta
+// Info om hur man spelar?
+// Map function - Basen fungerar
 // Dialogue function
 // Dialogue array
 // Clues & Suspects page
 // Phone page
 // Guess the villain
 
-// coords();
-
-function coords() {
-    navigator.geolocation.getCurrentPosition(
-        show_posistion,
-        null,
-        {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-        }
-    )
-};
-
-function show_posistion(position) {
-    let longitude = position.coords.longitude;
-    let latitude = position.coords.latitude;
-
-    var map = L.map('map').setView([latitude, longitude], 13);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    var player_circle = L.circle([latitude, longitude], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 150
-    }).addTo(map);
-
-    //55.602451, 12.98938
-    var park_circle = L.circle([55.602451, 12.98938], {
-        color: 'green',
-        fillColor: 'lime',
-        fillOpacity: 0.5,
-        radius: 300
-    }).addTo(map);
-
-    var popup = L.popup();
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(map);
-    }
-
-    map.on('click', onMapClick);
-
-    check_collision();
+function renderMap() {
+    function coords() {
+        navigator.geolocation.getCurrentPosition(
+            show_posistion,
+            null,
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            }
+        )
+    };
 
     function check_collision() {
         let x_player = player_circle._path.getBoundingClientRect().x;
@@ -103,21 +59,71 @@ function show_posistion(position) {
         }
     }
 
-    navigator.geolocation.watchPosition(update_player_location);
-
-    function update_player_location(position) {
+    function show_posistion(position) {
         let longitude = position.coords.longitude;
         let latitude = position.coords.latitude;
 
-        player_circle.remove();
+        var map = L.map('map').setView([latitude, longitude], 13);
 
-        player_circle = L.circle([latitude, longitude], {
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var player_circle = L.circle([latitude, longitude], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
             radius: 150
         }).addTo(map);
 
+        //55.602451, 12.98938
+        var park_circle = L.circle([55.602451, 12.98938], {
+            color: 'green',
+            fillColor: 'lime',
+            fillOpacity: 0.5,
+            radius: 300
+        }).addTo(map);
+
+        var popup = L.popup();
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map);
+        }
+
+        map.on('click', onMapClick);
+
         check_collision();
+
+        navigator.geolocation.watchPosition(update_player_location);
+
+        function update_player_location(position) {
+            let longitude = position.coords.longitude;
+            let latitude = position.coords.latitude;
+
+            player_circle.remove();
+
+            player_circle = L.circle([latitude, longitude], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 150
+            }).addTo(map);
+
+            check_collision();
+        }
     }
+
+    coords();
+}
+
+function startUp() {
+}
+
+function renderPhone() {
+}
+
+function renderCluesSuspects() {
 }
