@@ -1,8 +1,10 @@
 // Minigames
 
+//WORDLE
 function wordle() { }
 
 
+//MEMORY
 //parent should have class memory_parent
 function render_memory(parent) {
     let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
@@ -68,10 +70,103 @@ function render_memory(parent) {
     }
 }
 
+//MAZE
 function maze() { }
 
-function puzzle() { }
+//PUZZLE
+//parent should have class parent_puzzle
+function drag (event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
 
+function allow_drop (event) {
+    event.preventDefault();
+}
+
+function drop (event) {
+    event.preventDefault();
+    let data = event.dataTransfer.getData("text");
+    event.target.append(document.getElementById(data));
+
+    let drop_boxes = document.querySelectorAll(".drop_box");
+    let correct_pieces = [];
+
+    drop_boxes.forEach( box => {
+        if(box.childNodes[0]) {
+            box.removeAttribute("ondrop");
+            let drag_id = box.childNodes[0].id.substring(5);
+            let drop_id = box.id.substring(5);
+
+            if(drag_id == drop_id) {
+                box.removeAttribute("ondrop");
+
+                correct_pieces.push(drop_id);
+            
+                if(correct_pieces.length == 36) {
+                    setTimeout(() => {alert("YOU WIN")}, 500);
+                }
+            }
+        }
+        else {
+            box.setAttribute("ondrop", "drop(event)")
+        }
+    })
+}
+
+function render_puzzle(parent) {    
+    let pieces_box = document.createElement("div");
+    pieces_box.classList.add("pieces_box");
+    pieces_box.style.opacity = 0;
+    parent.append(pieces_box);
+
+    //Creates drag_boxes (pieces)
+    for (let i = 0; i < 36; i++) {
+        let id = `drag_${i}`;
+        img_url = `--img:url(./puzzle_pieces/${i}.jpg);`;
+
+        let drag_box = document.createElement("div");
+        drag_box.classList.add("drag_box");
+        drag_box.setAttribute("ondrop", "drop(event)")
+        drag_box.setAttribute("ondragover", "allow_drop(event)")
+        pieces_box.append(drag_box);
+        
+        let img = document.createElement("div");
+        img.classList.add("puzzle_image");
+        img.setAttribute("draggable", "true");
+        img.setAttribute("id", id);
+        img.setAttribute("style", img_url);
+        img.setAttribute("ondragstart", "drag(event)")
+        drag_box.append(img);
+    }
+
+    let board = document.createElement("div");
+    board.classList.add("board");
+    parent.append(board);
+
+    //Creates drop_boxes
+    for (let i = 0; i < 36; i++) {
+        let id = `drop_${i}`;
+        let drop_box = document.createElement("div");
+        drop_box.classList.add("drop_box");
+        drop_box.setAttribute("id", id)
+        drop_box.setAttribute("ondrop", "drop(event)")
+        drop_box.setAttribute("ondragover", "allow_drop(event)")
+        board.append(drop_box);
+    }
+
+    onload = function () {
+        let pieces_box = document.querySelector(".pieces_box");
+        let frag = document.createDocumentFragment();
+        while (pieces_box.children.length) {
+            frag.append(pieces_box.children[Math.floor(Math.random() * pieces_box.children.length)]);
+        }
+        pieces_box.append(frag);
+        pieces_box.style.opacity = 1;
+    }
+}
+
+//QUIZ
+//parent should have class parent_quiz
 // Example of quiz-question obeject
 // {
 //     question: "Vad är 1+1?",
@@ -94,8 +189,6 @@ function puzzle() { }
 //         }
 //     ]
 // }
-
-//parent should have class parent_quiz
 function render_quiz(parent, quiz) {
     parent.innerHTML = `
         <h3 class="quiz_question">${quiz[0].question}</h3>
