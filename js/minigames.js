@@ -7,8 +7,8 @@ function wordle() { }
 //MEMORY
 //parent should have class memory_parent
 function render_memory(parent) {
-    let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
-    
+    let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+
     parent.innerHTML = `
     <div class="memory_container">
         <div class="memory_game"></div>
@@ -19,8 +19,8 @@ function render_memory(parent) {
 
     function shuffle_array(array) {
         for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
 
         return array;
@@ -32,10 +32,10 @@ function render_memory(parent) {
         box.innerHTML = shuffle_numbers[i];
         document.querySelector(".memory_game").appendChild(box);
 
-        box.onclick = function() {
+        box.onclick = function () {
             this.classList.add("memory_box_open");
 
-            if(document.querySelectorAll(".memory_box_open").length > 1) {
+            if (document.querySelectorAll(".memory_box_open").length > 1) {
                 let boxes = document.querySelectorAll(".memory_item");
 
                 for (box of boxes) {
@@ -44,15 +44,15 @@ function render_memory(parent) {
 
                 setTimeout(check_match, 500);
 
-                function check_match () {
-                    if(document.querySelectorAll(".memory_box_open")[0].innerHTML == document.querySelectorAll(".memory_box_open")[1].innerHTML) {
+                function check_match() {
+                    if (document.querySelectorAll(".memory_box_open")[0].innerHTML == document.querySelectorAll(".memory_box_open")[1].innerHTML) {
                         document.querySelectorAll(".memory_box_open")[0].classList.add("memory_box_match");
                         document.querySelectorAll(".memory_box_open")[1].classList.add("memory_box_match");
 
                         document.querySelectorAll(".memory_box_open")[1].classList.remove("memory_box_open");
                         document.querySelectorAll(".memory_box_open")[0].classList.remove("memory_box_open");
 
-                        if(document.querySelectorAll(".memory_box_match").length == numbers.length) {
+                        if (document.querySelectorAll(".memory_box_match").length == numbers.length) {
                             alert("YOU WIN");
                         }
                     }
@@ -70,20 +70,165 @@ function render_memory(parent) {
     }
 }
 
-//MAZE
-function maze() { }
+function maze() {
+    // https://keesiemeijer.github.io/maze-generator/#generate
+
+    // Ide till gruppen - Designa minigames som om man spelade dom IRL, gameboy till maze, alfapet till wordle, lägga pussel på ett bord, quiz som tipsrunda, memory på ett bord.
+
+    function checkTargetCell(conditionCol, conditionRow) {
+        for (cell of allCells) {
+            const cellCol = parseInt(cell.dataset.gridCol);
+            const cellRow = parseInt(cell.dataset.gridRow);
+
+            if (cellCol == conditionCol && cellRow == conditionRow) {
+                if (!cell.classList.contains("wall")) {
+                    return true;
+                }
+                return false;
+            }
+        }
+    }
+
+    function goUp(event) {
+        const cellIsPath = checkTargetCell(playerObject.col, playerObject.row - 1);
+
+        if (cellIsPath) {
+            playerObject.row--;
+            player.style.gridRow = playerObject.row;
+        }
+    }
+
+    function goDown(event) {
+        const cellIsPath = checkTargetCell(playerObject.col, playerObject.row + 1);
+
+        if (cellIsPath) {
+            playerObject.row++;
+            player.style.gridRow = playerObject.row;
+        }
+    }
+
+    function goRight(event) {
+        const cellIsPath = checkTargetCell(playerObject.col + 1, playerObject.row);
+
+        if (cellIsPath) {
+            playerObject.col++;
+            player.style.gridColumn = playerObject.col;
+        }
+    }
+
+    function goLeft(event) {
+        const cellIsPath = checkTargetCell(playerObject.col - 1, playerObject.row);
+
+        if (cellIsPath) {
+            playerObject.col--;
+            player.style.gridColumn = playerObject.col;
+        }
+    }
+
+    function createControls() {
+        const container = document.createElement("div");
+        container.classList.add("controlsContainer")
+        gameWrapper.append(container);
+
+        let arrows = ["←", "↑", "→", "↓"]
+
+        for (let arrow of arrows) {
+            const controlButton = document.createElement("button");
+            controlButton.textContent = arrow;
+            controlButton.classList.add("controlButton")
+            container.append(controlButton);
+
+            if (arrow == "↓") {
+                controlButton.addEventListener("click", goDown);
+                controlButton.classList.add("down");
+            }
+
+            if (arrow == "→") {
+                controlButton.addEventListener("click", goRight);
+                controlButton.classList.add("right")
+            }
+
+            if (arrow == "←") {
+                controlButton.addEventListener("click", goLeft);
+                controlButton.classList.add("left")
+            }
+
+            if (arrow == "↑") {
+                controlButton.addEventListener("click", goUp);
+                controlButton.classList.add("up")
+            }
+        }
+    }
+
+    const gameWrapper = document.createElement("div");
+    gameWrapper.setAttribute("id", "mazeGameWrapper");
+    document.querySelector("body").append(gameWrapper);
+
+    const gameArea = document.createElement("div");
+    gameArea.setAttribute("id", "mazeGame");
+    gameWrapper.append(gameArea);
+
+    let mapArray = "WWWWWWWWWWWWWWWWWWWWWWWWWWPPPPPWPPPPPPPPPPPWPPPPPWWPWWWWWPWPWWWWWWWPWWWWWPWWPWPPPWPWPPPWPWPPPWPPPWPWWPWPWPWPWWWPWPWPWWWPWPWPWWPWPWPPPWPWPWPWPPPWPWPWPWWPWPWWWWWPWPWPWWWPWPWPWPWWPWPWPPPPPWPWPPPPPPPWPPPWWPWPWPWWWPWPWWWWWWWWWWWPWWPPPPPWPPPWPPPPPPPWPWPPPWWPWWWWWWWWWPWWWWWPWPWPWWWWPWPPPPPPPWPWPPPPPWPWPPPWWPWPWWWWWPWPWPWWWWWPWWWPWWPWPPPWPPPWPWPWPPPPPPPWPWWWWWWPWPWWWWWPWPWPWWWWWPWWPPPPPWPPPPPPPWPWPPPPPPPWWPWWWWWPWWWWWWWPWWWWWWWWWWPPPWPPPWPPPWPWPPPPPPPWPWWWWPWPWWWPWPWPWPWWWWWPWPWWPPPWPPPWPWPWPPPWPPPWPPPWWPWWWWWWWPWWWWWWWPWPWWWPWWPWPPPPPPPWPPPPPWPWPWPPPWWPWPWWWWWWWPWPWPWPWPWWWWWWPWPWPPPPPWPWPWPPPWPPPPPWWPWPWWWPWPWWWPWWWWWWWWWPWWPWPPPPPWPPPWPPPWPPPPPWPWWPWWWWWWWWWPWWWPWPWWWWWPWWPPPWPPPPPWPPPPPWPWPPPPPWWPWWWPWPWWWWWWWWWPWPWWWWWWPPPPPWPPPPPPPPPPPPPPPPPWWWWWWWWWWWWWWWWWWWWWWWWWW"
+
+    mapArray = [...mapArray];
+
+    const rows = 31;
+    const columns = 25;
+
+    for (let row = 1; row <= rows; row++) {
+        for (let col = 1; col <= columns; col++) {
+            const mazeCell = document.createElement("div");
+            mazeCell.classList.add("cell");
+            mazeCell.style.gridColumn = col;
+            mazeCell.style.gridRow = row;
+
+            mazeCell.dataset.gridRow = row;
+            mazeCell.dataset.gridCol = col
+
+            gameArea.append(mazeCell);
+        }
+    }
+
+    const allCells = document.querySelectorAll(".cell");
+
+    for (let i = 0; i < mapArray.length; i++) {
+        const currentCell = allCells[i];
+
+        if (mapArray[i] == "W") {
+            currentCell.classList.add("wall");
+        }
+
+        if (mapArray[i] == "P") {
+            currentCell.classList.add("path");
+        }
+    }
+
+    const playerObject = {
+        col: 2,
+        row: 30
+    }
+
+    const player = document.createElement("div");
+    player.classList.add("player");
+    player.style.gridColumn = playerObject.col;
+    player.style.gridRow = playerObject.row;
+
+    gameArea.append(player)
+
+    createControls();
+}
 
 //PUZZLE
 //parent should have class parent_puzzle
-function drag (event) {
+function drag(event) {
     event.dataTransfer.setData("text", event.target.id);
 }
 
-function allow_drop (event) {
+function allow_drop(event) {
     event.preventDefault();
 }
 
-function drop (event) {
+function drop(event) {
     event.preventDefault();
     let data = event.dataTransfer.getData("text");
     event.target.append(document.getElementById(data));
@@ -91,19 +236,19 @@ function drop (event) {
     let drop_boxes = document.querySelectorAll(".drop_box");
     let correct_pieces = [];
 
-    drop_boxes.forEach( box => {
-        if(box.childNodes[0]) {
+    drop_boxes.forEach(box => {
+        if (box.childNodes[0]) {
             box.removeAttribute("ondrop");
             let drag_id = box.childNodes[0].id.substring(5);
             let drop_id = box.id.substring(5);
 
-            if(drag_id == drop_id) {
+            if (drag_id == drop_id) {
                 box.removeAttribute("ondrop");
 
                 correct_pieces.push(drop_id);
-            
-                if(correct_pieces.length == 36) {
-                    setTimeout(() => {alert("YOU WIN")}, 500);
+
+                if (correct_pieces.length == 36) {
+                    setTimeout(() => { alert("YOU WIN") }, 500);
                 }
             }
         }
@@ -113,7 +258,7 @@ function drop (event) {
     })
 }
 
-function render_puzzle(parent) {    
+function render_puzzle(parent) {
     let pieces_box = document.createElement("div");
     pieces_box.classList.add("pieces_box");
     pieces_box.style.opacity = 0;
@@ -129,7 +274,7 @@ function render_puzzle(parent) {
         drag_box.setAttribute("ondrop", "drop(event)")
         drag_box.setAttribute("ondragover", "allow_drop(event)")
         pieces_box.append(drag_box);
-        
+
         let img = document.createElement("div");
         img.classList.add("puzzle_image");
         img.setAttribute("draggable", "true");
@@ -201,23 +346,23 @@ function render_quiz(parent, quiz) {
     update_quiz(quiz, current_question);
 
     function update_quiz(quiz, current_question) {
-        if(quiz[current_question] == "end") {
+        if (quiz[current_question] == "end") {
             alert(`YOU WIN. You got ${points} points.`);
             parent.innerHTML = ``;
             return;
         }
-        
+
         button_container.innerHTML = ``;
 
-        quiz[current_question].answers.forEach(( answer => {
+        quiz[current_question].answers.forEach((answer => {
             document.querySelector(".quiz_question").textContent = quiz[current_question].question;
             let button = document.createElement("button");
             button.classList.add("answer");
             button.innerHTML = answer.answer;
             button_container.append(button);
-            
-            button.addEventListener( "click", e => {
-                if(answer.true) {
+
+            button.addEventListener("click", e => {
+                if (answer.true) {
                     console.log("correct")
                     points++;
                     current_question++;
