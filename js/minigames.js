@@ -294,9 +294,9 @@ function wordle() {
 
 //MEMORY
 //parent should have class memory_parent
-function render_memory(parent) {
-    let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
-
+function render_memory_game(parent) {
+    let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+    
     parent.innerHTML = `
     <div class="memory_container">
         <div class="memory_game"></div>
@@ -307,8 +307,8 @@ function render_memory(parent) {
 
     function shuffle_array(array) {
         for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
         }
 
         return array;
@@ -317,30 +317,34 @@ function render_memory(parent) {
     for (let i = 0; i < numbers.length; i++) {
         let box = document.createElement("button");
         box.className = "memory_item";
-        box.innerHTML = shuffle_numbers[i];
+        let number = shuffle_numbers[i];
+        img_url = `--img:url(./memory_images/${number}.png);` //SÖKVÄG
+        box.setAttribute("dataset", number);
+        box.setAttribute("style", img_url);
+        
         document.querySelector(".memory_game").appendChild(box);
 
-        box.onclick = function () {
+        box.onclick = function() {
             this.classList.add("memory_box_open");
 
-            if (document.querySelectorAll(".memory_box_open").length > 1) {
+            if(document.querySelectorAll(".memory_box_open").length > 1) {
                 let boxes = document.querySelectorAll(".memory_item");
 
                 for (box of boxes) {
                     box.setAttribute("disabled", "true");
                 }
 
-                setTimeout(check_match, 500);
+                setTimeout(check_match, 1000);
 
-                function check_match() {
-                    if (document.querySelectorAll(".memory_box_open")[0].innerHTML == document.querySelectorAll(".memory_box_open")[1].innerHTML) {
+                function check_match () {
+                    if(document.querySelectorAll(".memory_box_open")[0].getAttribute("dataset") == document.querySelectorAll(".memory_box_open")[1].getAttribute("dataset")) {
                         document.querySelectorAll(".memory_box_open")[0].classList.add("memory_box_match");
                         document.querySelectorAll(".memory_box_open")[1].classList.add("memory_box_match");
 
                         document.querySelectorAll(".memory_box_open")[1].classList.remove("memory_box_open");
                         document.querySelectorAll(".memory_box_open")[0].classList.remove("memory_box_open");
 
-                        if (document.querySelectorAll(".memory_box_match").length == numbers.length) {
+                        if(document.querySelectorAll(".memory_box_match").length == numbers.length) {
                             alert("YOU WIN");
                         }
                     }
@@ -556,7 +560,7 @@ function render_puzzle(parent) {
     //Creates drag_boxes (pieces)
     for (let i = 0; i < 36; i++) {
         let id = `drag_${i}`;
-        img_url = `--img:url(./puzzle_pieces/${i}.jpg);`;
+        img_url = `--img:url(./puzzle_pieces/${i}.jpg);`; //SÖKVÄG
 
         let drag_box = document.createElement("div");
         drag_box.classList.add("drag_box");
