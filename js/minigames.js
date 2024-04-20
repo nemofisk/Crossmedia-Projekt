@@ -318,7 +318,7 @@ function render_memory_game(parent) {
         let box = document.createElement("button");
         box.className = "memory_item";
         let number = shuffle_numbers[i];
-        img_url = `--img:url(./memory_images/${number}.png);` //SÖKVÄG
+        img_url = `--img:url(./images/memory_images/${number}.png);`;
         box.setAttribute("dataset", number);
         box.setAttribute("style", img_url);
         
@@ -560,7 +560,7 @@ function render_puzzle(parent) {
     //Creates drag_boxes (pieces)
     for (let i = 0; i < 36; i++) {
         let id = `drag_${i}`;
-        img_url = `--img:url(./puzzle_pieces/${i}.jpg);`; //SÖKVÄG
+        img_url = `--img:url(./images/puzzle_pieces/${i}.jpg);`;
 
         let drag_box = document.createElement("div");
         drag_box.classList.add("drag_box");
