@@ -22,5 +22,3 @@ Exempel på ett objekt:
 
 
 */
-
-const dialogues = []

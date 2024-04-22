@@ -1,123 +1,17 @@
 // TODO:
 // Startup/Startpage - Loading screen > Click start to begin > välj namn > gå till karta
 // Info om hur man spelar?
-// Map function - Basen fungerar
-// Dialogue function
-// Dialogue array
-// Clues & Suspects page
-// Phone page
+// Map function - Basen fungerar (nästan klar)
+// Dialogue function - Ossian
+// Dialogue array - Ossian
+// fixa kartan - Ossian
+// Clues & Suspects page - Isak
+// Phone page - Isak
 // Guess the villain
 
-function renderMap() {
-    function coords() {
-        navigator.geolocation.getCurrentPosition(
-            show_posistion,
-            null,
-            {
-                enableHighAccuracy: true,
-                timeout: 5000,
-                maximumAge: 0
-            }
-        )
-    };
+renderMap()
 
-    function check_collision() {
-        let x_player = player_circle._path.getBoundingClientRect().x;
-        let y_player = player_circle._path.getBoundingClientRect().y;
-        let width_player = player_circle._path.getBoundingClientRect().width;
-        let height_player = player_circle._path.getBoundingClientRect().height;
-        let right_player = player_circle._path.getBoundingClientRect().right;
-        let bottom_player = player_circle._path.getBoundingClientRect().bottom;
-
-        let x_park = park_circle._path.getBoundingClientRect().x;
-        let y_park = park_circle._path.getBoundingClientRect().y;
-        let width_park = park_circle._path.getBoundingClientRect().width;
-        let height_park = park_circle._path.getBoundingClientRect().height;
-        let right_park = park_circle._path.getBoundingClientRect().right;
-        let bottom_park = park_circle._path.getBoundingClientRect().bottom;
-
-        let bottomInside = false;
-        let topInside = false;
-        let rightInside = false;
-        let leftInside = false;
-
-        if (bottom_player > y_park && bottom_player < bottom_park) {
-            bottomInside = true;
-            console.log(bottomInside)
-        }
-        if (x_player < right_park && x_player > x_park) {
-            leftInside = true
-            console.log(leftInside)
-        }
-        if (y_player > y_park && y_player < bottom_park) {
-            topInside = true
-            console.log(topInside)
-        }
-        if (right_player < right_park && right_player > x_park) {
-            rightInside = true
-            console.log(rightInside)
-        }
-    }
-
-    function show_posistion(position) {
-        let longitude = position.coords.longitude;
-        let latitude = position.coords.latitude;
-
-        var map = L.map('map').setView([latitude, longitude], 13);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-
-        var player_circle = L.circle([latitude, longitude], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 150
-        }).addTo(map);
-
-        //55.602451, 12.98938
-        var park_circle = L.circle([55.602451, 12.98938], {
-            color: 'green',
-            fillColor: 'lime',
-            fillOpacity: 0.5,
-            radius: 300
-        }).addTo(map);
-
-        var popup = L.popup();
-        function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(map);
-        }
-
-        map.on('click', onMapClick);
-
-        check_collision();
-
-        navigator.geolocation.watchPosition(update_player_location);
-
-        function update_player_location(position) {
-            let longitude = position.coords.longitude;
-            let latitude = position.coords.latitude;
-
-            player_circle.remove();
-
-            player_circle = L.circle([latitude, longitude], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5,
-                radius: 150
-            }).addTo(map);
-
-            check_collision();
-        }
-    }
-
-    coords();
-}
+// wordle();
 
 function startUp() {
 }
