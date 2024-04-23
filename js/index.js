@@ -25,12 +25,12 @@ function startUp() {
     // startButton.classList.add("startUpButton");
     // startUpContainer.append(startButton)
 
-    // window.localStorage.clear();
+    window.localStorage.clear();
 
-    // if (!window.localStorage.getItem("storyIndex")) {
-    //     window.localStorage.setItem("storyIndex", 0);
-    //     console.log("no story index... adding");
-    // }
+    if (!window.localStorage.getItem("storyIndex")) {
+        window.localStorage.setItem("storyIndex", 0);
+        console.log("no story index... adding");
+    }
 
     renderMap();
 }

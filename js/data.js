@@ -1,10 +1,8 @@
 const data = [
     {
-        asd: 55.60329,
-        das: 12.992301,
         location: "parken",
-        lat: 56.459264,
-        lon: 12.956475,
+        lat: 55.60329,
+        lon: 12.992301,
         dialogue: [
             {
                 speaker: "Göran",
