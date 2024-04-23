@@ -1,5 +1,15 @@
 // Minigames
 
+function doneMinigame() {
+    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+    window.localStorage.setItem("storyIndex", storyIndex + 1);
+
+    removeContentEventModal();
+    disableEventModal();
+
+    renderMap();
+}
+
 //WORDLE
 function wordle() {
     function keyEvent(event) {
@@ -186,7 +196,6 @@ function wordle() {
 
         const activeRowChildren = document.querySelector(".word-row.active").childNodes;
 
-
         activeRowChildren.forEach((child, index) => {
             const boxLetter = child.textContent;
 
@@ -272,14 +281,26 @@ function wordle() {
             }
         })
 
-        createNewRow();
+        let rightBoxes = 0;
+
+        for (rowbox of activeRowChildren) {
+            if (rowbox.classList.contains("right")) {
+                rightBoxes++
+            }
+        }
+
+        if (rightBoxes == nLetters) {
+            doneMinigame();
+        } else {
+            createNewRow();
+        }
     }
 
     const wordAnswer = "AVLIVA"
 
     const gameDiv = document.createElement("div");
     gameDiv.setAttribute("id", "wordle-game");
-    document.querySelector("body").append(gameDiv);
+    editContentEventModal(gameDiv)
 
     const rowContainer = document.createElement("div");
     rowContainer.classList.add("row-container")
