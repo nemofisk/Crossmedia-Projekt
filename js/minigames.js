@@ -537,7 +537,8 @@ function drop(event) {
 
             if (drag_id == drop_id) {
                 box.removeAttribute("ondrop");
-
+                box.childNodes[0].removeAttribute("draggable");
+                box.style.border = "solid lime 3px"
                 correct_pieces.push(drop_id);
 
                 if (correct_pieces.length == 36) {
