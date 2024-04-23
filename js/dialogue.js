@@ -1,8 +1,16 @@
 // Dialogue array and function, guess villain
-function renderDialogue() {
+function renderDialogue(beforeGame, afterGame) {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     const currentStory = data[storyIndex];
-    const dialogue = currentStory.dialogue;
+    let dialogue = currentStory.dialogue;
+
+    if (beforeGame) {
+        dialogue = currentStory.dialogueBefore;
+    }
+
+    if (afterGame) {
+        dialogue = currentStory.dialogueAfter;
+    }
 
     removeContentEventModal();
     activateEventModal();
@@ -68,7 +76,13 @@ function renderDialogue() {
             currentLine++;
             dialogueWindow.addEventListener("click", writeLine);
         } else {
-            dialogueWindow.addEventListener("click", currentStory.minigame)
+            if (beforeGame) {
+                dialogueWindow.addEventListener("click", currentStory.minigame)
+            }
+
+            if (afterGame) {
+                // rendera kartan igen?
+            }
         }
     }
 

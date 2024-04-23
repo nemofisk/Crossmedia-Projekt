@@ -13,7 +13,7 @@ function renderMap() {
                 null,
                 {
                     enableHighAccuracy: true,
-                    timeout: 5000,
+                    timeout: 200000,
                     maximumAge: 0
                 }
             )
@@ -21,11 +21,11 @@ function renderMap() {
 
         coords();
     } else {
-        show_position(playerPosition);
+        show_position(playerPosition, false);
     }
 }
 
-function show_position(position) {
+function show_position(position, firstCall = true) {
 
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     const currentLocation = data[storyIndex];
@@ -62,9 +62,13 @@ function show_position(position) {
 
     const collisionInterval = setInterval(check_collision, 1000)
 
-    navigator.geolocation.watchPosition(update_player_location);
+    if (firstCall) {
+        navigator.geolocation.watchPosition(update_player_location);
+    }
 
     function update_player_location(position) {
+        console.log("watching");
+
         playerPosition = position;
 
         let longitude = position.coords.longitude;
@@ -119,7 +123,7 @@ function show_position(position) {
         if (bottomInside && topInside && rightInside && leftInside) {
             current_circle.remove();
             clearInterval(collisionInterval);
-            renderDialogue();
+            renderDialogue(true, false);
         }
     }
 

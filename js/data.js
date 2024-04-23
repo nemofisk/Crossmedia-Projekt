@@ -3,7 +3,7 @@ const data = [
         location: "parken",
         lat: 55.60329,
         lon: 12.992301,
-        dialogue: [
+        dialogueBefore: [
             {
                 speaker: "Göran",
                 line: "Hej jag är riktigt sus"
@@ -12,6 +12,9 @@ const data = [
                 speaker: "Player",
                 line: "Ja jag vet det!"
             }
+        ],
+        dialogueAfter: [
+
         ],
         dialogueBG: "../images/test_park.jpg",
         dialoguePassword: "123",
