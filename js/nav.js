@@ -102,7 +102,7 @@ notebook_button.addEventListener("click", render_notebook_page);
 
 function render_notebook_page () {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
-    let notebook_data = data[storyIndex].phoneData;
+    let notebook_data = data[storyIndex].notebookData;
 
     document.querySelector(".phone_button").removeEventListener("click", render_phone_page);
     document.querySelector(".notebook_button").removeEventListener("click", render_notebook_page);
