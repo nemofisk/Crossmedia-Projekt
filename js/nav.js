@@ -1,87 +1,17 @@
-let phone_data = [
-    {
-        name: "SHERLOCK",
-        img: "sherlock.jpg",
-        messages: [
-            "hi hi hi hi hi hi",
-            "wyd wyd wyd wyd wyd wyd wyd wyd wyd wyd", 
-            "??", 
-            "Hi",
-            "wyd", 
-            "??", 
-            "Hi",
-            "wyd", 
-            "??", 
-        ]
-    },
-    {
-        name: "JOHN WATSON",
-        img: "john.jpg",
-        messages: [
-            "SUP BABY"
-        ]
-    },
-    {
-        name: "LESTRADE",
-        img: "lestrade.jpg",
-        messages: [
-            "Hello.",
-            "Hello.",
-            "Hello.",
-            "Hello.",
-            "Hello.",
-            "Hello.",
-            "Hello.",
-            "Hello.",
-        ]
-    }
-]
-
-let notebook_data = {
-    clues: [
-        {
-            name: "Blod",
-            description: "Ett tecken på att våld har förekommit. Hittades i slottsparken."
-        },
-        {
-            name: "Spruta",
-            description: "En spruta som har blivit använd. Hittades i slottsparken."
-        }
-    ],
-    suspects: [
-        {
-            name: "Göran",
-            description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?"
-        },
-        {
-            name: "Stefan",
-            description: "Zlatans snygga kompis... som också har ett motiv. Är detta Zlatans kidnappare?"
-        },
-        {
-            name: "Sara",
-            description: "..."
-        },
-        {
-            name: "Helena",
-            description: "..."
-        }
-    ]
-};
-
 let phone_button = document.createElement("button");
 phone_button.classList.add("phone_button");
 phone_button.innerHTML = "PHONE";
 document.querySelector("body").append(phone_button);
 
-phone_button.addEventListener("click", activate_phone);
+phone_button.addEventListener("click", render_phone_page);
 
-function activate_phone() {
-    render_phone_page(phone_data)
-    document.querySelector(".phone_button").removeEventListener("click", activate_phone);
-    document.querySelector(".notebook_button").removeEventListener("click", activate_notebook);
-}
+function render_phone_page () {
+    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+    let phone_data = data[storyIndex].phoneData;
+    console.log(phone_data)
+    document.querySelector(".phone_button").removeEventListener("click", render_phone_page);
+    document.querySelector(".notebook_button").removeEventListener("click", render_notebook_page);
 
-function render_phone_page (data) {
     let body = document.querySelector("body");
 
     let phone_page = document.createElement("div");
@@ -104,8 +34,8 @@ function render_phone_page (data) {
 
         document.querySelector(".close_button").addEventListener("click", () => {
             document.querySelector(".phone_page").remove();
-            document.querySelector(".notebook_button").addEventListener("click", activate_notebook)
-            document.querySelector(".phone_button").addEventListener("click", activate_phone)
+            document.querySelector(".notebook_button").addEventListener("click", render_notebook_page)
+            document.querySelector(".phone_button").addEventListener("click", render_phone_page)
         })
 
         add_contact("SHERLOCK");
@@ -134,7 +64,7 @@ function render_phone_page (data) {
             let messages = document.createElement("div");
             messages.classList.add("messages");
 
-            for (let person of data) {
+            for (let person of phone_data) {
                 if(person.name == name) {
                     person.messages.forEach( message => {
                         messages.style.backgroundImage = `url(./images/${person.img})`;
@@ -168,15 +98,14 @@ notebook_button.classList.add("notebook_button");
 notebook_button.innerHTML = "NOTEBOOK";
 document.querySelector("body").append(notebook_button);
 
-notebook_button.addEventListener("click", activate_notebook);
+notebook_button.addEventListener("click", render_notebook_page);
 
-function activate_notebook() {
-    render_notebook_page(notebook_data)
-    document.querySelector(".phone_button").removeEventListener("click", activate_phone);
-    document.querySelector(".notebook_button").removeEventListener("click", activate_notebook);
-}
+function render_notebook_page () {
+    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+    let notebook_data = data[storyIndex].phoneData;
 
-function render_notebook_page (data) {
+    document.querySelector(".phone_button").removeEventListener("click", render_phone_page);
+    document.querySelector(".notebook_button").removeEventListener("click", render_notebook_page);
     let body = document.querySelector("body");
 
     let notebook_container = document.createElement("div");
@@ -217,10 +146,10 @@ function render_notebook_page (data) {
             notebook_page.prepend(list);
 
             if(category == "SUSPECTS") {
-                render_clues(data.suspects);
+                render_clues(notebook_data.suspects);
             }
             else if (category == "CLUES") {
-                render_clues(data.clues);
+                render_clues(notebook_data.clues);
             }
             
             function render_clues (array) {
@@ -247,8 +176,8 @@ function render_notebook_page (data) {
 
         document.querySelector(".close_button").addEventListener("click", () => {
             document.querySelector(".notebook_container").remove();
-            document.querySelector(".notebook_button").addEventListener("click", activate_notebook)
-            document.querySelector(".phone_button").addEventListener("click", activate_phone)
+            document.querySelector(".notebook_button").addEventListener("click", render_notebook_page)
+            document.querySelector(".phone_button").addEventListener("click", render_phone_page)
         })
     }
 }
