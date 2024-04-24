@@ -73,16 +73,24 @@ phone_button.classList.add("phone_button");
 phone_button.innerHTML = "PHONE";
 document.querySelector("body").append(phone_button);
 
-phone_button.addEventListener("click", () => render_phone_page(phone_data));
+phone_button.addEventListener("click", activate_phone);
+
+function activate_phone() {
+    render_phone_page(phone_data)
+    document.querySelector(".phone_button").removeEventListener("click", activate_phone);
+    document.querySelector(".notebook_button").removeEventListener("click", activate_notebook);
+}
 
 function render_phone_page (data) {
     let body = document.querySelector("body");
 
-    body.innerHTML += `
-        <div class="phone_page">
-            <h3 class="current_phone_page">CONTACTS</h3>
-        </div>
-    `
+    let phone_page = document.createElement("div");
+    phone_page.classList.add("phone_page");
+    phone_page.innerHTML = `
+        <h3 class="current_phone_page">CONTACTS</h3>
+    `;
+    body.append(phone_page);
+
 
     render_contacts();
 
@@ -96,8 +104,8 @@ function render_phone_page (data) {
 
         document.querySelector(".close_button").addEventListener("click", () => {
             document.querySelector(".phone_page").remove();
-            document.querySelector(".notebook_button").addEventListener("click", () => render_notebook_page(notebook_data))
-            document.querySelector(".phone_button").addEventListener("click", () => render_phone_page(phone_data))
+            document.querySelector(".notebook_button").addEventListener("click", activate_notebook)
+            document.querySelector(".phone_button").addEventListener("click", activate_phone)
         })
 
         add_contact("SHERLOCK");
@@ -160,17 +168,25 @@ notebook_button.classList.add("notebook_button");
 notebook_button.innerHTML = "NOTEBOOK";
 document.querySelector("body").append(notebook_button);
 
-notebook_button.addEventListener("click", () => render_notebook_page(notebook_data));
+notebook_button.addEventListener("click", activate_notebook);
+
+function activate_notebook() {
+    render_notebook_page(notebook_data)
+    document.querySelector(".phone_button").removeEventListener("click", activate_phone);
+    document.querySelector(".notebook_button").removeEventListener("click", activate_notebook);
+}
 
 function render_notebook_page (data) {
     let body = document.querySelector("body");
 
-    body.innerHTML += `
-        <div class="notebook_container">
-            <div class="notebook_img"></div>
-            <div class="notebook_page"></div>
-        </div>
-    `
+    let notebook_container = document.createElement("div");
+    notebook_container.classList.add("notebook_container");
+    notebook_container.innerHTML = `
+        <div class="notebook_img"></div>
+        <div class="notebook_page"></div>
+    `;
+    body.append(notebook_container);
+    
     render_notes();
 
     function render_notes() {
@@ -231,8 +247,8 @@ function render_notebook_page (data) {
 
         document.querySelector(".close_button").addEventListener("click", () => {
             document.querySelector(".notebook_container").remove();
-            document.querySelector(".notebook_button").addEventListener("click", () => render_notebook_page(notebook_data))
-            document.querySelector(".phone_button").addEventListener("click", () => render_phone_page(phone_data))
+            document.querySelector(".notebook_button").addEventListener("click", activate_notebook)
+            document.querySelector(".phone_button").addEventListener("click", activate_phone)
         })
     }
 }
