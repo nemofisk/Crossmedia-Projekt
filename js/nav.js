@@ -1,18 +1,44 @@
-let phone_button = document.createElement("button");
-phone_button.classList.add("phone_button");
-phone_button.innerHTML = "TELEFON";
-document.querySelector("body").append(phone_button);
+function render_nav() {
+    let phone_button = document.createElement("button");
+    phone_button.classList.add("phone_button");
+    phone_button.innerHTML = "TELEFON";
+    let nav = document.createElement("div");
+    nav.classList.add("nav");
+    nav.append(phone_button);
+    document.querySelector("body").append(nav);
 
-let notebook_button = document.createElement("button");
-notebook_button.classList.add("notebook_button");
-notebook_button.innerHTML = "ANTECKNINGAR";
-document.querySelector("body").append(notebook_button);
+    let notebook_button = document.createElement("button");
+    notebook_button.classList.add("notebook_button");
+    notebook_button.innerHTML = "ANTECKNINGAR";
+    nav.append(notebook_button);
 
-phone_button.addEventListener("click", render_phone_page);
-notebook_button.addEventListener("click", render_notebook_page);
+    phone_button.addEventListener("click", render_phone_page);
+    notebook_button.addEventListener("click", render_notebook_page);
+
+    check_for_notice();
+}
+
+function check_for_notice() {
+    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+    let new_messangers = [];
+    data[storyIndex].phoneData.forEach(person => {
+        person.messages.forEach((message) => {
+            if(message.state == "Nytt"){
+                if(!new_messangers.includes(person.name)){
+                    new_messangers.push(person.name);
+                }
+            }
+        })
+    })
+    window.localStorage.setItem("newMessangers", JSON.stringify(new_messangers));
+    if(new_messangers.length > 0) {
+        document.querySelector(".phone_button").classList.add("notice");
+    }
+}
 
 function render_phone_page () {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+    const notices_array = JSON.parse(window.localStorage.getItem("newMessangers"));
     let phone_data = data[storyIndex].phoneData;
 
     document.querySelector(".phone_button").removeEventListener("click", render_phone_page);
@@ -55,13 +81,28 @@ function render_phone_page () {
                 <img>
                 <p>${name}</p>
             `;
+            
+            if(notices_array.includes(name)) {
+                contact.classList.add("notice");
+            }
+        
             contacts.append(contact);
-    
             contact.addEventListener("click", render_messages);
         }
 
         function render_messages (e) {
             let name = e.target.outerText;
+
+            let notice_index = notices_array.indexOf(name);
+            if (notice_index > -1) { // only splice array when item is found
+                notices_array.splice(notice_index, 1); // 2nd parameter means remove one item only
+            }
+            window.localStorage.setItem("newMessangers", JSON.stringify(notices_array));
+
+            if(notices_array.length < 1) {
+                document.querySelector(".phone_button").classList.remove("notice");
+            }
+
             document.querySelector(".current_phone_page").textContent += ` > ${name}`;
             document.querySelector(".contacts").remove();
 
@@ -73,9 +114,12 @@ function render_phone_page () {
                 if(person.name == name) {
                     person.messages.forEach( message => {
                         messages.style.backgroundImage = `url(./images/${person.img})`;
-                        let chat_bubble = document.createElement("p");
+                        let chat_bubble = document.createElement("div");
                         chat_bubble.classList.add("chat_bubble");
-                        chat_bubble.textContent = message;
+                        chat_bubble.innerHTML = `
+                            <p class="message_text">${message.message}</p>
+                            <p class="message_state">${message.state}</p>
+                        `;
                         messages.append(chat_bubble);
                     })
                 }

@@ -52,23 +52,30 @@ const data = [
                 name: "SHERLOCK",
                 img: "sherlock.jpg",
                 messages: [
-                    "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
-                    "Ska försöka hjälpa dig när vi har tid. Vi håller tummarna i hopp om att du ska hitta Zlatan... i ett stycke..."
+                    {
+                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.", 
+                        state: "Nytt"
+                    }
                 ]
             },
             {
                 name: "JOHN WATSON",
                 img: "john.jpg",
                 messages: [
-                    "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar."
+                    {
+                        message: "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar.",
+                        state: "Nytt"
+                    }
                 ]
             },
             {
                 name: "LESTRADE",
                 img: "lestrade.jpg",
                 messages: [
-                    "Kontakta mig när du vet vem gärningsmannen är.",
-                    "Peace."
+                    {
+                        message: "Kontakta mig när du vet vem gärningsmannen är.",
+                        state: "Nytt"
+                    }
                 ]
             }
         ],
@@ -107,23 +114,30 @@ const data = [
                 name: "SHERLOCK",
                 img: "sherlock.jpg",
                 messages: [
-                    "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
-                    "Ska försöka hjälpa dig när vi har tid. Vi håller tummarna i hopp om att du ska hitta Zlatan... i ett stycke..."
+                    {
+                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.", 
+                        state: "Gammalt"
+                    }
                 ]
             },
             {
                 name: "JOHN WATSON",
                 img: "john.jpg",
                 messages: [
-                    "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar."
+                    {
+                        message: "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar.",
+                        state: "Gammalt"
+                    }
                 ]
             },
             {
                 name: "LESTRADE",
                 img: "lestrade.jpg",
                 messages: [
-                    "Kontakta mig när du vet vem gärningsmannen är.",
-                    "Peace."
+                    {
+                        message: "Kontakta mig när du vet vem gärningsmannen är.",
+                        state: "Gammalt"
+                    }
                 ]
             }
         ],
@@ -173,27 +187,40 @@ const data = [
                 name: "SHERLOCK",
                 img: "sherlock.jpg",
                 messages: [
-                    "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
-                    "Ska försöka hjälpa dig när vi har tid. Vi håller tummarna i hopp om att du ska hitta Zlatan... i ett stycke..."
+                    {
+                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.", 
+                        state: "Gammalt"
+                    }
                 ]
             },
             {
                 name: "JOHN WATSON",
                 img: "john.jpg",
                 messages: [
-                    "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar.",
-                    "Läget? Jag hörde att du pratat med Sara. Jag råkar veta att Zlatans bästa vän heter Stefan.",
-                    "Dessutom så känner Sara Stefan sedan tidigare. Det kanske är värt att prata med Stefan, här är hans nummer."
+                    {
+                        message: "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar.",
+                        state: "Gammalt"
+                    },
+                    {
+                        message: "Läget? Jag hörde att du pratat med Sara. Jag råkar veta att Zlatans bästa vän heter Stefan.", 
+                        state: "Nytt"
+                    },
+                    {
+                        message: "Dessutom så känner Sara Stefan sedan tidigare. Det kanske är värt att prata med grabben. Jag ska hitta hans nummer, jag återkommer!", 
+                        state: "Nytt"
+                    }
                 ]
             },
             {
                 name: "LESTRADE",
                 img: "lestrade.jpg",
                 messages: [
-                    "Kontakta mig när du vet vem gärningsmannen är.",
-                    "Peace."
+                    {
+                        message: "Kontakta mig när du vet vem gärningsmannen är.",
+                        state: "Gammalt"
+                    }
                 ]
-            },
+            }
         ],
         notebookData: {
             clues:
