@@ -2,7 +2,7 @@
 function renderDialogue(beforeGame, afterGame) {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     const currentStory = data[storyIndex];
-    let dialogue = currentStory.dialogue;
+    let dialogue;
 
     if (beforeGame) {
         dialogue = currentStory.dialogueBefore;
@@ -23,7 +23,7 @@ function renderDialogue(beforeGame, afterGame) {
 
     const dialogueWindow = document.createElement("div");
     dialogueWindow.classList.add("dialogueWindow");
-    dialogueContainer.append(dialogueWindow)
+    dialogueContainer.append(dialogueWindow);
 
     let currentLine = 0;
 
@@ -77,11 +77,17 @@ function renderDialogue(beforeGame, afterGame) {
             dialogueWindow.addEventListener("click", writeLine);
         } else {
             if (beforeGame) {
+                dialogueWindow.removeEventListener("click", writeLine)
                 dialogueWindow.addEventListener("click", currentStory.minigame)
             }
 
             if (afterGame) {
-                // rendera kartan igen?
+                dialogueWindow.removeEventListener("click", writeLine)
+                dialogueWindow.addEventListener("click", e => {
+                    disableEventModal();
+                    removeContentEventModal();
+                    renderMap();
+                });
             }
         }
     }

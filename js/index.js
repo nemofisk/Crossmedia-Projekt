@@ -13,26 +13,30 @@ startUp();
 
 function startUp() {
 
-    // const startUpContainer = document.createElement("div");
-    // startUpContainer.classList.add("startUpContainer");
+    const startUpContainer = document.createElement("div");
+    startUpContainer.classList.add("startUpContainer");
 
-    // const startUpTitle = document.createElement("div");
-    // startUpTitle.classList.add("startUpTitle");
-    // startUpTitle.textContent = "Malmö Mysteries: Sherlock Holmes";
-    // startUpContainer.append(startUpTitle);
+    const startUpTitle = document.createElement("div");
+    startUpTitle.classList.add("startUpTitle");
+    startUpTitle.textContent = "Malmö Mysteries: Sherlock Holmes";
+    startUpContainer.append(startUpTitle);
 
-    // const startButton = document.createElement("button");
-    // startButton.classList.add("startUpButton");
-    // startUpContainer.append(startButton)
-
+    const startButton = document.createElement("button");
+    startButton.classList.add("startUpButton");
+    startButton.textContent = "Starta"
+    startUpContainer.append(startButton)
     window.localStorage.clear();
+    startButton.addEventListener("click", e => {
+        renderDialogue(false, true);
+    })
+
+    activateEventModal();
+    editContentEventModal(startUpContainer);
 
     if (!window.localStorage.getItem("storyIndex")) {
         window.localStorage.setItem("storyIndex", 0);
         console.log("no story index... adding");
     }
-
-    renderMap();
 }
 
 function renderPhone() {
@@ -70,4 +74,24 @@ function removeContentEventModal() {
     eventDiv.innerHTML = "";
 
     return eventDiv;
+}
+
+function renderInfoModal(content) {
+    const infoModal = document.createElement("div");
+    infoModal.id = "infoModal";
+    infoModal.innerHTML = `
+        <div class="modalWrapper">
+            <span class="closeInfo">X</span>
+        </div>
+    `
+
+    infoModal.querySelector(".closeInfo").addEventListener("click", e => {
+        infoModal.remove();
+    })
+
+    infoModal.querySelector(".modalWrapper").append(content);
+
+    document.body.append(infoModal);
+
+    return infoModal;
 }

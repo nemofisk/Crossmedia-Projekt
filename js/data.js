@@ -1,5 +1,14 @@
 const data = [
     {
+        location: "intro",
+        dialogueAfter: [
+            {
+                speaker: "Sherlock Holmes",
+                line: "Nu är det allvar! Vi har precis fått ett meddelande från Zlatans fru Helena Seger som berättat att Zlatan är spårlöst försvunnen. Han försvann igårkväll när han skulle ut och jogga men aldrig kom hem. Vi är på semester och behöver därför din hjälp att hitta honom, vi har hört talas om dina dektektivskills och har fullt förtroende för att du kan lösa mysteriet. Jag och Watson kan hjälpa dig på vägen om du skulle köra fast. Vi har fått uppgifter om att han senast sågs joggandes i Slottsparken, det kan vara ett bra ställe att börja söka ledtrådar på. "
+            }
+        ]
+    },
+    {
         location: "parken",
         lat: 55.60329,
         lon: 12.992301,
@@ -63,7 +72,7 @@ const data = [
                 ]
             }
         ],
-        notebookData : {
+        notebookData: {
             clues: "",
             suspects: ""
         }
@@ -119,7 +128,7 @@ const data = [
             }
         ],
         notebookData: {
-            clues: 
+            clues:
                 [
                     {
                         name: "Maskerade män",
@@ -173,7 +182,7 @@ const data = [
                 img: "john.jpg",
                 messages: [
                     "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar.",
-                    "Läget? Jag hörde att du pratat med Sara. Jag råkar veta att Zlatans bästa vän heter Stefan.", 
+                    "Läget? Jag hörde att du pratat med Sara. Jag råkar veta att Zlatans bästa vän heter Stefan.",
                     "Dessutom så känner Sara Stefan sedan tidigare. Det kanske är värt att prata med Stefan, här är hans nummer."
                 ]
             },
@@ -187,7 +196,7 @@ const data = [
             },
         ],
         notebookData: {
-            clues: 
+            clues:
                 [
                     {
                         name: "Maskerade män",

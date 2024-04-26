@@ -2,6 +2,29 @@ let playerPosition;
 let map;
 
 function renderMap() {
+    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+
+    if (storyIndex == 0) {
+        window.localStorage.setItem("storyIndex", storyIndex + 1);
+
+        const infoContent = document.createElement("div");
+
+        const infoHeader = document.createElement("div");
+        infoHeader.textContent = "Hur du spelar:";
+
+        const infoText = document.createElement("div");
+        infoText.textContent = `
+            Här skriver vi infoguide
+        `
+
+        infoContent.appendChild(infoHeader);
+        infoContent.appendChild(infoText);
+
+        renderInfoModal(infoContent);
+
+    }
+
+
     if (!map) {
         map = L.map("map", { zoomControl: false });
     }
