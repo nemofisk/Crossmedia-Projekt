@@ -87,6 +87,7 @@ function renderDialogue(beforeGame, afterGame) {
                     disableEventModal();
                     removeContentEventModal();
                     renderMap();
+                    render_nav();
                 });
             }
         }

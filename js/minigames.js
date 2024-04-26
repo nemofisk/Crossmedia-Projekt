@@ -3,10 +3,9 @@
 function doneMinigame() {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     window.localStorage.setItem("storyIndex", storyIndex + 1);
-
     removeContentEventModal();
     disableEventModal();
-
+    check_for_notice(); // behöver köras när storyIndex uppdateras.
     renderMap();
 }
 
