@@ -123,18 +123,15 @@ const data = [
                 [
                     {
                         name: "Maskerade män",
-                        description: "Zlatan blev kidnappad av en grupp maskerade män",
-                        location: "Slottsparken"
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
                     },
                     {
                         name: "En rosa skåpbil.",
-                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil.",
-                        location: "Slottsparken"
-                    },
-                    {
-                        name: "Bilder tagna av Göran",
-                        description: "Bilder som togs samtidigt som Zlatan blev kidnappad.",
-                        location: "Slottsparken"
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
                     },
                     {
                         name: "En använd spruta.",
@@ -151,7 +148,8 @@ const data = [
                 {
                     name: "Göran",
                     description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "göran.jpg"
                 }
             ]
         },
@@ -193,18 +191,15 @@ const data = [
                 [
                     {
                         name: "Maskerade män",
-                        description: "Zlatan blev kidnappad av en grupp maskerade män",
-                        location: "Slottsparken"
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
                     },
                     {
                         name: "En rosa skåpbil.",
-                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil.",
-                        location: "Slottsparken"
-                    },
-                    {
-                        name: "Bilder tagna av Göran",
-                        description: "Bilder som togs samtidigt som Zlatan blev kidnappad.",
-                        location: "Slottsparken"
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
                     },
                     {
                         name: "En använd spruta.",
@@ -231,7 +226,8 @@ const data = [
                 {
                     name: "Göran",
                     description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "göran.jpg"
                 }
             ]
         },
