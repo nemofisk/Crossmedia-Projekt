@@ -161,6 +161,33 @@ const data = [
         lat: 55.601726,
         lon: 12.997218,
         dialogue: [],
+        phoneData: [
+            {
+                name: "SHERLOCK",
+                img: "sherlock.jpg",
+                messages: [
+                    "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
+                    "Ska försöka hjälpa dig när vi har tid. Vi håller tummarna i hopp om att du ska hitta Zlatan... i ett stycke..."
+                ]
+            },
+            {
+                name: "JOHN WATSON",
+                img: "john.jpg",
+                messages: [
+                    "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar.",
+                    "Läget? Jag hörde att du pratat med Sara. Jag råkar veta att Zlatans bästa vän heter Stefan.", 
+                    "Dessutom så känner Sara Stefan sedan tidigare. Det kanske är värt att prata med Stefan, här är hans nummer."
+                ]
+            },
+            {
+                name: "LESTRADE",
+                img: "lestrade.jpg",
+                messages: [
+                    "Kontakta mig när du vet vem gärningsmannen är.",
+                    "Peace."
+                ]
+            },
+        ],
         notebookData: {
             clues: 
                 [
