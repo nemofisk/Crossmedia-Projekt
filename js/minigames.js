@@ -318,11 +318,16 @@ function wordle() {
 function render_memory_game(parent) {
     let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
-    parent.innerHTML = `
+
+    const memoryDiv = document.createElement("div");
+
+    memoryDiv.innerHTML = `
     <div class="memory_container">
         <div class="memory_game"></div>
     </div>
     `;
+
+    editContentEventModal(memoryDiv);
 
     let shuffle_numbers = shuffle_array(numbers);
 
@@ -366,7 +371,7 @@ function render_memory_game(parent) {
                         document.querySelectorAll(".memory_box_open")[0].classList.remove("memory_box_open");
 
                         if (document.querySelectorAll(".memory_box_match").length == numbers.length) {
-                            alert("YOU WIN");
+                            doneMinigame();
                         }
                     }
                     else {
@@ -476,11 +481,13 @@ function maze() {
 
     const gameWrapper = document.createElement("div");
     gameWrapper.setAttribute("id", "mazeGameWrapper");
-    document.querySelector("body").append(gameWrapper);
 
     const gameArea = document.createElement("div");
     gameArea.setAttribute("id", "mazeGame");
     gameWrapper.append(gameArea);
+
+    editContentEventModal(gameWrapper)
+
 
     let mapArray = "WWWWWWWWWWWWWWWWWWWWWWWWWWPPPPPWPPPPPPPPPPPWPPPPPWWPWWWWWPWPWWWWWWWPWWWWWPWWPWPPPWPWPPPWPWPPPWPPPWPWWPWPWPWPWWWPWPWPWWWPWPWPWWPWPWPPPWPWPWPWPPPWPWPWPWWPWPWWWWWPWPWPWWWPWPWPWPWWPWPWPPPPPWPWPPPPPPPWPPPWWPWPWPWWWPWPWWWWWWWWWWWPWWPPPPPWPPPWPPPPPPPWPWPPPWWPWWWWWWWWWPWWWWWPWPWPWWWWPWPPPPPPPWPWPPPPPWPWPPPWWPWPWWWWWPWPWPWWWWWPWWWPWWPWPPPWPPPWPWPWPPPPPPPWPWWWWWWPWPWWWWWPWPWPWWWWWPWWPPPPPWPPPPPPPWPWPPPPPPPWWPWWWWWPWWWWWWWPWWWWWWWWWWPPPWPPPWPPPWPWPPPPPPPWPWWWWPWPWWWPWPWPWPWWWWWPWPWWPPPWPPPWPWPWPPPWPPPWPPPWWPWWWWWWWPWWWWWWWPWPWWWPWWPWPPPPPPPWPPPPPWPWPWPPPWWPWPWWWWWWWPWPWPWPWPWWWWWWPWPWPPPPPWPWPWPPPWPPPPPWWPWPWWWPWPWWWPWWWWWWWWWPWWPWPPPPPWPPPWPPPWPPPPPWPWWPWWWWWWWWWPWWWPWPWWWWWPWWPPPWPPPPPWPPPPPWPWPPPPPWWPWWWPWPWWWWWWWWWPWPWWWWWWPPPPPWPPPPPPPPPPPPPPPPPWWWWWWWWWWWWWWWWWWWWWWWWWW"
 
@@ -650,15 +657,24 @@ function render_puzzle(parent) {
 //     ]
 // }
 function render_quiz(parent, quiz) {
-    parent.innerHTML = `
+    const quizDiv = document.createElement("div");
+
+    const questionDiv = document.createElement("div");
+    questionDiv.innerHTML = `
         <h3 class="quiz_question">${quiz[0].question}</h3>
     `
+
+    quizDiv.append(questionDiv);
+
     let button_container = document.createElement("div");
     button_container.classList.add("button_container");
+
     let current_question = 0;
     let points = 0;
-    parent.append(button_container)
+    quizDiv.append(button_container)
     update_quiz(quiz, current_question);
+
+    editContentEventModal(quizDiv);
 
     function update_quiz(quiz, current_question) {
         if (quiz[current_question] == "end") {
