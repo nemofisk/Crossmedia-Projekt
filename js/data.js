@@ -37,7 +37,7 @@ const data = [
         ],
         dialogueBG: "../images/test_park.jpg",
         dialoguePassword: "123",
-        minigame: wordle,
+        minigame: "quiz",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -72,31 +72,49 @@ const data = [
         location: "Johan P",
         lat: 55.604183,
         lon: 12.998948,
-        dialogue: [],
-        minigame: wordle,
+        dialogueBefore: [
+            {
+                speaker: "Player",
+                line: "Jag har hört rykten om att en hetsig diskussion brutit ut här igår mellan Zlatan och Sara, vet du något om saken?"
+            },
+            {
+                speaker: "Lisa",
+                line: "Jaa.. Jag hörde definitivt att de bråkades, men inte vad det hela handlade om. Sara verkade väldigt upprörd och när hon ställde sig upp för att gå hörde jag att hon skrev ordet…"
+            }
+        ],
+        dialogueAfter: [
+            {
+                speaker: "Player",
+                line: "Ojdå, detta låter allvarligt! Vet du hur jag kan få tag på Sara?"
+            },
+            {
+                speaker: "Lisa",
+                line: "Jaa, hon jobbar ju på kyrkogården, så där är hon nog!"
+            }
+        ],
+        minigame: "wordle",
         phoneData: [
             {
                 name: "SHERLOCK",
                 img: "sherlock.jpg",
                 messages: [
-                    "Hello",
-                    "???"
+                    "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
+                    "Ska försöka hjälpa dig när vi har tid. Vi håller tummarna i hopp om att du ska hitta Zlatan... i ett stycke..."
                 ]
             },
             {
                 name: "JOHN WATSON",
                 img: "john.jpg",
                 messages: [
-                    "SUP",
-                    "???"
+                    "Hört att du har fått ett nytt uppdrag. Får se om jag har tid att leta upp lite info som kan hjälpa dig. Men nu ska jag ta ett dopp. Sherlock duschar."
                 ]
             },
             {
                 name: "LESTRADE",
                 img: "lestrade.jpg",
                 messages: [
-                    "Evening",
-                    "???"
+                    "Kontakta mig när du vet vem gärningsmannen är.",
+                    "Peace."
                 ]
             }
         ],
@@ -142,7 +160,54 @@ const data = [
         location: "Kyrkogarden",
         lat: 55.601726,
         lon: 12.997218,
-        dialogue: []
+        dialogue: [],
+        notebookData: {
+            clues: 
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "En rosa skåpbil.",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bilder tagna av Göran",
+                        description: "Bilder som togs samtidigt som Zlatan blev kidnappad.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "En använd spruta.",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                ],
+            suspects: [
+                {
+                    name: "Göran",
+                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                    location: "Slottsparken"
+                }
+            ]
+        },
     },
     {
         location: "epicure",

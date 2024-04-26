@@ -3,12 +3,18 @@ phone_button.classList.add("phone_button");
 phone_button.innerHTML = "TELEFON";
 document.querySelector("body").append(phone_button);
 
+let notebook_button = document.createElement("button");
+notebook_button.classList.add("notebook_button");
+notebook_button.innerHTML = "ANTECKNINGAR";
+document.querySelector("body").append(notebook_button);
+
 phone_button.addEventListener("click", render_phone_page);
+notebook_button.addEventListener("click", render_notebook_page);
 
 function render_phone_page () {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     let phone_data = data[storyIndex].phoneData;
-    console.log(phone_data)
+
     document.querySelector(".phone_button").removeEventListener("click", render_phone_page);
     document.querySelector(".notebook_button").removeEventListener("click", render_notebook_page);
 
@@ -92,13 +98,6 @@ function render_phone_page () {
     }
 }
 
-let notebook_button = document.createElement("button");
-notebook_button.classList.add("notebook_button");
-notebook_button.innerHTML = "ANTECKNINGAR";
-document.querySelector("body").append(notebook_button);
-
-notebook_button.addEventListener("click", render_notebook_page);
-
 function render_notebook_page () {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     let notebook_data = data[storyIndex].notebookData;
@@ -128,6 +127,12 @@ function render_notebook_page () {
             </div>
         `;
 
+        document.querySelector(".close_button").addEventListener("click", () => {
+            document.querySelector(".notebook_container").remove();
+            document.querySelector(".notebook_button").addEventListener("click", render_notebook_page)
+            document.querySelector(".phone_button").addEventListener("click", render_phone_page)
+        })
+
         document.querySelector(".suspects_button").addEventListener("click", (e) => {
             let category = e.target.textContent;
             render_category(category);
@@ -137,7 +142,7 @@ function render_notebook_page () {
             render_category(category);
         })
 
-        function render_category(category) {
+        function render_category(category) {            
             document.querySelector(".notebook_categories").remove();
             let notebook_page = document.querySelector(".notebook_page");
             let list = document.createElement("div");
@@ -145,20 +150,20 @@ function render_notebook_page () {
             notebook_page.prepend(list);
 
             if(category == "LEDTRÅDAR") {
-                render_clues(notebook_data.suspects, category);
+                render_clues(notebook_data.clues, category);
             }
             else if (category == "MISSTÄNKTA") {
-                render_clues(notebook_data.clues, category);
+                render_clues(notebook_data.suspects, category);
             }
             
             function render_clues (array, category) {
                 let no_clue;
-                console.log(array)
                 if(array == "") {
                     let clue = document.createElement("div");
                     list.append(clue);
                     clue.innerHTML = `
                         <h4>Här är det tomt!</h4>
+                        <p>Gå till Slottsparken för att hitta några ledtrådar.</p>
                     `;
                     no_clue = true;
                 }
@@ -187,11 +192,5 @@ function render_notebook_page () {
                 render_notes();
             });
         }
-
-        document.querySelector(".close_button").addEventListener("click", () => {
-            document.querySelector(".notebook_container").remove();
-            document.querySelector(".notebook_button").addEventListener("click", render_notebook_page)
-            document.querySelector(".phone_button").addEventListener("click", render_phone_page)
-        })
     }
 }
