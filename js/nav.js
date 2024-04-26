@@ -148,6 +148,19 @@ function render_notebook_page () {
             let list = document.createElement("div");
             list.classList.add("notebook_list");
             notebook_page.prepend(list);
+            
+            let button_container = document.querySelector(".button_container");
+            let back_button = document.createElement("button");
+            back_button.classList.add("back_button");
+            back_button.innerHTML = "BACK";
+            button_container.append(back_button);
+            back_button.addEventListener("click", activate_back_button);
+
+            function activate_back_button() {
+                list.remove();
+                document.querySelector(".button_container").remove();
+                render_notes();
+            }
 
             if(category == "LEDTRÅDAR") {
                 render_clues(notebook_data.clues, category);
@@ -157,6 +170,9 @@ function render_notebook_page () {
             }
             
             function render_clues (array, category) {
+                let back_button = document.querySelector(".back_button");
+                back_button.addEventListener("click", activate_back_button);
+
                 let no_clue;
                 if(array == "") {
                     let clue = document.createElement("div");
@@ -169,28 +185,60 @@ function render_notebook_page () {
                 }
                 
                 if(!no_clue) {
-                    array.forEach((object) => {
-                        let clue = document.createElement("div");
-                        clue.classList.add("clue");
-                        list.append(clue);
-                        clue.innerHTML = `
-                            <h4>${object.name}</h4>
-                            <p>${object.description}</p>
-                            <p class="clue_location">${object.location}</p>
-                        `;
-                    })
+                    if(category == "MISSTÄNKTA") {
+                        array.forEach((object) => {
+                            let clue = document.createElement("div");
+                            clue.classList.add("clue");
+                            list.append(clue);
+                            clue.innerHTML = `
+                                <h4>${object.name}</h4>
+                                <p>${object.description} Du pratade med ${object.name} vid ${object.location}</p>
+                            `;
+                        })
+                    }
+                    else if(category == "LEDTRÅDAR") {
+                        let locations = [];
+
+                        array.forEach((object) => {
+                            if(!locations.includes(object.location)) {
+                                locations.push(object.location);
+                            }
+                        })
+
+                        console.log(locations);
+
+                        locations.forEach( location => {
+                            let div = document.createElement("div");
+                            list.append(div);
+                            div.innerHTML = `
+                                <h4>${location}</h4>
+                            `;
+
+                            div.addEventListener( "click", () => {
+                                list.innerHTML = ``;
+                                array.forEach( clue => {
+                                    if(clue.location == location) {
+                                        let clue_div = document.createElement("div");
+                                        clue_div.classList.add("clue");
+                                        list.append(clue_div);
+                                        clue_div.innerHTML = `
+                                            <h4>${clue.name}</h4>
+                                            <p>${clue.description}</p>
+                                        `;
+                                    }
+                                })
+                                let back_button = document.querySelector(".back_button");
+                                back_button.removeEventListener("click", activate_back_button);
+                                document.querySelector(".back_button").addEventListener("click", () => {
+                                    list.innerHTML = ``;
+                                    render_clues(array, category);
+                                })
+                            })
+                        })
+
+                    }
                 }
             }
-
-            let button_container = document.querySelector(".button_container");
-            let back_button = document.createElement("button");
-            back_button.innerHTML = "BACK";
-            button_container.append(back_button);
-            back_button.addEventListener("click", () => {
-                list.remove();
-                document.querySelector(".button_container").remove();
-                render_notes();
-            });
         }
     }
 }

@@ -233,5 +233,4 @@ const data = [
         lon: 12.991199,
         dialogue: []
     }
-
 ]
