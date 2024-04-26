@@ -1,6 +1,6 @@
 let phone_button = document.createElement("button");
 phone_button.classList.add("phone_button");
-phone_button.innerHTML = "PHONE";
+phone_button.innerHTML = "TELEFON";
 document.querySelector("body").append(phone_button);
 
 phone_button.addEventListener("click", render_phone_page);
@@ -20,7 +20,6 @@ function render_phone_page () {
         <h3 class="current_phone_page">CONTACTS</h3>
     `;
     body.append(phone_page);
-
 
     render_contacts();
 
@@ -95,7 +94,7 @@ function render_phone_page () {
 
 let notebook_button = document.createElement("button");
 notebook_button.classList.add("notebook_button");
-notebook_button.innerHTML = "NOTEBOOK";
+notebook_button.innerHTML = "ANTECKNINGAR";
 document.querySelector("body").append(notebook_button);
 
 notebook_button.addEventListener("click", render_notebook_page);
@@ -121,8 +120,8 @@ function render_notebook_page () {
     function render_notes() {
         document.querySelector(".notebook_page").innerHTML += `
             <div class="notebook_categories">
-                <h3 class="suspects_button">SUSPECTS</h3>
-                <h3 class="clues_button">CLUES</h3>
+                <h3 class="suspects_button">MISSTÄNKTA</h3>
+                <h3 class="clues_button">LEDTRÅDAR</h3>
             </div>
             <div class="button_container">
                 <button class="close_button">CLOSE</button>
@@ -145,22 +144,37 @@ function render_notebook_page () {
             list.classList.add("notebook_list");
             notebook_page.prepend(list);
 
-            if(category == "SUSPECTS") {
-                render_clues(notebook_data.suspects);
+            if(category == "LEDTRÅDAR") {
+                render_clues(notebook_data.suspects, category);
             }
-            else if (category == "CLUES") {
-                render_clues(notebook_data.clues);
+            else if (category == "MISSTÄNKTA") {
+                render_clues(notebook_data.clues, category);
             }
             
-            function render_clues (array) {
-                array.forEach((object) => {
+            function render_clues (array, category) {
+                let no_clue;
+                console.log(array)
+                if(array == "") {
                     let clue = document.createElement("div");
                     list.append(clue);
                     clue.innerHTML = `
-                        <h4>${object.name}</h4>
-                        <p>${object.description}</p>
+                        <h4>Här är det tomt!</h4>
                     `;
-                })
+                    no_clue = true;
+                }
+                
+                if(!no_clue) {
+                    array.forEach((object) => {
+                        let clue = document.createElement("div");
+                        clue.classList.add("clue");
+                        list.append(clue);
+                        clue.innerHTML = `
+                            <h4>${object.name}</h4>
+                            <p>${object.description}</p>
+                            <p class="clue_location">${object.location}</p>
+                        `;
+                    })
+                }
             }
 
             let button_container = document.querySelector(".button_container");

@@ -64,6 +64,7 @@ body {
     border-radius: 10px;
     padding: 10px;
     margin: 0;
+    opacity: .8;
 }
 
 .button_container {
@@ -113,4 +114,14 @@ body {
     overflow: hidden;
     overflow: scroll;
     height: 275px;
+}
+
+.clue {
+    position: relative;
+}
+
+.clue_location {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
