@@ -696,17 +696,28 @@ function render_quiz(parent, quiz) {
             button_container.append(button);
 
             button.addEventListener("click", e => {
+                let answers = document.querySelectorAll(".answer");
+
+                for (answer of answers) {
+                    answer.setAttribute("disabled", "true");
+                }
+                
                 if (answer.true) {
                     console.log("correct")
                     points++;
                     current_question++;
-                    console.log("Points: " + points);
-                    update_quiz(quiz, current_question);
+                    button.classList.add("right");
+                    setTimeout( () => {
+                        update_quiz(quiz, current_question);
+                    }, 1000);
                 }
                 else {
                     console.log("false");
                     current_question++;
-                    update_quiz(quiz, current_question);
+                    button.classList.add("wrong");
+                    setTimeout( () => {
+                        update_quiz(quiz, current_question);
+                    }, 1000);
                 }
             })
         }))
