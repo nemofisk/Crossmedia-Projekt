@@ -314,26 +314,22 @@ function wordle() {
 
 //MEMORY
 //parent should have class memory_parent
+
 function render_memory_game(parent) {
-    let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
-
-
-    const memoryDiv = document.createElement("div");
-
-    memoryDiv.innerHTML = `
+    let numbers = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
+    
+    parent.innerHTML = `
     <div class="memory_container">
         <div class="memory_game"></div>
     </div>
     `;
 
-    editContentEventModal(memoryDiv);
-
     let shuffle_numbers = shuffle_array(numbers);
 
     function shuffle_array(array) {
         for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
         }
 
         return array;
@@ -343,16 +339,18 @@ function render_memory_game(parent) {
         let box = document.createElement("button");
         box.className = "memory_item";
         let number = shuffle_numbers[i];
-        img_url = `--img:url(./images/memory_images/${number}.png);`;
+        img_url = `--img:url(../images/memory_images/${number}.png);`
         box.setAttribute("dataset", number);
         box.setAttribute("style", img_url);
-
+        
         document.querySelector(".memory_game").appendChild(box);
 
-        box.onclick = function () {
+        box.addEventListener("click", click);
+        
+        function click() {
             this.classList.add("memory_box_open");
 
-            if (document.querySelectorAll(".memory_box_open").length > 1) {
+            if(document.querySelectorAll(".memory_box_open").length > 1) {
                 let boxes = document.querySelectorAll(".memory_item");
 
                 for (box of boxes) {
@@ -361,15 +359,21 @@ function render_memory_game(parent) {
 
                 setTimeout(check_match, 1000);
 
-                function check_match() {
-                    if (document.querySelectorAll(".memory_box_open")[0].getAttribute("dataset") == document.querySelectorAll(".memory_box_open")[1].getAttribute("dataset")) {
+                function check_match () {
+                    if(document.querySelectorAll(".memory_box_open")[0].getAttribute("dataset") == document.querySelectorAll(".memory_box_open")[1].getAttribute("dataset")) {
                         document.querySelectorAll(".memory_box_open")[0].classList.add("memory_box_match");
                         document.querySelectorAll(".memory_box_open")[1].classList.add("memory_box_match");
 
-                        document.querySelectorAll(".memory_box_open")[1].classList.remove("memory_box_open");
-                        document.querySelectorAll(".memory_box_open")[0].classList.remove("memory_box_open");
+                        let box_1 = document.querySelectorAll(".memory_box_open")[0];
+                        let box_2 = document.querySelectorAll(".memory_box_open")[1];
+                        
+                        box_1.classList.remove("memory_box_open");
+                        box_2.classList.remove("memory_box_open");
 
-                        if (document.querySelectorAll(".memory_box_match").length == numbers.length) {
+                        box_1.removeEventListener("click", click);
+                        box_2.removeEventListener("click", click);
+
+                        if(document.querySelectorAll(".memory_box_match").length == numbers.length) {
                             doneMinigame();
                         }
                     }
