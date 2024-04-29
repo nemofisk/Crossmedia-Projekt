@@ -58,3 +58,7 @@
     max-height: 80px;
     background-color: #7E6C55;
 }
+
+.correct {
+    box-shadow: 0 0 10px yellow;
+}
