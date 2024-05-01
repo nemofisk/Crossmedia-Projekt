@@ -4,9 +4,7 @@ let map;
 function renderMap() {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
 
-    if (storyIndex == 0) {
-        window.localStorage.setItem("storyIndex", storyIndex + 1);
-
+    if (storyIndex == 1) {
         const infoContent = document.createElement("div");
 
         const infoHeader = document.createElement("div");
@@ -146,7 +144,7 @@ function show_position(position, firstCall = true) {
         if (bottomInside && topInside && rightInside && leftInside) {
             current_circle.remove();
             clearInterval(collisionInterval);
-            renderDialogue(true, false);
+            renderDialogueUnlock();
         }
     }
 

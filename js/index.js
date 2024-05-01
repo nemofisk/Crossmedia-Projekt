@@ -61,10 +61,27 @@ function disableEventModal() {
     return eventDiv;
 }
 
-function editContentEventModal(content) {
+function editContentEventModal(content, dialogue) {
+
     const eventDiv = document.querySelector("#eventModal");
-    eventDiv.innerHTML = "";
-    eventDiv.append(content);
+
+
+    if (!dialogue) {
+        eventDiv.innerHTML = "";
+        eventDiv.append(content);
+    }
+
+    if (dialogue) {
+        const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+        const currentStory = data[storyIndex];
+
+        eventDiv.innerHTML = "<div class='dialogueBackground'></div>";
+        const backgroundDiv = eventDiv.querySelector(".dialogueBackground")
+        backgroundDiv.append(content);
+        backgroundDiv.style.backgroundImage = `url(${currentStory.dialogueBG})`
+
+    }
+
 
     return eventDiv;
 }

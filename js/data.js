@@ -10,9 +10,11 @@ const data = [
         dialogueBG: "../images/vacation.jpg"
     },
     {
+        lon: 12.953181,
+        lat: 56.459266,
         location: "parken",
-        lat: 55.60329,
-        lon: 12.992301,
+        // lat: 55.60329,
+        // lon: 12.992301,
         dialogueBefore: [
             {
                 speaker: "Player",
@@ -46,15 +48,16 @@ const data = [
             }
         ],
         dialogueBG: "../images/test_park.jpg",
-        dialoguePassword: "123",
-        minigame: "quiz",
+        passQuestion: "Vilket år står det på skylten?",
+        dialoguePassword: "1935",
+        minigame: wordle,
         phoneData: [
             {
                 name: "SHERLOCK",
                 img: "sherlock.jpg",
                 messages: [
                     {
-                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.", 
+                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
                         state: "Nytt"
                     }
                 ]
@@ -116,7 +119,7 @@ const data = [
                 img: "sherlock.jpg",
                 messages: [
                     {
-                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.", 
+                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
                         state: "Gammalt"
                     }
                 ]
@@ -189,7 +192,7 @@ const data = [
                 img: "sherlock.jpg",
                 messages: [
                     {
-                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.", 
+                        message: "Min kära vän. Tack för att du tar dig an utmaningen nu när jag och Watson är på semester.",
                         state: "Gammalt"
                     }
                 ]
@@ -203,11 +206,11 @@ const data = [
                         state: "Gammalt"
                     },
                     {
-                        message: "Läget? Jag hörde att du pratat med Sara. Jag råkar veta att Zlatans bästa vän heter Stefan.", 
+                        message: "Läget? Jag hörde att du pratat med Sara. Jag råkar veta att Zlatans bästa vän heter Stefan.",
                         state: "Nytt"
                     },
                     {
-                        message: "Dessutom så känner Sara Stefan sedan tidigare. Det kanske är värt att prata med grabben. Jag ska hitta hans nummer, jag återkommer!", 
+                        message: "Dessutom så känner Sara Stefan sedan tidigare. Det kanske är värt att prata med grabben. Jag ska hitta hans nummer, jag återkommer!",
                         state: "Nytt"
                     }
                 ]

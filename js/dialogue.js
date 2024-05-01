@@ -1,8 +1,62 @@
 // Dialogue array and function, guess villain
+function renderDialogueUnlock() {
+    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+    const currentStory = data[storyIndex];
+    const password = currentStory.dialoguePassword;
+
+    const backdropDiv = document.createElement("div");
+    backdropDiv.classList.add("dialoguePassContainer")
+
+    const passwordDiv = document.createElement("div");
+    passwordDiv.classList.add("dialoguePassContainer");
+
+    const passHeader = document.createElement("div");
+    passHeader.classList.add("passHeader");
+    passHeader.textContent = "Svara på frågan för att starta dialogen"
+
+    const passQuestion = document.createElement("div");
+    passQuestion.classList.add("passQuestion");
+    passQuestion.textContent = currentStory.passQuestion;
+
+    const passInput = document.createElement("input");
+    passInput.classList.add("passInput");
+
+    const passButton = document.createElement("button");
+    passButton.textContent = "Enter";
+
+    passButton.addEventListener("click", e => {
+        if (passInput.value == password) {
+            renderDialogue(true, false, passwordDiv);
+        } else {
+            alert("wrong password");
+        }
+    })
+
+    backdropDiv.append(passHeader);
+    backdropDiv.append(passQuestion);
+    backdropDiv.append(passInput);
+    backdropDiv.append(passButton);
+    passwordDiv.append(backdropDiv)
+
+    removeContentEventModal();
+    activateEventModal();
+    editContentEventModal(passwordDiv, true);
+}
+
 function renderDialogue(beforeGame, afterGame) {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     const currentStory = data[storyIndex];
     let dialogue;
+
+    const dialogueContainer = document.createElement("div");
+    dialogueContainer.classList.add("blur")
+
+    setTimeout(function () {
+        dialogueContainer.classList.add("dialogueContainer");
+    }, 1)
+
+    activateEventModal();
+    editContentEventModal(dialogueContainer, true)
 
     if (beforeGame) {
         dialogue = currentStory.dialogueBefore;
@@ -10,92 +64,88 @@ function renderDialogue(beforeGame, afterGame) {
 
     if (afterGame) {
         dialogue = currentStory.dialogueAfter;
+        const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+        window.localStorage.setItem("storyIndex", storyIndex + 1);
     }
 
-    removeContentEventModal();
-    activateEventModal();
+    dialogueContainer.addEventListener("transitionend", e => {
+        const dialogueWindow = document.createElement("div");
+        dialogueWindow.classList.add("dialogueWindow");
+        dialogueContainer.append(dialogueWindow);
 
-    const dialogueContainer = document.createElement("div");
-    dialogueContainer.classList.add("dialogueContainer");
-    dialogueContainer.classList.add("dialogueBackground");
+        let currentLine = 0;
 
-    dialogueContainer.style.backgroundImage = `url(${currentStory.dialogueBG})`;
+        function writeLine(event) {
+            dialogueWindow.removeEventListener("click", writeLine);
 
-    const dialogueWindow = document.createElement("div");
-    dialogueWindow.classList.add("dialogueWindow");
-    dialogueContainer.append(dialogueWindow);
+            dialogueWindow.innerHTML = `
+            <div>
+                <p class="p-speaker">${dialogue[currentLine].speaker}</p>
+                <p class="p-line"></p>
+            </div>
+            `
 
-    let currentLine = 0;
+            const pLine = dialogueWindow.querySelector(".p-line");
 
-    function writeLine(event) {
-        dialogueWindow.removeEventListener("click", writeLine);
+            const lineLetters = [...dialogue[currentLine].line];
 
-        dialogueWindow.innerHTML = `
-        <div>
-            <p class="p-speaker">${dialogue[currentLine].speaker}</p>
-            <p class="p-line"></p>
-        </div>
-        `
+            let currentLetter = 0;
+            let currentString = ""
 
-        const pLine = dialogueWindow.querySelector(".p-line");
+            function writeLetters() {
+                if (currentLetter >= lineLetters.length) {
+                    pLine.textContent = dialogue[currentLine].line;
+                    dialogueWindow.removeEventListener("click", endEarly);
+                    endOfLine();
+                } else {
+                    currentString = currentString + lineLetters[currentLetter];
+                    currentLetter++;
 
-        const lineLetters = [...dialogue[currentLine].line];
+                    pLine.textContent = currentString;
 
-        let currentLetter = 0;
-        let currentString = ""
+                    setTimeout(writeLetters, 50)
+                }
+            }
 
-        function writeLetters() {
-            if (currentLetter >= lineLetters.length) {
-                pLine.textContent = dialogue[currentLine].line;
-                dialogueWindow.removeEventListener("click", endEarly);
-                endOfLine();
+            dialogueWindow.addEventListener("click", endEarly);
+
+            writeLetters();
+
+            function endEarly() {
+                currentLetter = lineLetters.length;
+            }
+
+        }
+
+        function endOfLine(ev) {
+            dialogueWindow.removeEventListener("click", endOfLine);
+
+            if (currentLine + 1 != dialogue.length) {
+                currentLine++;
+                dialogueWindow.addEventListener("click", writeLine);
             } else {
-                currentString = currentString + lineLetters[currentLetter];
-                currentLetter++;
+                if (beforeGame) {
+                    dialogueWindow.removeEventListener("click", writeLine)
+                    dialogueWindow.addEventListener("click", currentStory.minigame)
+                }
 
-                pLine.textContent = currentString;
+                if (afterGame) {
 
-                setTimeout(writeLetters, 50)
+
+                    dialogueWindow.removeEventListener("click", writeLine)
+                    dialogueWindow.addEventListener("click", e => {
+                        disableEventModal();
+                        removeContentEventModal();
+                        renderMap();
+                        render_nav();
+                    });
+                }
             }
         }
 
-        dialogueWindow.addEventListener("click", endEarly);
+        writeLine();
+    })
 
-        writeLetters();
-
-        function endEarly() {
-            currentLetter = lineLetters.length;
-        }
-
-    }
-
-    function endOfLine(ev) {
-        dialogueWindow.removeEventListener("click", endOfLine);
-
-        if (currentLine + 1 != dialogue.length) {
-            currentLine++;
-            dialogueWindow.addEventListener("click", writeLine);
-        } else {
-            if (beforeGame) {
-                dialogueWindow.removeEventListener("click", writeLine)
-                dialogueWindow.addEventListener("click", currentStory.minigame)
-            }
-
-            if (afterGame) {
-                dialogueWindow.removeEventListener("click", writeLine)
-                dialogueWindow.addEventListener("click", e => {
-                    disableEventModal();
-                    removeContentEventModal();
-                    renderMap();
-                    render_nav();
-                });
-            }
-        }
-    }
-
-    editContentEventModal(dialogueContainer)
-
-    writeLine();
 }
 
 /*
