@@ -1,7 +1,6 @@
 function render_nav() {
     let phone_button = document.createElement("button");
     phone_button.classList.add("phone_button");
-    phone_button.innerHTML = "TELEFON";
     let nav = document.createElement("div");
     nav.classList.add("nav");
     nav.append(phone_button);
@@ -9,7 +8,6 @@ function render_nav() {
 
     let notebook_button = document.createElement("button");
     notebook_button.classList.add("notebook_button");
-    notebook_button.innerHTML = "ANTECKNINGAR";
     nav.append(notebook_button);
 
     phone_button.addEventListener("click", render_phone_page);
@@ -32,7 +30,7 @@ function check_for_notice() {
     })
     window.localStorage.setItem("newMessangers", JSON.stringify(new_messangers));
     if(new_messangers.length > 0) {
-        document.querySelector(".phone_button").classList.add("notice");
+        document.querySelector(".phone_button").classList.add("notice_button");
     }
 }
 
@@ -49,6 +47,7 @@ function render_phone_page () {
     let phone_page = document.createElement("div");
     phone_page.classList.add("phone_page");
     phone_page.innerHTML = `
+        <div class="button_container"></div>
         <h3 class="current_phone_page">CONTACTS</h3>
     `;
     body.append(phone_page);
@@ -56,11 +55,12 @@ function render_phone_page () {
     render_contacts();
 
     function render_contacts () {
+        document.querySelector(".button_container").innerHTML = `
+            <button class="close_button"></button>
+        `;
+
         document.querySelector(".phone_page").innerHTML += `
             <div class="contacts"></div>
-            <div class="button_container">
-                <button class="close_button">CLOSE</button>
-            </div>
         `;
 
         document.querySelector(".close_button").addEventListener("click", () => {
@@ -83,7 +83,7 @@ function render_phone_page () {
             `;
             
             if(notices_array.includes(name)) {
-                contact.classList.add("notice");
+                contact.classList.add("notice_contact");
             }
         
             contacts.append(contact);
@@ -100,7 +100,7 @@ function render_phone_page () {
             window.localStorage.setItem("newMessangers", JSON.stringify(notices_array));
 
             if(notices_array.length < 1) {
-                document.querySelector(".phone_button").classList.remove("notice");
+                document.querySelector(".phone_button").classList.remove("notice_button");
             }
 
             document.querySelector(".current_phone_page").textContent += ` > ${name}`;
@@ -112,16 +112,19 @@ function render_phone_page () {
 
             for (let person of phone_data) {
                 if(person.name == name) {
-                    person.messages.forEach( message => {
-                        messages.style.backgroundImage = `url(./images/${person.img})`;
-                        let chat_bubble = document.createElement("div");
-                        chat_bubble.classList.add("chat_bubble");
-                        chat_bubble.innerHTML = `
-                            <p class="message_text">${message.message}</p>
-                            <p class="message_state">${message.state}</p>
-                        `;
-                        messages.append(chat_bubble);
-                    })
+                    messages.style.backgroundImage = `url(./images/${person.img})`;
+                    setTimeout( () => {
+                        person.messages.forEach( message => {
+                        
+                            let chat_bubble = document.createElement("div");
+                            chat_bubble.classList.add("chat_bubble");
+                            chat_bubble.innerHTML = `
+                                <p class="message_text">${message.message}</p>
+                                <p class="message_state">${message.state}</p>
+                            `;
+                            messages.append(chat_bubble);
+                        })
+                    }, 1000)
                 }
             }
             
@@ -130,12 +133,12 @@ function render_phone_page () {
 
             let button_container = document.querySelector(".button_container");
             let back_button = document.createElement("button");
-            back_button.innerHTML = "BACK";
+            back_button.classList.add("back_button")
             button_container.append(back_button);
             back_button.addEventListener("click", () => {
                 document.querySelector(".current_phone_page").textContent = "CONTACTS"
                 messages.remove();
-                document.querySelector(".button_container").remove();
+                document.querySelector(".button_container").innerHTML = ``;
                 render_contacts();
             });
         }
@@ -154,7 +157,9 @@ function render_notebook_page () {
     notebook_container.classList.add("notebook_container");
     notebook_container.innerHTML = `
         <div class="notebook_img"></div>
-        <div class="notebook_page"></div>
+        <div class="notebook_page">
+            <div class="button_container"></div>
+        </div>
     `;
     body.append(notebook_container);
     
@@ -166,9 +171,10 @@ function render_notebook_page () {
                 <h3 class="suspects_button">MISSTÄNKTA</h3>
                 <h3 class="clues_button">LEDTRÅDAR</h3>
             </div>
-            <div class="button_container">
-                <button class="close_button">CLOSE</button>
-            </div>
+        `;
+
+        document.querySelector(".button_container").innerHTML += `
+            <button class="close_button"></button>
         `;
 
         document.querySelector(".close_button").addEventListener("click", () => {
@@ -191,18 +197,17 @@ function render_notebook_page () {
             let notebook_page = document.querySelector(".notebook_page");
             let list = document.createElement("div");
             list.classList.add("notebook_list");
-            notebook_page.prepend(list);
+            notebook_page.append(list);
             
             let button_container = document.querySelector(".button_container");
             let back_button = document.createElement("button");
             back_button.classList.add("back_button");
-            back_button.innerHTML = "BACK";
             button_container.append(back_button);
             back_button.addEventListener("click", activate_back_button);
 
             function activate_back_button() {
                 list.remove();
-                document.querySelector(".button_container").remove();
+                document.querySelector(".button_container").innerHTML = ``;
                 render_notes();
             }
 
@@ -220,6 +225,7 @@ function render_notebook_page () {
                 let no_clue;
                 if(array == "") {
                     let clue = document.createElement("div");
+                    clue.classList.add("clue");
                     list.append(clue);
                     clue.innerHTML = `
                         <h4>Här är det tomt!</h4>
