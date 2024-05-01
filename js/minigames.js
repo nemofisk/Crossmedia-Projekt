@@ -643,29 +643,73 @@ function render_puzzle(parent) {
 }
 
 //QUIZ
-//parent should have class parent_quiz
-// Example of quiz-question obeject
-// {
-//     question: "Vad är 1+1?",
-//     answers: [
-//         {
-//             answer: 1,
-//             true: false
-//         },
-//         {
-//             answer: 2,
-//             true: true
-//         },
-//         {
-//             answer: 3,
-//             true: false
-//         },
-//         {
-//             answer: 4,
-//             true: false
-//         }
-//     ]
-// }
+let quiz = [
+    {
+        question: "Vad är 1+1?",
+        answers: [
+            {
+                answer: 1,
+                true: false
+            },
+            {
+                answer: 2,
+                true: true
+            },
+            {
+                answer: 3,
+                true: false
+            },
+            {
+                answer: 4,
+                true: false
+            }
+        ]
+    },
+    {
+        question: "Vad är 2+2?",
+        answers: [
+            {
+                answer: 4,
+                true: true
+            },
+            {
+                answer: 3,
+                true: false
+            },
+            {
+                answer: 2,
+                true: false
+            },
+            {
+                answer: 1,
+                true: false
+            }
+        ]
+    },
+    {
+        question: "Vad är 3+3?",
+        answers: [
+            {
+                answer: 2,
+                true: false
+            },
+            {
+                answer: 4,
+                true: false
+            },
+            {
+                answer: 6,
+                true: true
+            },
+            {
+                answer: 8,
+                true: false
+            }
+        ]
+    },
+    "end"   
+]
+
 function render_quiz(parent, quiz) {
     const quizDiv = document.createElement("div");
 
@@ -677,7 +721,7 @@ function render_quiz(parent, quiz) {
     quizDiv.append(questionDiv);
 
     let button_container = document.createElement("div");
-    button_container.classList.add("button_container");
+    button_container.classList.add("button_container_quiz");
 
     let current_question = 0;
     let points = 0;
@@ -705,8 +749,8 @@ function render_quiz(parent, quiz) {
             button.addEventListener("click", e => {
                 let answers = document.querySelectorAll(".answer");
 
-                for (answer of answers) {
-                    answer.setAttribute("disabled", "true");
+                for (answerr of answers) {
+                    answerr.setAttribute("disabled", "true");
                 }
 
                 if (answer.true) {
