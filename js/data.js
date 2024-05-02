@@ -10,11 +10,11 @@ const data = [
         dialogueBG: "../images/vacation.jpg"
     },
     {
-        lon: 12.953181,
-        lat: 56.459266,
+        // lon: 12.953181,
+        // lat: 56.459266,
         location: "parken",
-        // lat: 55.60329,
-        // lon: 12.992301,
+        lat: 55.60329,
+        lon: 12.992301,
         dialogueBefore: [
             {
                 speaker: "Player",

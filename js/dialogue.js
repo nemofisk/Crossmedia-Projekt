@@ -79,10 +79,8 @@ function renderDialogue(beforeGame, afterGame) {
             dialogueWindow.removeEventListener("click", writeLine);
 
             dialogueWindow.innerHTML = `
-            <div>
                 <p class="p-speaker">${dialogue[currentLine].speaker}</p>
                 <p class="p-line"></p>
-            </div>
             `
 
             const pLine = dialogueWindow.querySelector(".p-line");
@@ -92,9 +90,32 @@ function renderDialogue(beforeGame, afterGame) {
             let currentLetter = 0;
             let currentString = ""
 
+            function fadeText(el) {
+
+                let topMaskSize = el.scrollTop * 3;
+                let bottomMaskSize = ((el.scrollHeight - el.offsetHeight) - el.scrollTop) * 3;
+
+                if (topMaskSize > 48) {
+                    topMaskSize = 48;
+                }
+
+                if (bottomMaskSize > 48) {
+                    bottomMaskSize = 48;
+                }
+
+                el.style.setProperty("--bottom-mask-size", `${bottomMaskSize}px`)
+                el.style.setProperty("--top-mask-size", `${topMaskSize}px`)
+            }
+
+            pLine.addEventListener('scroll', (e) => {
+                const el = e.currentTarget;
+                fadeText(el);
+            });
+
             function writeLetters() {
                 if (currentLetter >= lineLetters.length) {
                     pLine.textContent = dialogue[currentLine].line;
+                    fadeText(pLine)
                     dialogueWindow.removeEventListener("click", endEarly);
                     endOfLine();
                 } else {
@@ -102,6 +123,8 @@ function renderDialogue(beforeGame, afterGame) {
                     currentLetter++;
 
                     pLine.textContent = currentString;
+
+                    pLine.scrollTop = pLine.scrollHeight;
 
                     setTimeout(writeLetters, 50)
                 }

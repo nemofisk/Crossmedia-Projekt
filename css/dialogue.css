@@ -27,13 +27,44 @@ div.dialogueContainer {
     width: 90vw;
     max-height: 300px;
     max-width: 500px;
-
-    background-color: white;
-    border: 2px solid black;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 20% 80%;
+    background-color: #D1C8BD;
+    border: 4px solid #39322C;
+    display: grid;
     margin-bottom: 5vh;
+    border-radius: 10px;
 }
+
+.p-speaker {
+    grid-row: 1;
+    align-self: center;
+    margin-left: 10px;
+    font-size: 15px;
+    border-bottom: 1px solid black;
+    width: fit-content;
+}
+
+
+.p-line {
+    grid-row: 2;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    --top-mask-size: 0px;
+    --bottom-mask-size: 0px;
+}
+
+/* .p-line.is-top-overflowing {
+    --top-mask-size: 48px !important;
+}
+
+.p-line.is-bottom-overflowing {
+    --bottom-mask-size: 48px !important;
+} */
 
 .dialoguePassContainer {
     height: 100vh;
