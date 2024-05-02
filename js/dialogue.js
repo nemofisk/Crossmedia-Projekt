@@ -159,8 +159,8 @@ function renderDialogue(beforeGame, afterGame) {
                     dialogueWindow.addEventListener("click", e => {
                         disableEventModal();
                         removeContentEventModal();
-                        renderMap();
                         render_nav();
+                        renderMap();
                     });
                 }
             }

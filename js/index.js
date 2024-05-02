@@ -112,3 +112,40 @@ function renderInfoModal(content) {
 
     return infoModal;
 }
+
+function renderGameInfo() {
+    const infoContent = document.createElement("div");
+
+    const infoText = document.createElement("div");
+    infoText.innerHTML = `
+        <span class="startInfoHead">Välkommen till Malmö Mysteries: Sherlock Holmes!</span>
+        <br>
+        <br>
+        Så här spelar du spelet:
+        <br>
+        <br>
+        Se till att spelet har åtkomst till din plats genom att acceptera notisen som frågar om din position.
+        <br>
+        <br>
+        <span class="startInfoPlaces">Det finns två ställen på kartan som du måste hålla reda på:</span>
+        <br>
+        <br>
+        <span class="placesPlayer">Dig själv som representeras av den röda cirkeln</span> 
+        <br>
+        <br>
+        <span class="placesDestination">Ditt nuvarande mål som representeras av en grön cirkel.</span>
+        <br>
+        <br>
+        Håll utkik på telefonen efter meddelanden från olika karaktärer.
+        <br>
+        <br>
+        I anteckningsblocket finner du de platserna du har besökt och de ledtrådar du hittat på platsen. Du kan även se de misstänkta personerna. Denna information kommer att uppdateras under spelets gång.
+        <br>
+        <br>
+        Lycka till!
+        `
+
+    infoContent.appendChild(infoText);
+
+    renderInfoModal(infoContent);
+}

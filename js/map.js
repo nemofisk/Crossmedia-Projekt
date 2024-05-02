@@ -5,26 +5,19 @@ function renderMap() {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
 
     if (storyIndex == 1) {
-        const infoContent = document.createElement("div");
-
-        const infoHeader = document.createElement("div");
-        infoHeader.textContent = "Hur du spelar:";
-
-        const infoText = document.createElement("div");
-        infoText.textContent = `
-            Här skriver vi infoguide
-        `
-
-        infoContent.appendChild(infoHeader);
-        infoContent.appendChild(infoText);
-
-        renderInfoModal(infoContent);
-
+        renderGameInfo();
     }
 
+    const helpButton = document.createElement("div");
+    helpButton.classList.add("helpButton");
+
+    helpButton.addEventListener("click", renderGameInfo);
+
+    document.body.append(helpButton);
 
     if (!map) {
         map = L.map("map", { zoomControl: false });
+        document.querySelector("#map > .leaflet-control-container").remove()
     }
 
     if (!playerPosition) {
