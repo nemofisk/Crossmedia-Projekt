@@ -350,7 +350,7 @@ function render_memory_game() {
         let box = document.createElement("button");
         box.className = "memory_item";
         let number = shuffle_numbers[i];
-        img_url = `--img:url(../images/memory_images/${number}.png);`
+        img_url = `--img:url(../images/memory_images/${number}.jpg);`
         box.setAttribute("dataset", number);
         box.setAttribute("style", img_url);
 
