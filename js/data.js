@@ -155,13 +155,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -277,13 +277,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -404,13 +404,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -595,13 +595,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -704,13 +704,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -830,13 +830,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -1002,13 +1002,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -1136,13 +1136,13 @@ const data = [
                     img: "zlatan_persued.jpg"
                 },
                 {
-                    name: "En rosa skåpbil.",
+                    name: "En rosa skåpbil",
                     description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
                     location: "Slottsparken",
                     img: "zlatan_van.jpg"
                 },
                 {
-                    name: "En använd spruta.",
+                    name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
                     location: "Slottsparken"
                 },
@@ -1165,11 +1165,6 @@ const data = [
                     name: "Stefan är i Las Vegas",
                     description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
                     location: "Epicuré"
-                },
-                {
-                    name: "Bröllop",
-                    description: "Enligt prästen så ska Zlatan och Helena gifta sig om en månad...",
-                    location: "St Petri Kyrka"
                 },
                 {
                     name: "Bröllop",

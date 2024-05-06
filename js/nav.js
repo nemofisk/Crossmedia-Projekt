@@ -78,8 +78,7 @@ function render_phone_page () {
             let contact = document.createElement("div");
             contact.classList.add("contact");
             contact.innerHTML = `
-                <img>
-                <p>${name}</p>
+                <h4>${name}</h4>
             `;
             
             if(notices_array.includes(name)) {
@@ -231,8 +230,8 @@ function render_notebook_page () {
                     clue.classList.add("clue");
                     list.append(clue);
                     clue.innerHTML = `
-                        <h4>Här är det tomt!</h4>
-                        <p>Gå till Slottsparken för att hitta några ledtrådar.</p>
+                        <h4 class="clue_text">Här är det tomt!</h4>
+                        <p class="description">Gå till Slottsparken för att hitta några ledtrådar.</p>
                     `;
                     no_clue = true;
                 }
@@ -244,9 +243,14 @@ function render_notebook_page () {
                             clue.classList.add("clue");
                             list.append(clue);
                             clue.innerHTML = `
-                                <h4>${object.name}</h4>
-                                <p>${object.description} Du pratade med ${object.name} vid ${object.location}</p>
+                                <h4 class="clue_text">${object.name}<h4>
+                                <p class="description">${object.description}</p>
                             `;
+
+                            clue.addEventListener("click", () => {
+                                render_notebook_popup(object);
+                            })
+
                         })
                     }
                     else if(category == "LEDTRÅDAR") {
@@ -258,13 +262,11 @@ function render_notebook_page () {
                             }
                         })
 
-                        console.log(locations);
-
                         locations.forEach( location => {
                             let div = document.createElement("div");
                             list.append(div);
                             div.innerHTML = `
-                                <h4>${location}</h4>
+                                <h4 class="clue_text">${location}</h4>
                             `;
 
                             div.addEventListener( "click", () => {
@@ -275,11 +277,16 @@ function render_notebook_page () {
                                         clue_div.classList.add("clue");
                                         list.append(clue_div);
                                         clue_div.innerHTML = `
-                                            <h4>${clue.name}</h4>
-                                            <p>${clue.description}</p>
+                                            <h4 class="clue_text">${clue.name}</h4>
+                                            <p class="description">${clue.description}</p>
                                         `;
+                                        
+                                        clue_div.addEventListener("click", () => {
+                                            render_notebook_popup(clue);
+                                        })
                                     }
                                 })
+
                                 let back_button = document.querySelector(".back_button");
                                 back_button.removeEventListener("click", activate_back_button);
                                 document.querySelector(".back_button").addEventListener("click", () => {
@@ -290,6 +297,10 @@ function render_notebook_page () {
                         })
 
                     }
+                }
+
+                function render_notebook_popup(object) {
+                    console.log(object);
                 }
             }
         }
