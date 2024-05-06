@@ -65,14 +65,14 @@ function show_position(position, firstCall = true) {
     const current_circle = createCurrentCircle();
 
     var popup = L.popup();
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(map);
-    }
+    // function onMapClick(e) {
+    //     popup
+    //         .setLatLng(e.latlng)
+    //         .setContent("You clicked the map at " + e.latlng.toString())
+    //         .openOn(map);
+    // }
 
-    map.on('click', onMapClick);
+    // map.on('click', onMapClick);
 
     const collisionInterval = setInterval(check_collision, 1000)
 

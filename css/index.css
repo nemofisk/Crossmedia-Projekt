@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "GlacialR";
+    src: url(../fonts/glacial-indifference/GlacialIndifference-Regular.otf);
+}
+
+@font-face {
+    font-family: "GlacialB";
+    src: url(../fonts/glacial-indifference/GlacialIndifference-Bold.otf);
+}
+
 #map {
     height: 100vh;
     width: 100vw;

@@ -1,18 +1,22 @@
-// TODO:
-// Startup/Startpage - Loading screen > Click start to begin > välj namn > gå till karta
-// Info om hur man spelar?
-// Map function - Basen fungerar (nästan klar)
-// Dialogue function - Ossian
-// Dialogue array - Ossian
-// fixa kartan - Ossian
-// Clues & Suspects page - Isak
-// Phone page - Isak
-// Guess the villain
+/*
+TODO:
+CSS:
+- Startpage
+- Info start/minigame/map - OSSIAN
+
+JS:
+ - Guess the villain
+ - Choose suspect minigame
+ - Ledtråd bild - ISAK
+ - Location null
+ - Click on circle to force dialogue - OSSIAN
+ - Puzzle touch problem - ISAK
+ - Data - ISAK
+*/
 
 startUp();
 
 function startUp() {
-
     const startUpContainer = document.createElement("div");
     startUpContainer.classList.add("startUpContainer");
 
@@ -93,7 +97,7 @@ function removeContentEventModal() {
     return eventDiv;
 }
 
-function renderInfoModal(content) {
+function renderInfoModal(content, pages) {
     const infoModal = document.createElement("div");
     infoModal.id = "infoModal";
     infoModal.innerHTML = `

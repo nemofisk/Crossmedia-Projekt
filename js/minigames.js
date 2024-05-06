@@ -1,6 +1,6 @@
 // Minigames
 
-function doneMinigame() {
+function doneMinigame(dialogue, map) {
     removeContentEventModal();
     disableEventModal();
     check_for_notice(); // behöver köras när storyIndex uppdateras.
@@ -322,14 +322,18 @@ function wordle() {
 //MEMORY
 //parent should have class memory_parent
 
-function render_memory_game(parent) {
+function render_memory_game() {
     let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
 
-    parent.innerHTML = `
+    const memoryDiv = document.createElement("div");
+
+    memoryDiv.innerHTML = `
     <div class="memory_container">
         <div class="memory_game"></div>
     </div>
     `;
+
+    editContentEventModal(memoryDiv);
 
     let shuffle_numbers = shuffle_array(numbers);
 
@@ -580,7 +584,7 @@ function drop(event) {
                 correct_pieces.push(drop_id);
 
                 if (correct_pieces.length == 36) {
-                    setTimeout(() => { alert("YOU WIN") }, 500);
+                    setTimeout(() => { doneMinigame() }, 500);
                 }
             }
         }
@@ -590,16 +594,22 @@ function drop(event) {
     })
 }
 
-function render_puzzle(parent) {
+function render_puzzle() {
     let pieces_box = document.createElement("div");
     pieces_box.classList.add("pieces_box");
-    pieces_box.style.opacity = 0;
-    parent.append(pieces_box);
+
+    const puzzleDiv = document.createElement("div");
+
+    puzzleDiv.classList.add("parent_puzzle")
+
+    puzzleDiv.append(pieces_box);
+
+    editContentEventModal(puzzleDiv);
 
     //Creates drag_boxes (pieces)
     for (let i = 0; i < 36; i++) {
         let id = `drag_${i}`;
-        img_url = `--img:url(./images/puzzle_pieces/${i}.jpg);`;
+        img_url = `--img:url(../images/puzzle_pieces/${i}.jpg);`;
 
         let drag_box = document.createElement("div");
         drag_box.classList.add("drag_box");
@@ -618,7 +628,7 @@ function render_puzzle(parent) {
 
     let board = document.createElement("div");
     board.classList.add("board");
-    parent.append(board);
+    puzzleDiv.append(board);
 
     //Creates drop_boxes
     for (let i = 0; i < 36; i++) {
@@ -629,9 +639,11 @@ function render_puzzle(parent) {
         drop_box.setAttribute("ondrop", "drop(event)")
         drop_box.setAttribute("ondragover", "allow_drop(event)")
         board.append(drop_box);
+
+        if (i == 35) scramblePieces();
     }
 
-    onload = function () {
+    function scramblePieces() {
         let pieces_box = document.querySelector(".pieces_box");
         let frag = document.createDocumentFragment();
         while (pieces_box.children.length) {
@@ -707,7 +719,7 @@ let quiz = [
             }
         ]
     },
-    "end"   
+    "end"
 ]
 
 function render_quiz(parent, quiz) {
