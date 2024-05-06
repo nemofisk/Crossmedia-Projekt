@@ -778,7 +778,7 @@ const data = [
                 line: "Jag har inte sovit på hela natten, tänkte träna lite för att rensa hjärnan. Hur går det för dig, vem misstänker du i nuläget?"
             },
         ],
-        dialogueAfter: ["null"],
+        dialogueAfter: "null",
         minigame: "chose_suspect",
         phoneData: [
             {
