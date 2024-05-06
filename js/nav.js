@@ -113,6 +113,9 @@ function render_phone_page () {
             for (let person of phone_data) {
                 if(person.name == name) {
                     messages.style.backgroundImage = `url(./images/${person.img})`;
+                    if(person.messages.length == 1) {
+                        messages.style.flexDirection = "column-reverse";
+                    }
                     setTimeout( () => {
                         person.messages.forEach( message => {
                         
@@ -124,12 +127,12 @@ function render_phone_page () {
                             `;
                             messages.append(chat_bubble);
                         })
+                        document.querySelector(".messages").scrollTop = document.querySelector(".messages").scrollHeight; 
                     }, 1000)
                 }
             }
             
             phone_page.append(messages);
-            messages.scrollTop = messages.scrollHeight;
 
             let button_container = document.querySelector(".button_container");
             let back_button = document.createElement("button");
