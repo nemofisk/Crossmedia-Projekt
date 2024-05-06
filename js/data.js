@@ -432,6 +432,12 @@ const data = [
                     description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
                     location: "Johan P"
                 },
+                {
+                    name: "Hund",
+                    description: "En bild på Saras hund.",
+                    location: "Gamla Kyrkogården",
+                    img: "dog.jpg"
+                },
             ],
             suspects: 
             [
@@ -624,6 +630,12 @@ const data = [
                     description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
                     location: "Johan P"
                 },
+                {
+                    name: "Hund",
+                    description: "En bild på Saras hund.",
+                    location: "Gamla Kyrkogården",
+                    img: "dog.jpg"
+                },
             ],
             suspects: 
             [
@@ -733,6 +745,12 @@ const data = [
                     name: "Avliva",
                     description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
                     location: "Johan P"
+                },
+                {
+                    name: "Hund",
+                    description: "En bild på Saras hund.",
+                    location: "Gamla Kyrkogården",
+                    img: "dog.jpg"
                 },
                 {
                     name: "Stefan är i Las Vegas",
@@ -860,6 +878,12 @@ const data = [
                     name: "Avliva",
                     description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
                     location: "Johan P"
+                },
+                {
+                    name: "Hund",
+                    description: "En bild på Saras hund.",
+                    location: "Gamla Kyrkogården",
+                    img: "dog.jpg"
                 },
                 {
                     name: "Stefan är i Las Vegas",
@@ -1035,6 +1059,12 @@ const data = [
                     location: "Johan P"
                 },
                 {
+                    name: "Hund",
+                    description: "En bild på Saras hund.",
+                    location: "Gamla Kyrkogården",
+                    img: "dog.jpg"
+                },
+                {
                     name: "Stefan är i Las Vegas",
                     description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
                     location: "Epicuré"
@@ -1168,6 +1198,12 @@ const data = [
                     name: "Avliva",
                     description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
                     location: "Johan P"
+                },
+                {
+                    name: "Hund",
+                    description: "En bild på Saras hund.",
+                    location: "Gamla Kyrkogården",
+                    img: "dog.jpg"
                 },
                 {
                     name: "Stefan är i Las Vegas",
