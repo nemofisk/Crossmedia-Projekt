@@ -163,7 +163,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",
@@ -285,7 +286,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",
@@ -412,7 +414,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",
@@ -603,7 +606,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",
@@ -712,7 +716,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",
@@ -838,7 +843,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",
@@ -1010,7 +1016,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",
@@ -1144,7 +1151,8 @@ const data = [
                 {
                     name: "En använd spruta",
                     description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken"
+                    location: "Slottsparken",
+                    img: "suringe.png"
                 },
                 {
                     name: "Göran misstänker Sara",

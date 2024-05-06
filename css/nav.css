@@ -246,8 +246,50 @@ body {
 .clue_text {
     border-bottom: solid 3px black;
     font-size: 7vw;
+    font-weight: bold;
 }
 
 .description {
     font-size: 5vw;
+    font-weight: bold;
+}
+
+.notebook_popup_button {
+    font-size: 5vw;
+    font-style: normal;
+    text-decoration: underline;
+    text-align: end;
+}
+
+.notebook_popup {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.178);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notebook_popup_img {
+    height: 50vh;
+    width: 95vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.notebook_popup_close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    height: 5vw;
+    width: 5vw;
+    border: none;
+    background: none;
+    background-image: url(../images/close.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

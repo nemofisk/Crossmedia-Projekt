@@ -247,7 +247,11 @@ function render_notebook_page () {
                                 <p class="description">${object.description}</p>
                             `;
 
-                            clue.addEventListener("click", () => {
+                            let p = document.createElement("p");
+                            p.textContent = "Se bild..."
+                            p.classList.add("notebook_popup_button");
+                            clue.append(p);
+                            p.addEventListener("click", () => {
                                 render_notebook_popup(object);
                             })
 
@@ -280,10 +284,15 @@ function render_notebook_page () {
                                             <h4 class="clue_text">${clue.name}</h4>
                                             <p class="description">${clue.description}</p>
                                         `;
-                                        
-                                        clue_div.addEventListener("click", () => {
-                                            render_notebook_popup(clue);
-                                        })
+                                        if(clue.img) {
+                                            let p = document.createElement("p");
+                                            p.textContent = "Se bild..."
+                                            p.classList.add("notebook_popup_button");
+                                            clue_div.append(p);
+                                            p.addEventListener("click", () => {
+                                                render_notebook_popup(clue);
+                                            })
+                                        }
                                     }
                                 })
 
@@ -295,12 +304,27 @@ function render_notebook_page () {
                                 })
                             })
                         })
-
                     }
                 }
 
                 function render_notebook_popup(object) {
-                    console.log(object);
+                    let popup = document.createElement("div");
+                    popup.classList.add("notebook_popup");
+                    body.append(popup);
+
+                    let img = document.createElement("div");
+                    img.classList.add("notebook_popup_img");
+                    popup.append(img);
+                    img.style.backgroundImage = `url(../images/${object.img})`;
+
+                    let close_button = document.createElement("button");
+                    close_button.classList.add("notebook_popup_close");
+
+                    popup.append(close_button);
+
+                    close_button.addEventListener("click", () => {
+                        popup.remove();
+                    })
                 }
             }
         }
