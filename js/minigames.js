@@ -350,7 +350,7 @@ function render_memory_game() {
         let box = document.createElement("button");
         box.className = "memory_item";
         let number = shuffle_numbers[i];
-        img_url = `--img:url(../images/memory_images/${number}.png);`
+        img_url = `--img:url(../images/memory_images/${number}.jpg);`
         box.setAttribute("dataset", number);
         box.setAttribute("style", img_url);
 
@@ -555,46 +555,79 @@ function maze() {
 
 //PUZZLE
 //parent should have class parent_puzzle
-function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
-}
+function render_puzzle() {
+    let selected_piece;
 
-function allow_drop(event) {
-    event.preventDefault();
-}
+    function select(event) {
+        if(selected_piece) {
+            selected_piece.classList.remove("selected");
+        }
 
-function drop(event) {
-    event.preventDefault();
-    let data = event.dataTransfer.getData("text");
-    event.target.append(document.getElementById(data));
+        let puzzle_piece = event.target;
+        selected_piece = puzzle_piece;
 
-    let drop_boxes = document.querySelectorAll(".drop_box");
-    let correct_pieces = [];
+        puzzle_piece.classList.add("selected");
 
-    drop_boxes.forEach(box => {
-        if (box.childNodes[0]) {
-            box.removeAttribute("ondrop");
-            let drag_id = box.childNodes[0].id.substring(5);
-            let drop_id = box.id.substring(5);
+        let drop_boxes = document.querySelectorAll(".drop_box");
+        drop_boxes.forEach( box => {
+            setTimeout( () => {
+                box.addEventListener("click", drop);
+            }, 1)
+        })
 
-            if (drag_id == drop_id) {
-                box.removeAttribute("ondrop");
-                box.childNodes[0].removeAttribute("draggable");
-                box.classList.add("correct");
-                correct_pieces.push(drop_id);
+        let drag_boxes = document.querySelectorAll(".drag_box");
+        drag_boxes.forEach( box => {
+            if(!box.childNodes[0]) {
+                box.addEventListener("click", drop);
+            }
+        })
+    }
 
-                if (correct_pieces.length == 36) {
-                    setTimeout(() => { doneMinigame() }, 500);
+    function drop(event) {
+        let drop_boxes = document.querySelectorAll(".drop_box");
+        let drag_boxes = document.querySelectorAll(".drag_box");
+        let selected_box = event.target;
+        selected_box.removeEventListener("click", drop);
+        selected_piece.classList.remove("selected");
+
+        console.log(selected_box.parentElement, selected_piece.parentElement);
+        
+        if(selected_box.parentElement == selected_piece.parentElement) {
+            setTimeout( () => {
+                drag_boxes.forEach( box => {
+                    box.removeEventListener("click", drop);
+                });
+                drop_boxes.forEach( box => {
+                    box.removeEventListener("click", drop);
+                });
+            }, 1)
+            return;
+        }
+
+        selected_box.append(selected_piece);
+
+        let correct_pieces = [];
+
+        drop_boxes.forEach(box => {
+            box.removeEventListener("click", drop);
+            box.classList.remove("correct");
+
+            if (box.childNodes[0]) {
+                let drag_id = box.childNodes[0].id.substring(5);
+                let drop_id = box.id.substring(5);
+
+                if (drag_id == drop_id) {
+                    box.classList.add("correct");
+                    correct_pieces.push(drop_id);
+
+                    if (correct_pieces.length == 36) {
+                        setTimeout(() => { doneMinigame() }, 5000);
+                    }
                 }
             }
-        }
-        else {
-            box.setAttribute("ondrop", "drop(event)")
-        }
-    })
-}
+        })
+    }
 
-function render_puzzle() {
     let pieces_box = document.createElement("div");
     pieces_box.classList.add("pieces_box");
 
@@ -613,17 +646,15 @@ function render_puzzle() {
 
         let drag_box = document.createElement("div");
         drag_box.classList.add("drag_box");
-        drag_box.setAttribute("ondrop", "drop(event)")
-        drag_box.setAttribute("ondragover", "allow_drop(event)")
         pieces_box.append(drag_box);
 
         let img = document.createElement("div");
         img.classList.add("puzzle_image");
-        img.setAttribute("draggable", "true");
         img.setAttribute("id", id);
         img.setAttribute("style", img_url);
-        img.setAttribute("ondragstart", "drag(event)")
         drag_box.append(img);
+
+        img.addEventListener("click", select);
     }
 
     let board = document.createElement("div");
@@ -636,8 +667,6 @@ function render_puzzle() {
         let drop_box = document.createElement("div");
         drop_box.classList.add("drop_box");
         drop_box.setAttribute("id", id)
-        drop_box.setAttribute("ondrop", "drop(event)")
-        drop_box.setAttribute("ondragover", "allow_drop(event)")
         board.append(drop_box);
 
         if (i == 35) scramblePieces();
