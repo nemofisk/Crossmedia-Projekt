@@ -59,6 +59,10 @@ function renderDialogue(beforeGame, afterGame) {
     editContentEventModal(dialogueContainer, true)
 
     if (beforeGame) {
+        if (!currentStory.dialogueBefore) {
+            renderDialogue(false, true);
+            return;
+        }
         dialogue = currentStory.dialogueBefore;
     }
 
@@ -153,8 +157,6 @@ function renderDialogue(beforeGame, afterGame) {
                 }
 
                 if (afterGame) {
-
-
                     dialogueWindow.removeEventListener("click", writeLine)
                     dialogueWindow.addEventListener("click", e => {
                         disableEventModal();

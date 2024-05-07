@@ -20,6 +20,9 @@ div.dialogueContainer {
     background-repeat: no-repeat;
     overflow: hidden;
     background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dialogueWindow {
@@ -37,6 +40,7 @@ div.dialogueContainer {
 }
 
 .p-speaker {
+    font-family: "GlacialR";
     grid-row: 1;
     align-self: center;
     margin-left: 10px;
@@ -47,6 +51,7 @@ div.dialogueContainer {
 
 
 .p-line {
+    font-family: "GlacialR";
     grid-row: 2;
     padding-left: 10px;
     padding-right: 10px;

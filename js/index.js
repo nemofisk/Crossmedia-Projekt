@@ -104,7 +104,7 @@ function renderInfoModal(contentArray) {
     infoModal.id = "infoModal";
     infoModal.innerHTML = `
         <div class="modalWrapper">
-            <span class="closeInfo">X</span>
+            <span class="closeInfo"></span>
             <div class="infoContent"></div>
         </div>
     `
@@ -113,34 +113,56 @@ function renderInfoModal(contentArray) {
         infoModal.remove();
     })
 
-    const infoContent = document.querySelector(".modalWrapper > .infoContent");
+    const infoContent = infoModal.querySelector(".modalWrapper > .infoContent");
 
-    infoContent.append(contentArray[0]);
+    infoContent.innerHTML = contentArray[0];
 
-    const pagesButtons = document.createElement("div");
-    pagesButtons.innerHTML = `
-        <span class="prevP><</span>
-        <span class="nextP">></span>
-    `
+    if (contentArray.length != 1) {
+        const pagesButtons = document.createElement("div");
+        pagesButtons.classList.add("pagesButtons")
 
-    infoModal.querySelector(".modalWrapper").append(pagesButtons);
+        const prevP = document.createElement("span");
+        prevP.classList.add("prevP")
+        pagesButtons.append(prevP)
+        prevP.style.backgroundImage = "url(images/left-arrow-disabled.png)"
 
-    pagesButtons.querySelector(".prevP").addEventListener("click", ev => {
-        if (currentPage != 0) {
-            currentPageIndex--;
-            const pageContent = contentArray[currentPageIndex];
+        const nextP = document.createElement("span");
+        nextP.classList.add("nextP")
+        pagesButtons.append(nextP)
 
-            infoContent.innerHTML = pageContent;
-        }
-    })
-    pagesButtons.querySelector(".nextP").addEventListener("click", ev => {
-        if (currentPage != contentArray.length - 1) {
-            currentPageIndex++;
-            const pageContent = contentArray[currentPageIndex];
+        infoModal.querySelector(".modalWrapper").append(pagesButtons);
 
-            infoContent.innerHTML = pageContent;
-        }
-    })
+        prevP.addEventListener("click", ev => {
+            if (currentPageIndex != 0) {
+                if (currentPageIndex == 1) {
+                    prevP.style.backgroundImage = "url(images/left-arrow-disabled.png)"
+                }
+                nextP.style.backgroundImage = "url(images/right-arrow.png)"
+
+
+                currentPageIndex--;
+                const pageContent = contentArray[currentPageIndex];
+
+                infoContent.innerHTML = pageContent;
+            }
+        })
+        nextP.addEventListener("click", ev => {
+            if (currentPageIndex != contentArray.length - 1) {
+                if (currentPageIndex == contentArray.length - 2) {
+                    nextP.style.backgroundImage = "url(images/right-arrow-disabled.png)"
+                }
+
+                prevP.style.backgroundImage = "url(images/left-arrow.png)"
+
+
+                currentPageIndex++;
+                const pageContent = contentArray[currentPageIndex];
+
+                infoContent.innerHTML = pageContent;
+
+            }
+        })
+    }
 
     document.body.append(infoModal);
 
@@ -148,38 +170,53 @@ function renderInfoModal(contentArray) {
 }
 
 function renderGameInfo() {
-    const infoContent = document.createElement("div");
+    const infoContent = [
+        `<div class="startInfoHead">Välkommen till Malmö Mysteries: Sherlock Holmes!</div>
 
-    const infoText = document.createElement("div");
-    infoText.innerHTML = `
-        <span class="startInfoHead">Välkommen till Malmö Mysteries: Sherlock Holmes!</span>
-        <br>
-        <br>
-        Så här spelar du spelet:
-        <br>
-        <br>
-        Se till att spelet har åtkomst till din plats genom att acceptera notisen som frågar om din position.
-        <br>
-        <br>
-        <span class="startInfoPlaces">Det finns två ställen på kartan som du måste hålla reda på:</span>
-        <br>
-        <br>
-        <span class="placesPlayer">Dig själv som representeras av den röda cirkeln</span> 
-        <br>
-        <br>
-        <span class="placesDestination">Ditt nuvarande mål som representeras av en grön cirkel.</span>
-        <br>
-        <br>
-        Håll utkik på telefonen efter meddelanden från olika karaktärer.
-        <br>
-        <br>
-        I anteckningsblocket finner du de platserna du har besökt och de ledtrådar du hittat på platsen. Du kan även se de misstänkta personerna. Denna information kommer att uppdateras under spelets gång.
-        <br>
-        <br>
-        Lycka till!
+        <div>I detta spelet ska du hjälpa Sherlock Holmes att hitta den försvunne Zlatan Ibrahimovic.</div>
+        `,
         `
+        <div class="infoContainer">
+            <div class="noticeImage"></div>
 
-    infoContent.appendChild(infoText);
+            <div>Se till att spelet har åtkomst till din plats genom att acceptera notiserna som frågar om din position.</div>
+        </div>
+        `,
+        `
+        <div>Det finns två ställen på kartan som du måste hålla reda på:</div>
+
+        <div class="infoContainer">
+            <div class="redCircleImage"></div>
+
+            <div>Dig själv som representeras av en röd cirkel.</div>
+        </div>
+        
+        <div class="infoContainer">
+            <div class="greenCircleImage"></div>
+
+            <div>Ditt nuvarande mål som representeras av en grön cirkel.</div>
+        </div>
+        
+        `,
+        `
+        <div class="infoContainer">
+            <div class="phoneImage"></div>
+            
+            <div>Håll även utkik på telefonen efter meddelanden från olika karaktärer.</div>
+        </div>
+
+        <div class="infoContainer">
+            <div class="notebookImage"></div>
+            <div>I anteckningsblocket finner du de platserna du har besökt och de ledtrådar du hittat. Här kan du kan även se de misstänkta personerna.</div>
+        </div>
+        `,
+        `
+        <div class="infoContainer">
+            <div class="helpImage"></div>
+            <div>Klicka på hjälp-knappen ifall du vill komma åt denna informationen igen</div>
+        </div>
+        Lycka Till!`
+    ]
 
     renderInfoModal(infoContent);
 }

@@ -147,40 +147,40 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                }
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    }
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    }
+                ]
         },
     },
     {
@@ -270,50 +270,50 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                },
-                {
-                    name: "Bråk mellan Zlatan och Sara",
-                    description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
-                    location: "Johan P"
-                },
-                {
-                    name: "Avliva",
-                    description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
-                    location: "Johan P"
-                },
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    }
+                ]
         },
     },
     {
@@ -398,62 +398,62 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                },
-                {
-                    name: "Bråk mellan Zlatan och Sara",
-                    description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
-                    location: "Johan P"
-                },
-                {
-                    name: "Avliva",
-                    description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
-                    location: "Johan P"
-                },
-                {
-                    name: "Hund",
-                    description: "En bild på Saras hund.",
-                    location: "Gamla Kyrkogården",
-                    img: "dog.jpg"
-                },
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                },
-                {
-                    name: "Sara",
-                    description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
-                    location: "Gamla Kyrkogården",
-                    img: "sara.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Hund",
+                        description: "En bild på Saras hund.",
+                        location: "Gamla Kyrkogården",
+                        img: "dog.jpg"
+                    },
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    },
+                    {
+                        name: "Sara",
+                        description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
+                        location: "Gamla Kyrkogården",
+                        img: "sara.jpg"
+                    }
+                ]
         },
     },
     {
@@ -596,62 +596,62 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                },
-                {
-                    name: "Bråk mellan Zlatan och Sara",
-                    description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
-                    location: "Johan P"
-                },
-                {
-                    name: "Avliva",
-                    description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
-                    location: "Johan P"
-                },
-                {
-                    name: "Hund",
-                    description: "En bild på Saras hund.",
-                    location: "Gamla Kyrkogården",
-                    img: "dog.jpg"
-                },
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                },
-                {
-                    name: "Sara",
-                    description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
-                    location: "Gamla Kyrkogården",
-                    img: "sara.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Hund",
+                        description: "En bild på Saras hund.",
+                        location: "Gamla Kyrkogården",
+                        img: "dog.jpg"
+                    },
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    },
+                    {
+                        name: "Sara",
+                        description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
+                        location: "Gamla Kyrkogården",
+                        img: "sara.jpg"
+                    }
+                ]
         },
     },
     {
@@ -712,79 +712,79 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                },
-                {
-                    name: "Bråk mellan Zlatan och Sara",
-                    description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
-                    location: "Johan P"
-                },
-                {
-                    name: "Avliva",
-                    description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
-                    location: "Johan P"
-                },
-                {
-                    name: "Hund",
-                    description: "En bild på Saras hund.",
-                    location: "Gamla Kyrkogården",
-                    img: "dog.jpg"
-                },
-                {
-                    name: "Stefan är i Las Vegas",
-                    description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
-                    location: "Epicuré"
-                },
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                },
-                {
-                    name: "Sara",
-                    description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
-                    location: "Gamla Kyrkogården",
-                    img: "sara.jpg"
-                },
-                {
-                    name: "Eva",
-                    description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
-                    location: "Epicuré",
-                    img: "eva.jpg"
-                },
-                {
-                    name: "Stefan",
-                    description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
-                    location: "Epicuré",
-                    img: "stefan.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Hund",
+                        description: "En bild på Saras hund.",
+                        location: "Gamla Kyrkogården",
+                        img: "dog.jpg"
+                    },
+                    {
+                        name: "Stefan är i Las Vegas",
+                        description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
+                        location: "Epicuré"
+                    },
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    },
+                    {
+                        name: "Sara",
+                        description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
+                        location: "Gamla Kyrkogården",
+                        img: "sara.jpg"
+                    },
+                    {
+                        name: "Eva",
+                        description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
+                        location: "Epicuré",
+                        img: "eva.jpg"
+                    },
+                    {
+                        name: "Stefan",
+                        description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
+                        location: "Epicuré",
+                        img: "stefan.jpg"
+                    }
+                ]
         },
     },
     {
@@ -845,79 +845,79 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                },
-                {
-                    name: "Bråk mellan Zlatan och Sara",
-                    description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
-                    location: "Johan P"
-                },
-                {
-                    name: "Avliva",
-                    description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
-                    location: "Johan P"
-                },
-                {
-                    name: "Hund",
-                    description: "En bild på Saras hund.",
-                    location: "Gamla Kyrkogården",
-                    img: "dog.jpg"
-                },
-                {
-                    name: "Stefan är i Las Vegas",
-                    description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
-                    location: "Epicuré"
-                },
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                },
-                {
-                    name: "Sara",
-                    description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
-                    location: "Gamla Kyrkogården",
-                    img: "sara.jpg"
-                },
-                {
-                    name: "Eva",
-                    description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
-                    location: "Epicuré",
-                    img: "eva.jpg"
-                },
-                {
-                    name: "Stefan",
-                    description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
-                    location: "Epicuré",
-                    img: "stefan.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Hund",
+                        description: "En bild på Saras hund.",
+                        location: "Gamla Kyrkogården",
+                        img: "dog.jpg"
+                    },
+                    {
+                        name: "Stefan är i Las Vegas",
+                        description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
+                        location: "Epicuré"
+                    },
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    },
+                    {
+                        name: "Sara",
+                        description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
+                        location: "Gamla Kyrkogården",
+                        img: "sara.jpg"
+                    },
+                    {
+                        name: "Eva",
+                        description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
+                        location: "Epicuré",
+                        img: "eva.jpg"
+                    },
+                    {
+                        name: "Stefan",
+                        description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
+                        location: "Epicuré",
+                        img: "stefan.jpg"
+                    }
+                ]
         },
     },
     {
@@ -1024,79 +1024,79 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                },
-                {
-                    name: "Bråk mellan Zlatan och Sara",
-                    description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
-                    location: "Johan P"
-                },
-                {
-                    name: "Avliva",
-                    description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
-                    location: "Johan P"
-                },
-                {
-                    name: "Hund",
-                    description: "En bild på Saras hund.",
-                    location: "Gamla Kyrkogården",
-                    img: "dog.jpg"
-                },
-                {
-                    name: "Stefan är i Las Vegas",
-                    description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
-                    location: "Epicuré"
-                },
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                },
-                {
-                    name: "Sara",
-                    description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
-                    location: "Gamla Kyrkogården",
-                    img: "sara.jpg"
-                },
-                {
-                    name: "Eva",
-                    description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
-                    location: "Epicuré",
-                    img: "eva.jpg"
-                },
-                {
-                    name: "Stefan",
-                    description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
-                    location: "Epicuré",
-                    img: "stefan.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Hund",
+                        description: "En bild på Saras hund.",
+                        location: "Gamla Kyrkogården",
+                        img: "dog.jpg"
+                    },
+                    {
+                        name: "Stefan är i Las Vegas",
+                        description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
+                        location: "Epicuré"
+                    },
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    },
+                    {
+                        name: "Sara",
+                        description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
+                        location: "Gamla Kyrkogården",
+                        img: "sara.jpg"
+                    },
+                    {
+                        name: "Eva",
+                        description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
+                        location: "Epicuré",
+                        img: "eva.jpg"
+                    },
+                    {
+                        name: "Stefan",
+                        description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
+                        location: "Epicuré",
+                        img: "stefan.jpg"
+                    }
+                ]
         },
     },
     {
@@ -1165,84 +1165,84 @@ const data = [
         ],
         notebookData: {
             clues:
-            [
-                {
-                    name: "Maskerade män",
-                    description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_persued.jpg"
-                },
-                {
-                    name: "En rosa skåpbil",
-                    description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
-                    location: "Slottsparken",
-                    img: "zlatan_van.jpg"
-                },
-                {
-                    name: "En använd spruta",
-                    description: "En använd tom spruta hittades bredvid en buske.",
-                    location: "Slottsparken",
-                    img: "suringe.png"
-                },
-                {
-                    name: "Göran misstänker Sara",
-                    description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
-                    location: "Slottsparken"
-                },
-                {
-                    name: "Bråk mellan Zlatan och Sara",
-                    description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
-                    location: "Johan P"
-                },
-                {
-                    name: "Avliva",
-                    description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
-                    location: "Johan P"
-                },
-                {
-                    name: "Hund",
-                    description: "En bild på Saras hund.",
-                    location: "Gamla Kyrkogården",
-                    img: "dog.jpg"
-                },
-                {
-                    name: "Stefan är i Las Vegas",
-                    description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
-                    location: "Epicuré"
-                },
-                {
-                    name: "Bröllop",
-                    description: "Enligt prästen så ska Zlatan och Helena gifta sig om en månad...",
-                    location: "St Petri Kyrka"
-                }
-            ],
-            suspects: 
-            [
-                {
-                    name: "Göran",
-                    description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
-                    location: "Slottsparken",
-                    img: "göran.jpg"
-                },
-                {
-                    name: "Sara",
-                    description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
-                    location: "Gamla Kyrkogården",
-                    img: "sara.jpg"
-                },
-                {
-                    name: "Eva",
-                    description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
-                    location: "Epicuré",
-                    img: "eva.jpg"
-                },
-                {
-                    name: "Stefan",
-                    description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
-                    location: "Epicuré",
-                    img: "stefan.jpg"
-                }
-            ]
+                [
+                    {
+                        name: "Maskerade män",
+                        description: "Zlatan blev kidnappad av en grupp maskerade män. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_persued.jpg"
+                    },
+                    {
+                        name: "En rosa skåpbil",
+                        description: "Zlatan sågs senast bli ivägkörd i en rosa skåpbil. Göran tog bild.",
+                        location: "Slottsparken",
+                        img: "zlatan_van.jpg"
+                    },
+                    {
+                        name: "En använd spruta",
+                        description: "En använd tom spruta hittades bredvid en buske.",
+                        location: "Slottsparken",
+                        img: "suringe.png"
+                    },
+                    {
+                        name: "Göran misstänker Sara",
+                        description: "Göran har misstankar om att det är Sara (Zlatans ex) som har kidnappat Zlatan.",
+                        location: "Slottsparken"
+                    },
+                    {
+                        name: "Bråk mellan Zlatan och Sara",
+                        description: "Ett vittne har hört att det bråkats mellan Zlatan och Sara.",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Avliva",
+                        description: "Sara skrek någonting angående avliva åt Zlatan. Är hon kanske kidnapparen?",
+                        location: "Johan P"
+                    },
+                    {
+                        name: "Hund",
+                        description: "En bild på Saras hund.",
+                        location: "Gamla Kyrkogården",
+                        img: "dog.jpg"
+                    },
+                    {
+                        name: "Stefan är i Las Vegas",
+                        description: "Enligt Stefans fru, Eva, så är Stefan på ett hemligt jobbmöte i Las Vegas.",
+                        location: "Epicuré"
+                    },
+                    {
+                        name: "Bröllop",
+                        description: "Enligt prästen så ska Zlatan och Helena gifta sig om en månad...",
+                        location: "St Petri Kyrka"
+                    }
+                ],
+            suspects:
+                [
+                    {
+                        name: "Göran",
+                        description: "Svettig, kunnig om Zlatan, lite för kunnig... påstår han är fotograf. Är Göran gärningsmannen?",
+                        location: "Slottsparken",
+                        img: "göran.jpg"
+                    },
+                    {
+                        name: "Sara",
+                        description: "Zlatans ex. En kvinna med attityd. Verkar ha något emot Zlatan. Är hon skyldig?",
+                        location: "Gamla Kyrkogården",
+                        img: "sara.jpg"
+                    },
+                    {
+                        name: "Eva",
+                        description: "Helenas bästa vän. Drack vin med Sara kvällen då Zlatan försvann.",
+                        location: "Epicuré",
+                        img: "eva.jpg"
+                    },
+                    {
+                        name: "Stefan",
+                        description: "Evas man, Zlatans bästa kompis, hemlighetsfull och svår att få tag i. Eva nämnde också att han har diabetes. Hmmm...",
+                        location: "Epicuré",
+                        img: "stefan.jpg"
+                    }
+                ]
         },
     }
 ]

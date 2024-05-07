@@ -1,11 +1,11 @@
-// Minigames
-
-function doneMinigame(dialogue, map) {
+function doneMinigame() {
     removeContentEventModal();
     disableEventModal();
     check_for_notice(); // behöver köras när storyIndex uppdateras.
     renderDialogue(false, true)
 }
+
+// Minigames
 
 //WORDLE
 function wordle() {
@@ -295,11 +295,35 @@ function wordle() {
         }
     }
 
+    const infoArray = [
+        `
+        <div>Hur du spelar:</div>
+        <div>Lista ut ordet genom att testa olika ord.</div>
+        <div>Färgen på rutorna kommer att ändras beroende på hur nära ditt ord var.</div>
+        `,
+        `
+        <div class="infoContainer">
+            <div class="wordleRight"></div>
+            <div>Grön ruta visar att bokstaven finns och är på rätt plats</div> 
+        </div>
+        <div class="infoContainer">
+            <div class="wordleWrong"></div>
+            <div>Gul ruta visar att bokstaven finns men är på fel plats</div> 
+        </div>
+        <div class="infoContainer">
+            <div class="wordleNothing"></div>
+            <div>Grå ruta visar att bokstaven inte finns med</div> 
+        </div>
+        `
+    ]
+
+    renderInfoModal(infoArray)
+
     const wordAnswer = "AVLIVA"
 
     const gameDiv = document.createElement("div");
     gameDiv.setAttribute("id", "wordle-game");
-    editContentEventModal(gameDiv)
+    editContentEventModal(gameDiv, true)
 
     const rowContainer = document.createElement("div");
     rowContainer.classList.add("row-container")
@@ -320,12 +344,11 @@ function wordle() {
 }
 
 //MEMORY
-//parent should have class memory_parent
-
 function render_memory_game() {
     let numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9];
 
     const memoryDiv = document.createElement("div");
+    memoryDiv.classList.add("minigameBackdrop");
 
     memoryDiv.innerHTML = `
     <div class="memory_container">
@@ -333,7 +356,7 @@ function render_memory_game() {
     </div>
     `;
 
-    editContentEventModal(memoryDiv);
+    editContentEventModal(memoryDiv, true);
 
     let shuffle_numbers = shuffle_array(numbers);
 
@@ -400,6 +423,16 @@ function render_memory_game() {
             }
         }
     }
+
+    const infoArray = [
+        `<div>Klicka på en ruta för att vända den och se bilden bakom. Det finns två av varje bild.</div>
+        <div>Para ihop bilderna för att vinna.</div>
+        <div>Lycka till!</div>
+        `
+    ]
+
+    renderInfoModal(infoArray)
+
 }
 
 //MAZE
@@ -495,12 +528,13 @@ function maze() {
 
     const gameWrapper = document.createElement("div");
     gameWrapper.setAttribute("id", "mazeGameWrapper");
+    gameWrapper.classList.add("minigameBackdrop")
 
     const gameArea = document.createElement("div");
     gameArea.setAttribute("id", "mazeGame");
     gameWrapper.append(gameArea);
 
-    editContentEventModal(gameWrapper)
+    editContentEventModal(gameWrapper, true)
 
 
     let mapArray = "WWWWWWWWWWWWWWWWWWWWWWWWWWPPPPPWPPPPPPPPPPPWPPPPPWWPWWWWWPWPWWWWWWWPWWWWWPWWPWPPPWPWPPPWPWPPPWPPPWPWWPWPWPWPWWWPWPWPWWWPWPWPWWPWPWPPPWPWPWPWPPPWPWPWPWWPWPWWWWWPWPWPWWWPWPWPWPWWPWPWPPPPPWPWPPPPPPPWPPPWWPWPWPWWWPWPWWWWWWWWWWWPWWPPPPPWPPPWPPPPPPPWPWPPPWWPWWWWWWWWWPWWWWWPWPWPWWWWPWPPPPPPPWPWPPPPPWPWPPPWWPWPWWWWWPWPWPWWWWWPWWWPWWPWPPPWPPPWPWPWPPPPPPPWPWWWWWWPWPWWWWWPWPWPWWWWWPWWPPPPPWPPPPPPPWPWPPPPPPPWWPWWWWWPWWWWWWWPWWWWWWWWWWPPPWPPPWPPPWPWPPPPPPPWPWWWWPWPWWWPWPWPWPWWWWWPWPWWPPPWPPPWPWPWPPPWPPPWPPPWWPWWWWWWWPWWWWWWWPWPWWWPWWPWPPPPPPPWPPPPPWPWPWPPPWWPWPWWWWWWWPWPWPWPWPWWWWWWPWPWPPPPPWPWPWPPPWPPPPPWWPWPWWWPWPWWWPWWWWWWWWWPWWPWPPPPPWPPPWPPPWPPPPPWPWWPWWWWWWWWWPWWWPWPWWWWWPWWPPPWPPPPPWPPPPPWPWPPPPPWWPWWWPWPWWWWWWWWWPWPWWWWWWPPPPPWPPPPPPPPPPPPPPPPPWWWWWWWWWWWWWWWWWWWWWWWWWW"
@@ -551,15 +585,24 @@ function maze() {
     gameArea.append(player)
 
     createControls();
+
+    const infoArray = [
+        `
+        <div>Klicka på kontrollerna för att förflytta dig dit du vill gå.</div>
+        <div>När du nått slutet vinner du!</div>
+        <div>Lycka till!</div>
+        `
+    ]
+
+    renderInfoModal(infoArray);
 }
 
 //PUZZLE
-//parent should have class parent_puzzle
 function render_puzzle() {
     let selected_piece;
 
     function select(event) {
-        if(selected_piece) {
+        if (selected_piece) {
             selected_piece.classList.remove("selected");
         }
 
@@ -569,15 +612,15 @@ function render_puzzle() {
         puzzle_piece.classList.add("selected");
 
         let drop_boxes = document.querySelectorAll(".drop_box");
-        drop_boxes.forEach( box => {
-            setTimeout( () => {
+        drop_boxes.forEach(box => {
+            setTimeout(() => {
                 box.addEventListener("click", drop);
             }, 1)
         })
 
         let drag_boxes = document.querySelectorAll(".drag_box");
-        drag_boxes.forEach( box => {
-            if(!box.childNodes[0]) {
+        drag_boxes.forEach(box => {
+            if (!box.childNodes[0]) {
                 box.addEventListener("click", drop);
             }
         })
@@ -591,13 +634,13 @@ function render_puzzle() {
         selected_piece.classList.remove("selected");
 
         console.log(selected_box.parentElement, selected_piece.parentElement);
-        
-        if(selected_box.parentElement == selected_piece.parentElement) {
-            setTimeout( () => {
-                drag_boxes.forEach( box => {
+
+        if (selected_box.parentElement == selected_piece.parentElement) {
+            setTimeout(() => {
+                drag_boxes.forEach(box => {
                     box.removeEventListener("click", drop);
                 });
-                drop_boxes.forEach( box => {
+                drop_boxes.forEach(box => {
                     box.removeEventListener("click", drop);
                 });
             }, 1)
@@ -621,7 +664,7 @@ function render_puzzle() {
                     correct_pieces.push(drop_id);
 
                     if (correct_pieces.length == 36) {
-                        setTimeout(() => { doneMinigame() }, 5000);
+                        setTimeout(() => { doneMinigame() }, 1000);
                     }
                 }
             }
@@ -632,12 +675,13 @@ function render_puzzle() {
     pieces_box.classList.add("pieces_box");
 
     const puzzleDiv = document.createElement("div");
+    puzzleDiv.classList.add("minigameBackdrop")
 
     puzzleDiv.classList.add("parent_puzzle")
 
     puzzleDiv.append(pieces_box);
 
-    editContentEventModal(puzzleDiv);
+    editContentEventModal(puzzleDiv, true);
 
     //Creates drag_boxes (pieces)
     for (let i = 0; i < 36; i++) {
@@ -681,78 +725,92 @@ function render_puzzle() {
         pieces_box.append(frag);
         pieces_box.style.opacity = 1;
     }
+
+    const infoArray = [
+        `
+        <div>Klicka på en pusselbit för att sedan klicka på platsen du vill lägga pusselbiten</div>
+        <div>När alla bitar är på rätt plats vinner du!</div>
+        <div>Lycka till!</div>
+        `
+    ]
+
+    renderInfoModal(infoArray);
 }
 
 //QUIZ
-let quiz = [
-    {
-        question: "Vad är 1+1?",
-        answers: [
-            {
-                answer: 1,
-                true: false
-            },
-            {
-                answer: 2,
-                true: true
-            },
-            {
-                answer: 3,
-                true: false
-            },
-            {
-                answer: 4,
-                true: false
-            }
-        ]
-    },
-    {
-        question: "Vad är 2+2?",
-        answers: [
-            {
-                answer: 4,
-                true: true
-            },
-            {
-                answer: 3,
-                true: false
-            },
-            {
-                answer: 2,
-                true: false
-            },
-            {
-                answer: 1,
-                true: false
-            }
-        ]
-    },
-    {
-        question: "Vad är 3+3?",
-        answers: [
-            {
-                answer: 2,
-                true: false
-            },
-            {
-                answer: 4,
-                true: false
-            },
-            {
-                answer: 6,
-                true: true
-            },
-            {
-                answer: 8,
-                true: false
-            }
-        ]
-    },
-    "end"
-]
 
-function render_quiz(parent, quiz) {
+
+function render_quiz() {
+    let quiz = [
+        {
+            question: "Vad är 1+1?",
+            answers: [
+                {
+                    answer: 1,
+                    true: false
+                },
+                {
+                    answer: 2,
+                    true: true
+                },
+                {
+                    answer: 3,
+                    true: false
+                },
+                {
+                    answer: 4,
+                    true: false
+                }
+            ]
+        },
+        {
+            question: "Vad är 2+2?",
+            answers: [
+                {
+                    answer: 4,
+                    true: true
+                },
+                {
+                    answer: 3,
+                    true: false
+                },
+                {
+                    answer: 2,
+                    true: false
+                },
+                {
+                    answer: 1,
+                    true: false
+                }
+            ]
+        },
+        {
+            question: "Vad är 3+3?",
+            answers: [
+                {
+                    answer: 2,
+                    true: false
+                },
+                {
+                    answer: 4,
+                    true: false
+                },
+                {
+                    answer: 6,
+                    true: true
+                },
+                {
+                    answer: 8,
+                    true: false
+                }
+            ]
+        },
+        "end"
+    ]
+
     const quizDiv = document.createElement("div");
+    quizDiv.classList.add("minigameBackdrop");
+    quizDiv.classList.add("parent_quiz");
 
     const questionDiv = document.createElement("div");
     questionDiv.innerHTML = `
@@ -769,26 +827,25 @@ function render_quiz(parent, quiz) {
     quizDiv.append(button_container)
     update_quiz(quiz, current_question);
 
-    editContentEventModal(quizDiv);
+    editContentEventModal(quizDiv, true);
 
     function update_quiz(quiz, current_question) {
         if (quiz[current_question] == "end") {
-            alert(`YOU WIN. You got ${points} points.`);
-            parent.innerHTML = ``;
+            doneMinigame();
             return;
         }
 
         button_container.innerHTML = ``;
 
         quiz[current_question].answers.forEach((answer => {
-            document.querySelector(".quiz_question").textContent = quiz[current_question].question;
+            questionDiv.querySelector(".quiz_question").textContent = quiz[current_question].question;
             let button = document.createElement("button");
             button.classList.add("answer");
             button.innerHTML = answer.answer;
             button_container.append(button);
 
             button.addEventListener("click", e => {
-                let answers = document.querySelectorAll(".answer");
+                let answers = quizDiv.querySelectorAll(".answer");
 
                 for (answerr of answers) {
                     answerr.setAttribute("disabled", "true");
@@ -814,5 +871,15 @@ function render_quiz(parent, quiz) {
             })
         }))
     }
+
+    const infoArray = [
+        `
+        <div>Svara på frågorna som ställs, varje fråga har fyra svarsalternativ.</div>
+        <div>När du svarat på alla frågor har du klarat frågesporten.</div>
+        <div>Lycka till!</div>
+        `
+    ]
+
+    renderInfoModal(infoArray)
 }
 
