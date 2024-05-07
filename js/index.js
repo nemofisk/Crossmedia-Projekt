@@ -97,12 +97,15 @@ function removeContentEventModal() {
     return eventDiv;
 }
 
-function renderInfoModal(content, pages) {
+function renderInfoModal(contentArray) {
+    let currentPageIndex = 0;
+
     const infoModal = document.createElement("div");
     infoModal.id = "infoModal";
     infoModal.innerHTML = `
         <div class="modalWrapper">
             <span class="closeInfo">X</span>
+            <div class="infoContent"></div>
         </div>
     `
 
@@ -110,7 +113,34 @@ function renderInfoModal(content, pages) {
         infoModal.remove();
     })
 
-    infoModal.querySelector(".modalWrapper").append(content);
+    const infoContent = document.querySelector(".modalWrapper > .infoContent");
+
+    infoContent.append(contentArray[0]);
+
+    const pagesButtons = document.createElement("div");
+    pagesButtons.innerHTML = `
+        <span class="prevP><</span>
+        <span class="nextP">></span>
+    `
+
+    infoModal.querySelector(".modalWrapper").append(pagesButtons);
+
+    pagesButtons.querySelector(".prevP").addEventListener("click", ev => {
+        if (currentPage != 0) {
+            currentPageIndex--;
+            const pageContent = contentArray[currentPageIndex];
+
+            infoContent.innerHTML = pageContent;
+        }
+    })
+    pagesButtons.querySelector(".nextP").addEventListener("click", ev => {
+        if (currentPage != contentArray.length - 1) {
+            currentPageIndex++;
+            const pageContent = contentArray[currentPageIndex];
+
+            infoContent.innerHTML = pageContent;
+        }
+    })
 
     document.body.append(infoModal);
 
