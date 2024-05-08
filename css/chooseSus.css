@@ -1,0 +1,73 @@
+.parent_choose_sus {
+    height: 90vh;
+    width: 90vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.sus_div {
+    height: 100%;
+    width: 100%;
+    background: var(--img);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    background-repeat: no-repeat;
+    border: solid white 3px;
+}
+
+.sus_name {
+    background: white;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    font-size: 5vw;
+    padding: 20px;
+    border-radius: 5px;
+    border: solid black 3px;
+    font-family: "GlacialR";
+}
+
+.overlay_sus {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.178);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sus_message {
+    font-size: 5vw;
+    background: white;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    font-family: "GlacialR";
+}
+
+.sus_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.sus_button {
+    height: 5vh;
+    width: 20vw;
+    border-radius: 5px;
+    border: solid 3px white;
+    color: white;
+}
+
+.yes {
+    background: lime;
+}
+
+.no {
+    background: red;
+}

@@ -947,3 +947,156 @@ function render_quiz() {
     renderInfoModal(infoArray)
 }
 
+//CHOOSE SUSPECT
+function choose_sus () {
+    let chosen_suspect;
+    const main_page = document.createElement("div");
+    main_page.classList.add("minigameBackdrop");
+    main_page.classList.add("parent_choose_sus");
+
+    editContentEventModal(main_page, true);
+
+    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+
+    data[storyIndex].notebookData.suspects.forEach( suspect => {
+        let sus_div = document.createElement("div");
+        sus_div.classList.add("sus_div");
+        main_page.append(sus_div);
+        
+        let name = suspect.name;
+        img_url = `--img:url(../images/${name.toLowerCase()}.jpg);`
+        sus_div.setAttribute("style", img_url);
+
+        sus_div.innerHTML = `
+            <p class="sus_name">${name}</p>
+        `
+
+        sus_div.addEventListener("click", (e) => {
+
+            let overlay = document.createElement("div");
+            overlay.classList.add("overlay_sus");
+
+            let message = document.createElement("div");
+            message.classList.add("sus_message");
+
+            overlay.append(message);
+
+            main_page.append(overlay);
+            chosen_suspect = e.target.childNodes[1].textContent;
+            message.textContent = `Är du säker på att du vill välja ${chosen_suspect}`;
+            message.innerHTML += `
+                <div class="sus_button_container">
+                    <button class="sus_button yes">JA</button>
+                    <button class="sus_button no">NEJ</button>
+                </div>
+            `
+
+            document.querySelector(".yes").addEventListener("click", () => {
+                console.log(chosen_suspect);
+                let dialogueAfter;
+                if(data[storyIndex].location == "NW") {
+
+                    if(chosen_suspect == "Göran") {
+                        dialogueAfter = {
+                            speaker: "Helena", 
+                            line: "Göran? Det namnet känner jag inte igen, men om han har kidnappat min man hoppas jag att ni sätter dit honom!", 
+                            img: "helena.jpg"}
+                    }
+                    else if(chosen_suspect == "Sara") {
+                        dialogueAfter = {
+                            speaker: "Helena", 
+                            line: "Jaså Sara? Jag har aldrig gillat Sara, men inte trodde jag att hon var kapabel av kidnappning. Ifall hon tagit min älskling hoppas jag verkligen att ni sätter henne bakom lås och bom.", 
+                            img: "helena.jpg"}
+                    }
+                    else if(chosen_suspect == "Eva") {
+                        dialogueAfter = {
+                            speaker: "Helena", 
+                            line: "Eva?? Det låter inte likt henne, jag har själv inte hunnit berätta för henne vad som har hänt, men antar att ni hann före. Hade varit en tragedi om det hade varit min nära vän som huggit mig i ryggen.", 
+                            img: "helena.jpg"}
+                    }
+                    else if(chosen_suspect == "Stefan") {
+                        dialogueAfter = {
+                            speaker: "Helena", 
+                            line: "Stefan!? Tror ni verkligen att Zlatans bäste vän har huggit honom i ryggen? Det vore fruktansvärt om det var så, i så fall hoppas jag verkligen att han får vad han förtjänar.", 
+                            img: "helena.jpg"}
+                    }
+
+                    data[storyIndex].dialogueAfter = [
+                        dialogueAfter,
+                        {
+                            speaker: "Player",
+                            line: "Vet du någon som har velat Zlatan illa?",
+                            img: "player.jpg"
+                        },
+                        {
+                            speaker: "Helena",
+                            line: "Hmm… Vi har haft problem med en stalker som vi aldrig har lyckats identifiera, jag hoppas inte att det är han som har slagit till…  Jag har heller aldrig gillat Sara, jag misstänker att hon fortfarande är kär i Zlatan. Sen ber jag innerligt att det varken är Eva eller Stefan.",
+                            img: "helena.jpg"
+                        },
+                        {
+                            speaker: "Helena",
+                            line: "Jag ska erkänna att jag haft lite svårt för Stefan, det känns som att han alltid drar med Zlatan på massa idiotiska äventyr. Jag kommer aldrig glömma när Stefan bröt sig in i vårt hus för att väcka Zlatan med en fest på hans födelsedag… Jag blev nog mer rädd än Zlatan.",
+                            img: "helena.jpg"
+                        },
+                        {
+                            speaker: "Helena",
+                            line: "Även om Eva är min nära vän så måste jag erkänna att hon är en aning opålitlig, hennes fixering vid pengar kan ibland äventyra hennes moral. Hon är väldigt svartsjuk och jag har känt av hennes avund på vår ekonomi.",
+                            img: "helena.jpg"
+                        },
+                        {
+                            speaker: "Player",
+                            line: "Tack så mycket, detta kommer vara till hjälp. Dags att bege mig till St Petri Kyrka.",
+                            img: "player.jpg"
+                        },
+                    ]
+    
+                    doneMinigame();
+                }
+                else if(data[storyIndex].location == "Malmö Hovrätt") {
+                    
+                    if(chosen_suspect == "Stefan") {
+                        dialogueAfter = 
+                        {
+                            speaker: "Kommissarie Lestrade",
+                            line: "Du har rätt, Stefan är Zlatans kidnappare. De har åkt till vegas för att ha en oförglömlig svensexa inför bröllopet, något som hållits hemligt för alla icke- inblandade. Zlatan är i hyfsat säkert förvar, tack för din insats, du är en sann detektiv.",
+                            img: "lestrade.jpg"
+                        }
+                    }
+                    else if(chosen_suspect == "Göran") {
+                        dialogueAfter = 
+                        {
+                            speaker: "Kommissarie Lestrade",
+                            line: "Du har satt en oskyldig man bakom lås och bom. Göran är visserligen en kuslig stalker, men har ingenting med någon kidnappning att göra. Han kunde inte varit kidnapparen eftersom han tog bilder under förloppet.",
+                            img: "lestrade.jpg"
+                        }
+                    }
+                    else if(chosen_suspect == "Sara") {
+                        dialogueAfter = 
+                        {
+                            speaker: "Kommissarie Lestrade",
+                            line: "Du har satt en oskyldig kvinna bakom lås och bom! Sara har visserligen en ilska riktad mot Zlatan men en eventuell avlivning gällde deras gemensamma hund. Sara kan inte vara skyldig till kidnappningen eftersom har alibi i hennes och Evas vinkväll stunden då kidnappningen ägde rum.",
+                            img: "lestrade.jpg"
+                        }
+                    }
+                    else if(chosen_suspect == "Eva") {
+                        dialogueAfter = 
+                        {
+                            speaker: "Kommissarie Lestrade",
+                            line: "Du har satt en oskyldig kvinna bakom lås och bom! Eva hade visserligen inte tackat nej till en större lösensumma, men hon hade ett alibi från den kvällen då kidnappningen inträffade - hon var med på en vinprovning tillsammans med Sara.",
+                            img: "lestrade.jpg"
+                        }
+                    }
+
+                    data[storyIndex].dialogueAfter = [
+                        dialogueAfter
+                    ]
+
+                    doneMinigame();
+                }
+            })
+            document.querySelector(".no").addEventListener("click", () => {
+                overlay.remove();
+            })
+        })
+    })
+}
