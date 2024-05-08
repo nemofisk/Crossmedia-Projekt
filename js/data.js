@@ -13,7 +13,7 @@ const data = [
                 img: "sherlock.jpg"
             }
         ],
-        dialogueBG: "../images/vacation.jpg"
+        dialogueBG: "../images/dialogue/vacation.jpg"
     },
     {
         // lon: 12.953181,
@@ -21,6 +21,7 @@ const data = [
         location: "parken",
         lat: 55.60329,
         lon: 12.992301,
+        dialogueBG: "../images/dialogue/parken.jpg",
         dialogueBefore: [
             {
                 speaker: "Player",
@@ -56,11 +57,15 @@ const data = [
             },
             {
                 speaker: "Göran",
-                line: "Tjaa sedan Zlatan köpte in dig i Hammarby är väl halva Malmö upprörda, kidnapparen kan vara vem som helst. Men eftersom du frågar mig så ska jag berätta att Sara, Zlatans ex-flickvän, är synnerligen misstänkt i mina ögon. Jag ser henne svänga förbi Zlatans hus ofta, trots att de gjorde slut för nästan tio år sedan. Stackars tösen kom väl aldrig över honom och nu har hon väl tagit saken i egna händer. Svartsjuka kan göra märkliga saker med oss människor. Jag såg de faktiskt sitta och äta på Johan P vid lilla torg igår. Ryktet säger att diskussionen inte precis var vänlig.",
+                line: "Tjaa sedan Zlatan köpte in dig i Hammarby är väl halva Malmö upprörda, kidnapparen kan vara vem som helst. Men eftersom du frågar mig så ska jag berätta att Sara, Zlatans ex-flickvän, är synnerligen misstänkt i mina ögon. Jag ser henne svänga förbi Zlatans hus ofta, trots att de gjorde slut för nästan tio år sedan.",
+                img: "göran.jpg"
+            },
+            {
+                speaker: "Göran",
+                line: "Stackars tösen kom väl aldrig över honom och nu har hon väl tagit saken i egna händer. Svartsjuka kan göra märkliga saker med oss människor. Jag såg de faktiskt sitta och äta på Johan P vid lilla torg igår. Ryktet säger att diskussionen inte precis var vänlig.",
                 img: "göran.jpg"
             }
         ],
-        dialogueBG: "../images/test_park.jpg",
         passQuestion: "Vilket år står det på skylten?",
         dialoguePassword: "1935",
         minigame: wordle,
@@ -105,6 +110,7 @@ const data = [
         location: "Johan P",
         lat: 55.604183,
         lon: 12.998948,
+        dialogueBG: "../images/dialogue/johanp.jpg",
         dialogueBefore: [
             {
                 speaker: "Player",
@@ -204,6 +210,7 @@ const data = [
         location: "Gamla Kyrkogården",
         lat: 55.601726,
         lon: 12.997218,
+        dialogueBG: "../images/dialogue/kyrkogarden.jpg",
         dialogueBefore: [
             {
                 speaker: "Player",
@@ -342,7 +349,8 @@ const data = [
         },
     },
     {
-        location: null, //John ringer
+        location: null, //John ringer,
+        dialogueBG: "../images/dialogue/vacation.jpg",
         dialogueBefore: [
             {
                 speaker: "John Watson",
@@ -493,6 +501,7 @@ const data = [
         location: "epicure",
         lat: 55.603181,
         lon: 12.999978,
+        dialogueBG: "../images/dialogue/epicure.jpg",
         dialogueAfter: [
             {
                 speaker: "Player",
@@ -712,6 +721,7 @@ const data = [
     },
     {
         location: null,
+        dialogueBG: "../images/dialogue/epicure.jpg",
         dialogueAfter: [
             {
                 speaker: "Helena",
@@ -850,6 +860,7 @@ const data = [
         location: "NW",
         lat: 55.605162,
         lon: 13.007086,
+        dialogueBG: "../images/dialogue/nw.jpg",
         dialogueBefore: [
             {
                 speaker: "Player",
@@ -985,6 +996,7 @@ const data = [
         location: "St Petri Kyrka",
         lat: 55.606933,
         lon: 13.002585,
+        dialogueBG: "../images/dialogue/kyrkan.jpg",
         dialogueAfter: [
             {
                 speaker: "Pastor Emma",
@@ -1178,6 +1190,7 @@ const data = [
         location: "Malmö Hovrätt",
         lat: 55.606969,
         lon: 12.991199,
+        dialogueBG: "../images/dialogue/hovratt.jpg",
         dialogueBefore: [
             {
                 speaker: "Kommissarie Lestrade",

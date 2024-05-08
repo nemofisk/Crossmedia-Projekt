@@ -983,7 +983,7 @@ function choose_sus () {
 
             main_page.append(overlay);
             chosen_suspect = e.target.childNodes[1].textContent;
-            message.textContent = `Är du säker på att du vill välja ${chosen_suspect}`;
+            message.textContent = `Är du säker på att du vill välja ${chosen_suspect}?`;
             message.innerHTML += `
                 <div class="sus_button_container">
                     <button class="sus_button yes">JA</button>
