@@ -7,12 +7,11 @@ CSS:
  - Map circles
 
 JS:
- - Guess the villain
- - Choose suspect minigame
+ - Guess the villain/suspect - ISAK
  - Click on circle to force dialogue - OSSIAN
  - Passwords for dialogue unlock
  - Bilder till dialogue backgrounds
- - Dialogue heads
+ - Dialogue heads - OSSIAN
 */
 
 startUp();
