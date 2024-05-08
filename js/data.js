@@ -189,41 +189,41 @@ const data = [
         lon: 12.997218,
         dialogueBefore: [
             {
-                player: "Player",
+                speaker: "Player",
                 line: "Hej Sara. Jag är här för att ställa lite frågor om Zlatan som blev kidnappad igårkväll. Jag undrar om du vet något om saken?",
             },
             {
-                player: "Sara",
+                speaker: "Sara",
                 line: "Jaha. Jag bryr mig inte om vad som hänt med den hjärtlösa mannen.",
             },
             {
-                player: "Player",
+                speaker: "Player",
                 line: "Jag har uppgifter om att du och Zlatan bråkade igår, vad handlade det om?",
             },
             {
-                player: "Sara",
+                speaker: "Sara",
                 line: "Det har du ingenting med att göra.",
             },
             {
-                player: "Player",
+                speaker: "Player",
                 line: "Zlatans nära vän Göran misstänker att du kan ha något att göra med hans försvinnande. Att du brukar befinna dig utanför hans hus, vad säger du om det?",
             },
             {
-                player: "Sara",
+                speaker: "Sara",
                 line: "Göran? Zlatan har ingen nära vän som heter Göran. Hur som helst har jag ingenting att göra med hans försvinnande. Absolut att jag brukar befinna mig utanför hans hus, men det är för att jag vill se om han är hemma. Jag har i alla fall alibi för igårkväll, jag drack nämligen vin med min vän Eva.",
             },
             {
-                player: "Player",
+                speaker: "Player",
                 line: "Något av värde måste du väl veta?",
             },
             {
-                player: "Sara",
+                speaker: "Sara",
                 line: "Okej fine, jag vet en sak. Om du klarar mitt pussel lovar jag att berätta.",
             }
         ],
         dialogueAfter: [
             {
-                player: "Sara",
+                speaker: "Sara",
                 line: "Nöjd nu? Snälla lämna mig åt mitt arbete och gå härifrån.",
             },
         ],
@@ -317,7 +317,7 @@ const data = [
         },
     },
     {
-        location: "null", //John ringer
+        location: null, //John ringer
         dialogueBefore: [
             {
                 speaker: "John Watson",
@@ -655,7 +655,7 @@ const data = [
         },
     },
     {
-        location: "null",
+        location: null,
         dialogueAfter: [
             {
                 speaker: "Helena",

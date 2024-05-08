@@ -64,7 +64,7 @@ function show_position(position, firstCall = true) {
 
     if (currentLocation.location == null) {
         setTimeout(function () {
-            renderDialogue(false, true);
+            renderDialogue(true, false);
         }, 10000)
     }
 

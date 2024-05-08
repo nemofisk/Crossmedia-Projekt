@@ -322,6 +322,7 @@ function wordle() {
     const wordAnswer = "AVLIVA"
 
     const gameDiv = document.createElement("div");
+    gameDiv.classList.add("minigameBackdrop")
     gameDiv.setAttribute("id", "wordle-game");
     editContentEventModal(gameDiv, true)
 

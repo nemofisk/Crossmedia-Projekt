@@ -55,7 +55,7 @@ body {
 .notice_button::after {
     height: 35px;
     width: 35px;
-    content:"";
+    content: "";
     position: absolute;
     right: 0;
     top: 0;
@@ -68,7 +68,7 @@ body {
 .notice_contact::after {
     height: 25px;
     width: 25px;
-    content:"";
+    content: "";
     position: absolute;
     right: 0;
     background-image: url(../images/notice.png);
@@ -191,7 +191,6 @@ body {
 }
 
 .notebook_page {
-    font-style: italic;
     background: #f9d697;
     height: 85vh;
     width: 90vw;
@@ -200,7 +199,7 @@ body {
     position: relative;
 }
 
-.notebook_page > h3 {
+.notebook_page>h3 {
     border-bottom: solid 2px black;
 }
 
@@ -226,6 +225,7 @@ body {
     flex-direction: column;
     gap: 30px;
     width: 100%;
+    font-family: "Caveat";
 }
 
 .notebook_list {
@@ -238,7 +238,7 @@ body {
     gap: 30px;
 }
 
-.notebook_categories > h3 {
+.notebook_categories>h3 {
     border-bottom: solid 3px black;
     font-size: 7vw;
 }
@@ -247,11 +247,13 @@ body {
     border-bottom: solid 3px black;
     font-size: 7vw;
     font-weight: bold;
+    font-family: "Caveat";
 }
 
 .description {
-    font-size: 5vw;
-    font-weight: bold;
+    font-size: 5.5vw;
+    font-weight: normal;
+    font-family: "Caveat";
 }
 
 .notebook_popup_button {

@@ -1,17 +1,18 @@
 /*
 TODO:
 CSS:
-- Startpage
-- Info start/minigame/map - OSSIAN
+ - Startpage
+ - Dialogue unlock
+ - Wordle/Maze
+ - Map circles
 
 JS:
  - Guess the villain
  - Choose suspect minigame
- - Ledtråd bild - ISAK
- - Location null
  - Click on circle to force dialogue - OSSIAN
- - Puzzle touch problem - ISAK
- - Data - ISAK
+ - Passwords for dialogue unlock
+ - Bilder till dialogue backgrounds
+ - Dialogue heads
 */
 
 startUp();
@@ -180,6 +181,7 @@ function renderGameInfo() {
             <div class="noticeImage"></div>
 
             <div>Se till att spelet har åtkomst till din plats genom att acceptera notiserna som frågar om din position.</div>
+            <div>Får du inte upp en notis?<br>Testa att gå in i din mobils inställningar och tillåt platsåtkomst för din webbläsare.</div>
         </div>
         `,
         `
