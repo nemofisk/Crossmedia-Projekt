@@ -511,7 +511,7 @@ function maze() {
 
             if (arrow == "→") {
                 controlButton.addEventListener("click", goRight);
-                controlButton.classList.add("right")
+                controlButton.classList.add("rightright")
             }
 
             if (arrow == "←") {
@@ -743,66 +743,129 @@ function render_puzzle() {
 function render_quiz() {
     let quiz = [
         {
-            question: "Vad är 1+1?",
+            question: "Var är Zlatan född?",
             answers: [
                 {
-                    answer: 1,
-                    true: false
-                },
-                {
-                    answer: 2,
+                    answer: "Malmö",
                     true: true
                 },
                 {
-                    answer: 3,
+                    answer: "Stockholm",
                     true: false
                 },
                 {
-                    answer: 4,
+                    answer: "Göteborg",
+                    true: false
+                },
+                {
+                    answer: "Helsingborg",
                     true: false
                 }
             ]
         },
         {
-            question: "Vad är 2+2?",
+            question: "Vilket år debuterade Zlatan i svenska landslaget?",
             answers: [
                 {
-                    answer: 4,
+                    answer: 2006,
+                    true: false
+                },
+                {
+                    answer: 2001,
                     true: true
                 },
                 {
-                    answer: 3,
+                    answer: 1995,
                     true: false
                 },
                 {
-                    answer: 2,
-                    true: false
-                },
-                {
-                    answer: 1,
+                    answer: 1989,
                     true: false
                 }
             ]
         },
         {
-            question: "Vad är 3+3?",
+            question: "Vilken är Zlatans favoritmat?",
             answers: [
                 {
-                    answer: 2,
-                    true: false
-                },
-                {
-                    answer: 4,
-                    true: false
-                },
-                {
-                    answer: 6,
+                    answer: "Korv med bröd. Dansk ketchup",
                     true: true
                 },
                 {
-                    answer: 8,
+                    answer: "Tacos",
+                    true: false
+                },
+                {
+                    answer: "Pizza",
+                    true: false
+                },
+                {
+                    answer: "Kebab",
                     true: false
                 }
+            ]
+        },
+        {
+            question: "Vad åt Zlatan till frukost?",
+            answers: [
+                {
+                    answer: "Korv med bröd. Dansk ketchup",
+                    true: true
+                },
+                {
+                    answer: "Tacos",
+                    true: false
+                },
+                {
+                    answer: "Pizza",
+                    true: false
+                },
+                {
+                    answer: "Kebab",
+                    true: false
+                }
+            ]
+        },
+        {
+            question: "När lämnade Zlatan sitt hus senast?",
+            answers: [
+                {
+                    answer: "11:32",
+                    true: false
+                },
+                {
+                    answer: "Vet inte",
+                    true: false
+                },
+                {
+                    answer: "10:26",
+                    true: false
+                },
+                {
+                    answer: "8:13",
+                    true: true
+                },
+            ]
+        },
+        {
+            question: "Vad brukar Zlatan göra innan han går och lägger sig?",
+            answers: [
+                {
+                    answer: "Äta en macka med ost. Prästost",
+                    true: true
+                },
+                {
+                    answer: "Kolla fotboll på tv",
+                    true: false
+                },
+                {
+                    answer: "Vet inte",
+                    true: false
+                },
+                {
+                    answer: "Diska",
+                    true: false
+                },
             ]
         },
         "end"
@@ -812,12 +875,12 @@ function render_quiz() {
     quizDiv.classList.add("minigameBackdrop");
     quizDiv.classList.add("parent_quiz");
 
-    const questionDiv = document.createElement("div");
-    questionDiv.innerHTML = `
-        <h3 class="quiz_question">${quiz[0].question}</h3>
-    `
+    const questionh3 = document.createElement("h3");
+    questionh3.classList.add("quiz_question");
+    questionh3.textContent = `${quiz[0].question}`
 
-    quizDiv.append(questionDiv);
+
+    quizDiv.append(questionh3);
 
     let button_container = document.createElement("div");
     button_container.classList.add("button_container_quiz");
@@ -838,7 +901,7 @@ function render_quiz() {
         button_container.innerHTML = ``;
 
         quiz[current_question].answers.forEach((answer => {
-            questionDiv.querySelector(".quiz_question").textContent = quiz[current_question].question;
+            questionh3.textContent = quiz[current_question].question;
             let button = document.createElement("button");
             button.classList.add("answer");
             button.innerHTML = answer.answer;

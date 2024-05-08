@@ -13,7 +13,7 @@
     align-items: center;
     flex-direction: column;
     padding: 5px 5px;
-    border-radius: 20px;
+    border-radius: 5px;
     max-width: 350px;
 }
 
@@ -40,7 +40,8 @@
     background: var(--img);
     background-position: center;
     background-size: cover;
-    border-radius: 20px;
+    border-radius: 5px;
+    border: white solid 3px;
 }
 
 .memory_item.memory_box_open {
@@ -54,7 +55,7 @@
     background: #7E6C55;
     transition: 0.25s;
     opacity: 1;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .memory_box_open:after ,
@@ -63,5 +64,5 @@
 }
 
 .memory_box_match {
-    box-shadow: 0px 0px 25px yellow;
+    border: lime solid 3px;
 }

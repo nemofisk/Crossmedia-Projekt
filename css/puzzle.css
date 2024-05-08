@@ -30,8 +30,8 @@
     width: 13vw;
     max-width: 80px;
     max-height: 80px;
-    background-color: rgba(0, 0, 0, 0.178);
-    backdrop-filter: blur(15px);
+    background: white;
+    border: solid black 3px;
 }
 
 .puzzle_image {
@@ -61,9 +61,9 @@
 }
 
 .correct {
-    box-shadow: 0 0 10px yellow;
+    border: solid lime 3px;
 }
 
 .selected {
-    border: 5px white solid;
+    border: 3px white solid;
 }
