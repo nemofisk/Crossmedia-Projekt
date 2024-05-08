@@ -964,7 +964,7 @@ function choose_sus () {
         main_page.append(sus_div);
         
         let name = suspect.name;
-        img_url = `--img:url(../images/${name.toLowerCase()}.jpg);`
+        img_url = `--img:url(../images/clues/${name.toLowerCase()}.jpg);`
         sus_div.setAttribute("style", img_url);
 
         sus_div.innerHTML = `
@@ -1055,6 +1055,7 @@ function choose_sus () {
                 else if(data[storyIndex].location == "Malmö Hovrätt") {
                     
                     if(chosen_suspect == "Stefan") {
+                        data[storyIndex].dialogueBG = "../images/dialogue/stefanend.jpg"
                         dialogueAfter = 
                         {
                             speaker: "Kommissarie Lestrade",
@@ -1063,6 +1064,7 @@ function choose_sus () {
                         }
                     }
                     else if(chosen_suspect == "Göran") {
+                        data[storyIndex].dialogueBG = "../images/dialogue/göranend.jpg"
                         dialogueAfter = 
                         {
                             speaker: "Kommissarie Lestrade",
@@ -1071,6 +1073,7 @@ function choose_sus () {
                         }
                     }
                     else if(chosen_suspect == "Sara") {
+                        data[storyIndex].dialogueBG = "../images/dialogue/saraend.jpg"
                         dialogueAfter = 
                         {
                             speaker: "Kommissarie Lestrade",
@@ -1079,6 +1082,7 @@ function choose_sus () {
                         }
                     }
                     else if(chosen_suspect == "Eva") {
+                        data[storyIndex].dialogueBG = "../images/dialogue/evaend.jpg"
                         dialogueAfter = 
                         {
                             speaker: "Kommissarie Lestrade",

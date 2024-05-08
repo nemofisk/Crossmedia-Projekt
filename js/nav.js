@@ -111,7 +111,7 @@ function render_phone_page () {
 
             for (let person of phone_data) {
                 if(person.name == name) {
-                    messages.style.backgroundImage = `url(./images/${person.img})`;
+                    messages.style.backgroundImage = `url(./images/clues/${person.img})`;
                     if(person.messages.length == 1) {
                         messages.style.flexDirection = "column-reverse";
                     }
@@ -315,7 +315,7 @@ function render_notebook_page () {
                     let img = document.createElement("div");
                     img.classList.add("notebook_popup_img");
                     popup.append(img);
-                    img.style.backgroundImage = `url(../images/${object.img})`;
+                    img.style.backgroundImage = `url(../images/clues/${object.img})`;
 
                     let close_button = document.createElement("button");
                     close_button.classList.add("notebook_popup_close");
