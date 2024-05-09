@@ -2,13 +2,9 @@
 TODO:
 CSS:
  - Startpage
- - Wordle/Maze
 
 JS:
- - Guess the villain/suspect - ISAK
- - Passwords for dialogue unlock
- - Bilder till dialogue backgrounds
- - Dialogue heads - OSSIAN
+ - Passwords/questions for dialogue unlock
 */
 
 preload_images();
