@@ -119,6 +119,12 @@ function renderDialogue(beforeGame, afterGame) {
                 <p class="p-line"></p>
             `
 
+            const talkingHead = document.createElement("div");
+            talkingHead.classList.add("talkingHead");
+            talkingHead.style.backgroundImage = `url(${dialogue[currentLine].img})`;
+            dialogueWindow.prepend(talkingHead);
+
+
             const pLine = dialogueWindow.querySelector(".p-line");
 
             const lineLetters = [...dialogue[currentLine].line];

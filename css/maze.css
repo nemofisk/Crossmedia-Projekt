@@ -31,7 +31,8 @@
 .controlsContainer {
     display: grid;
     grid-template-columns: repeat(3, 15vw);
-    grid-template-rows: repeat(3, 15vw);
+    grid-template-rows: repeat(2, 15vw);
+    gap: 3px;
 }
 
 .controlButton {
@@ -42,22 +43,49 @@
     border: none;
 }
 
+.up,
+.down,
+.rightright,
+.left {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 15vw;
+    width: 15vw;
+    border: none;
+}
+
+.up:active,
+.down:active,
+.rightright:active,
+.left:active {
+    border: 1px solid rgba(255, 255, 255, 0.1)
+}
+
+
 .up {
     grid-row: 1;
     grid-column: 2;
+    background-image: url(../images/upMaze.jpg);
+    border-radius: 5px 5px 0px 0px;
 }
 
 .down {
-    grid-row: 3;
+    grid-row: 2;
     grid-column: 2;
+    background-image: url(../images/downMaze.jpg);
 }
 
 .rightright {
     grid-row: 2;
     grid-column: 3;
+    background-image: url(../images/rightMaze.jpg);
+    border-radius: 0px 5px 5px 0px;
 }
 
 .left {
     grid-row: 2;
     grid-column: 1;
+    background-image: url(../images/leftMaze.jpg);
+    border-radius: 5px 0px 0px 5px;
 }

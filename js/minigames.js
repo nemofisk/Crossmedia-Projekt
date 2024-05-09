@@ -497,30 +497,29 @@ function maze() {
         container.classList.add("controlsContainer")
         gameWrapper.append(container);
 
-        let arrows = ["←", "↑", "→", "↓"]
+        let arrows = ["left", "up", "right", "down"]
 
         for (let arrow of arrows) {
             const controlButton = document.createElement("button");
-            controlButton.textContent = arrow;
             controlButton.classList.add("controlButton")
             container.append(controlButton);
 
-            if (arrow == "↓") {
+            if (arrow == "down") {
                 controlButton.addEventListener("click", goDown);
                 controlButton.classList.add("down");
             }
 
-            if (arrow == "→") {
+            if (arrow == "right") {
                 controlButton.addEventListener("click", goRight);
                 controlButton.classList.add("rightright")
             }
 
-            if (arrow == "←") {
+            if (arrow == "left") {
                 controlButton.addEventListener("click", goLeft);
                 controlButton.classList.add("left")
             }
 
-            if (arrow == "↑") {
+            if (arrow == "up") {
                 controlButton.addEventListener("click", goUp);
                 controlButton.classList.add("up")
             }
@@ -948,7 +947,7 @@ function render_quiz() {
 }
 
 //CHOOSE SUSPECT
-function choose_sus () {
+function choose_sus() {
     let chosen_suspect;
     const main_page = document.createElement("div");
     main_page.classList.add("minigameBackdrop");
@@ -958,11 +957,11 @@ function choose_sus () {
 
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
 
-    data[storyIndex].notebookData.suspects.forEach( suspect => {
+    data[storyIndex].notebookData.suspects.forEach(suspect => {
         let sus_div = document.createElement("div");
         sus_div.classList.add("sus_div");
         main_page.append(sus_div);
-        
+
         let name = suspect.name;
         img_url = `--img:url(../images/clues/${name.toLowerCase()}.jpg);`
         sus_div.setAttribute("style", img_url);
@@ -994,31 +993,35 @@ function choose_sus () {
             document.querySelector(".yes").addEventListener("click", () => {
                 console.log(chosen_suspect);
                 let dialogueAfter;
-                if(data[storyIndex].location == "NW") {
+                if (data[storyIndex].location == "NW") {
 
-                    if(chosen_suspect == "Göran") {
+                    if (chosen_suspect == "Göran") {
                         dialogueAfter = {
-                            speaker: "Helena", 
-                            line: "Göran? Det namnet känner jag inte igen, men om han har kidnappat min man hoppas jag att ni sätter dit honom!", 
-                            img: "helena.jpg"}
+                            speaker: "Helena",
+                            line: "Göran? Det namnet känner jag inte igen, men om han har kidnappat min man hoppas jag att ni sätter dit honom!",
+                            img: "helena.jpg"
+                        }
                     }
-                    else if(chosen_suspect == "Sara") {
+                    else if (chosen_suspect == "Sara") {
                         dialogueAfter = {
-                            speaker: "Helena", 
-                            line: "Jaså Sara? Jag har aldrig gillat Sara, men inte trodde jag att hon var kapabel av kidnappning. Ifall hon tagit min älskling hoppas jag verkligen att ni sätter henne bakom lås och bom.", 
-                            img: "helena.jpg"}
+                            speaker: "Helena",
+                            line: "Jaså Sara? Jag har aldrig gillat Sara, men inte trodde jag att hon var kapabel av kidnappning. Ifall hon tagit min älskling hoppas jag verkligen att ni sätter henne bakom lås och bom.",
+                            img: "helena.jpg"
+                        }
                     }
-                    else if(chosen_suspect == "Eva") {
+                    else if (chosen_suspect == "Eva") {
                         dialogueAfter = {
-                            speaker: "Helena", 
-                            line: "Eva?? Det låter inte likt henne, jag har själv inte hunnit berätta för henne vad som har hänt, men antar att ni hann före. Hade varit en tragedi om det hade varit min nära vän som huggit mig i ryggen.", 
-                            img: "helena.jpg"}
+                            speaker: "Helena",
+                            line: "Eva?? Det låter inte likt henne, jag har själv inte hunnit berätta för henne vad som har hänt, men antar att ni hann före. Hade varit en tragedi om det hade varit min nära vän som huggit mig i ryggen.",
+                            img: "helena.jpg"
+                        }
                     }
-                    else if(chosen_suspect == "Stefan") {
+                    else if (chosen_suspect == "Stefan") {
                         dialogueAfter = {
-                            speaker: "Helena", 
-                            line: "Stefan!? Tror ni verkligen att Zlatans bäste vän har huggit honom i ryggen? Det vore fruktansvärt om det var så, i så fall hoppas jag verkligen att han får vad han förtjänar.", 
-                            img: "helena.jpg"}
+                            speaker: "Helena",
+                            line: "Stefan!? Tror ni verkligen att Zlatans bäste vän har huggit honom i ryggen? Det vore fruktansvärt om det var så, i så fall hoppas jag verkligen att han får vad han förtjänar.",
+                            img: "helena.jpg"
+                        }
                     }
 
                     data[storyIndex].dialogueAfter = [
@@ -1049,41 +1052,41 @@ function choose_sus () {
                             img: "player.jpg"
                         },
                     ]
-    
+
                     doneMinigame();
                 }
-                else if(data[storyIndex].location == "Malmö Hovrätt") {
-                    
-                    if(chosen_suspect == "Stefan") {
+                else if (data[storyIndex].location == "Malmö Hovrätt") {
+
+                    if (chosen_suspect == "Stefan") {
                         data[storyIndex].dialogueBG = "../images/dialogue/stefanend.jpg"
-                        dialogueAfter = 
+                        dialogueAfter =
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har rätt, Stefan är Zlatans kidnappare. De har åkt till vegas för att ha en oförglömlig svensexa inför bröllopet, något som hållits hemligt för alla icke- inblandade. Zlatan är i hyfsat säkert förvar, tack för din insats, du är en sann detektiv.",
                             img: "lestrade.jpg"
                         }
                     }
-                    else if(chosen_suspect == "Göran") {
+                    else if (chosen_suspect == "Göran") {
                         data[storyIndex].dialogueBG = "../images/dialogue/göranend.jpg"
-                        dialogueAfter = 
+                        dialogueAfter =
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig man bakom lås och bom. Göran är visserligen en kuslig stalker, men har ingenting med någon kidnappning att göra. Han kunde inte varit kidnapparen eftersom han tog bilder under förloppet.",
                             img: "lestrade.jpg"
                         }
                     }
-                    else if(chosen_suspect == "Sara") {
+                    else if (chosen_suspect == "Sara") {
                         data[storyIndex].dialogueBG = "../images/dialogue/saraend.jpg"
-                        dialogueAfter = 
+                        dialogueAfter =
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig kvinna bakom lås och bom! Sara har visserligen en ilska riktad mot Zlatan men en eventuell avlivning gällde deras gemensamma hund. Sara kan inte vara skyldig till kidnappningen eftersom har alibi i hennes och Evas vinkväll stunden då kidnappningen ägde rum.",
                             img: "lestrade.jpg"
                         }
                     }
-                    else if(chosen_suspect == "Eva") {
+                    else if (chosen_suspect == "Eva") {
                         data[storyIndex].dialogueBG = "../images/dialogue/evaend.jpg"
-                        dialogueAfter = 
+                        dialogueAfter =
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig kvinna bakom lås och bom! Eva hade visserligen inte tackat nej till en större lösensumma, men hon hade ett alibi från den kvällen då kidnappningen inträffade - hon var med på en vinprovning tillsammans med Sara.",

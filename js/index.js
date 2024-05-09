@@ -210,7 +210,7 @@ function renderGameInfo() {
             <div class="helpImage"></div>
             <div>Klicka på hjälp-knappen för att komma åt denna informationen igen</div>
         </div>
-        Lycka Till!`
+        <div>Lycka Till!</div>`
     ]
 
     renderInfoModal(infoContent);

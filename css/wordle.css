@@ -9,14 +9,19 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    font-family: "GlacialR";
+    justify-content: space-around;
 }
 
 .row-wrapper {
-    height: 50%;
+    height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #ffffff29;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .row-container {
@@ -24,7 +29,6 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 10px;
 }
@@ -35,22 +39,22 @@
 }
 
 .letter-box {
-    height: 50px;
-    width: 50px;
+    max-height: 50px;
+    max-width: 50px;
     background: transparent;
-    border: 1px solid #3a3a3c;
-    color: black;
-
-
+    border: 1px solid #000000;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     pointer-events: none;
     user-select: none;
+    height: 12vw;
+    width: 12vw;
 }
 
 .letter-box.active {
-    border: 1px solid #9f9fa1;
+    border: 1px solid #ffffff;
 }
 
 .letter-box.nothing {
@@ -75,12 +79,14 @@
 }
 
 .keyboard-wrapper {
-    height: 50%;
+    height: 45%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    background-color: #ffffff29;
+    border-radius: 10px;
 }
 
 .keyboard-container {
@@ -88,8 +94,9 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    width: 70%;
+    gap: 5px;
+    width: 95%;
+    max-width: 410px;
 }
 
 .key-box {
@@ -97,12 +104,11 @@
     justify-content: center;
     align-items: center;
     border: none;
-
-    color: black;
-    width: 25px;
-    height: 40px;
+    color: white;
+    width: 30px;
+    height: 44px;
     border-radius: 2px;
-    background-color: rgb(167, 165, 165);
+    background-color: #878888;
 }
 
 .key-box p {
@@ -143,7 +149,9 @@
 
     width: 80px;
     height: 40px;
-    background-color: rgb(167, 165, 165);
+    background-color: #878888;
+    color: white;
+    font-family: "GlacialR";
     border-radius: 2px;
 }
 
@@ -167,4 +175,8 @@
 
 .wordleNothing {
     background-image: url("../images/wordlenothing.png");
+}
+
+button.key-box {
+    font-family: "GlacialR";
 }
