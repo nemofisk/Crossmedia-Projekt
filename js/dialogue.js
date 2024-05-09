@@ -1,5 +1,5 @@
 // Dialogue array and function, guess villain
-function renderDialogueUnlock() {
+function renderDialogueUnlock(pressed) {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     const currentStory = data[storyIndex];
     const password = currentStory.dialoguePassword;
@@ -10,9 +10,12 @@ function renderDialogueUnlock() {
     const passwordDiv = document.createElement("div");
     passwordDiv.classList.add("dialoguePassContainer");
 
+    const passIcon = document.createElement("div");
+    passIcon.classList.add("passLockedIcon");
+
     const passHeader = document.createElement("div");
     passHeader.classList.add("passHeader");
-    passHeader.textContent = "Svara på frågan för att starta dialogen"
+    passHeader.textContent = "Svara rätt på frågan för att starta dialogen"
 
     const passQuestion = document.createElement("div");
     passQuestion.classList.add("passQuestion");
@@ -22,21 +25,50 @@ function renderDialogueUnlock() {
     passInput.classList.add("passInput");
 
     const passButton = document.createElement("button");
+    passButton.classList.add("passButton")
     passButton.textContent = "Enter";
 
     passButton.addEventListener("click", e => {
         if (passInput.value == password) {
-            renderDialogue(true, false, passwordDiv);
+            passIcon.classList.add("passUnlocked");
+            setTimeout(function () {
+                renderDialogue(true, false)
+            }, 1000)
         } else {
-            alert("wrong password");
+            passInput.classList.add("wrongPass");
+            setTimeout(function () {
+                passInput.classList.remove("wrongPass")
+            }, 500)
         }
     })
 
-    backdropDiv.append(passHeader);
-    backdropDiv.append(passQuestion);
-    backdropDiv.append(passInput);
-    backdropDiv.append(passButton);
-    passwordDiv.append(backdropDiv)
+    const headerDiv = document.createElement("div");
+    headerDiv.classList.add("passHeaderDiv");
+    headerDiv.append(passIcon)
+    headerDiv.append(passHeader)
+
+    const questionDiv = document.createElement("div");
+    questionDiv.classList.add("passQuestionDiv");
+    questionDiv.append(passQuestion);
+    questionDiv.append(passInput);
+    questionDiv.append(passButton);
+
+    backdropDiv.append(headerDiv);
+    backdropDiv.append(questionDiv);
+    passwordDiv.append(backdropDiv);
+
+    if (pressed) {
+        const backButton = document.createElement("div");
+        backButton.classList.add("du-back-button")
+
+        backButton.addEventListener("click", ev => {
+            removeContentEventModal();
+            disableEventModal();
+            renderMap()
+        })
+
+        backdropDiv.append(backButton);
+    }
 
     removeContentEventModal();
     activateEventModal();

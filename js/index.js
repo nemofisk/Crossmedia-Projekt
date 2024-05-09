@@ -2,18 +2,16 @@
 TODO:
 CSS:
  - Startpage
- - Dialogue unlock
  - Wordle/Maze
- - Map circles
 
 JS:
  - Guess the villain/suspect - ISAK
- - Click on circle to force dialogue - OSSIAN
  - Passwords for dialogue unlock
  - Bilder till dialogue backgrounds
  - Dialogue heads - OSSIAN
 */
 
+preload_images();
 startUp();
 
 function startUp() {
@@ -41,12 +39,6 @@ function startUp() {
         window.localStorage.setItem("storyIndex", 0);
         console.log("no story index... adding");
     }
-}
-
-function renderPhone() {
-}
-
-function renderCluesSuspects() {
 }
 
 function activateEventModal() {
@@ -174,28 +166,30 @@ function renderGameInfo() {
         `<div class="startInfoHead">Välkommen till Malmö Mysteries: Sherlock Holmes!</div>
 
         <div>I detta spelet ska du hjälpa Sherlock Holmes att hitta den försvunne Zlatan Ibrahimovic.</div>
+
+        <div> Navigera dig till de olika platserna som visas på kartan för att prata med vittnen och samla på dig ledtrådar för att lösa mysteriet.</div>
         `,
         `
         <div class="infoContainer">
             <div class="noticeImage"></div>
 
             <div>Se till att spelet har åtkomst till din plats genom att acceptera notiserna som frågar om din position.</div>
-            <div>Får du inte upp en notis?<br>Testa att gå in i din mobils inställningar och tillåt platsåtkomst för din webbläsare.</div>
+            <div>Får du inte upp en notis?<br>Testa att gå in i mobilens inställningar och tillåt platsåtkomst för webbläsaren.</div>
         </div>
         `,
         `
-        <div>Det finns två ställen på kartan som du måste hålla reda på:</div>
+        <div>Det finns två ikoner på kartan som du måste hålla reda på:</div>
 
         <div class="infoContainer">
-            <div class="redCircleImage"></div>
+            <div class="playerImage"></div>
 
-            <div>Dig själv som representeras av en röd cirkel.</div>
+            <div>Hatten visar vart du befinner dig just nu.</div>
         </div>
         
         <div class="infoContainer">
-            <div class="greenCircleImage"></div>
+            <div class="locationImage"></div>
 
-            <div>Ditt nuvarande mål som representeras av en grön cirkel.</div>
+            <div>Förstoringsglaset visar platsen du ska ta dig till. Om dialogen inte startar även fast du är vid förstoringsglaset kan du trycka på det för att starta dialogen.</div>
         </div>
         
         `,
@@ -214,10 +208,19 @@ function renderGameInfo() {
         `
         <div class="infoContainer">
             <div class="helpImage"></div>
-            <div>Klicka på hjälp-knappen ifall du vill komma åt denna informationen igen</div>
+            <div>Klicka på hjälp-knappen för att komma åt denna informationen igen</div>
         </div>
         Lycka Till!`
     ]
 
     renderInfoModal(infoContent);
 }
+
+function preload_images() {
+    for (let url of imageURLs) {
+        let img = new Image();
+
+        img.src = url;
+    }
+}
+

@@ -84,21 +84,170 @@ div.dialogueContainer {
     background-position: center;
     backdrop-filter: blur(10px);
     gap: 30px;
+    font-family: "GlacialR";
+}
+
+.passLockedIcon {
+    background-image: url(../images/lockLocked.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 100px;
+    width: 100px;
+}
+
+.passLockedIcon.passUnlocked {
+    background-image: url(../images/lockUnlocked.png);
+    -webkit-animation-name: jump;
+    -webkit-animation-duration: 0.5s;
+    animation-name: jump;
+    animation-duration: 0.5s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes jump {
+    0% {
+        -webkit-transform: translateY(0);
+    }
+
+    50% {
+        -webkit-transform: translateY(-20px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .passHeader {
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
     width: 300px;
 }
 
+.passHeaderDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.passQuestionDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
 .passInput {
+    padding: 5px;
     height: 40px;
     width: 180px;
     border-radius: 5px;
     border: none;
+    font-family: "GlacialR";
+    text-align: center;
 }
 
 .passInput:focus {
     outline: none
+}
+
+.passInput.wrongPass {
+    -webkit-animation: shake .5s ease-in-out;
+    animation: shake .5s ease-in-out;
+}
+
+.passButton {
+    width: 80px;
+    height: 40px;
+    font-family: "GlacialR";
+    font-size: 15px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+@-webkit-keyframes shake {
+    0% {
+        -webkit-transform: translateX(0);
+    }
+
+    20% {
+        -webkit-transform: translateX(-10px);
+    }
+
+    40% {
+        -webkit-transform: translateX(10px);
+    }
+
+    60% {
+        -webkit-transform: translateX(-10px);
+    }
+
+    80% {
+        -webkit-transform: translateX(10px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-10px);
+    }
+
+    40% {
+        transform: translateX(10px);
+    }
+
+    60% {
+        transform: translateX(-10px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.du-back-button {
+    background-image: url(../images/back.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    top: 30px;
+    left: 30px;
+
+    height: 30px;
+    width: 30px;
 }

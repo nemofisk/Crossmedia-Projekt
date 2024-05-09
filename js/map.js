@@ -1,9 +1,8 @@
 let playerPosition;
 let map;
+let gameInfoRendered = false;
 
 function renderMap() {
-    const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
-
     const helpButton = document.createElement("div");
     helpButton.classList.add("helpButton");
 
@@ -11,8 +10,9 @@ function renderMap() {
 
     document.body.append(helpButton);
 
-    if (storyIndex == 1) {
+    if (!gameInfoRendered) {
         renderGameInfo();
+        gameInfoRendered = true;
     }
 
     if (!map) {
@@ -35,11 +35,11 @@ function renderMap() {
 
         coords();
     } else {
-        show_position(playerPosition, false);
+        show_position(playerPosition);
     }
 }
 
-function show_position(position, firstCall = true) {
+function show_position(position) {
 
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
     const currentLocation = data[storyIndex];
@@ -55,11 +55,27 @@ function show_position(position, firstCall = true) {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    var playerIcon = L.icon({
+        iconUrl: "../images/deerhatIcon.png",
+        iconSize: [50, 50]
+    })
+
+    var locationIcon = L.icon({
+        iconUrl: "../images/magnifyingIcon.png",
+        iconSize: [50, 50]
+    })
+
+    var player_marker = L.marker([latitude, longitude], {
+        icon: playerIcon
+    }).addTo(map);
+
     var player_circle = L.circle([latitude, longitude], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 10
+        stroke: false,
+        color: 'black',
+        fillColor: 'black',
+        fillOpacity: 0.2,
+        radius: 10,
+        interactive: false
     }).addTo(map);
 
     if (currentLocation.location == null) {
@@ -68,8 +84,11 @@ function show_position(position, firstCall = true) {
         }, 10000)
     }
 
+    const watchID = navigator.geolocation.watchPosition(update_player_location);
+
     if (currentLocation.location != null) {
         const current_circle = createCurrentCircle();
+        var circle_marker;
 
         const collisionInterval = setInterval(check_collision, 1000)
 
@@ -111,25 +130,37 @@ function show_position(position, firstCall = true) {
 
             if (bottomInside && topInside && rightInside && leftInside) {
                 current_circle.remove();
+                circle_marker.remove();
                 clearInterval(collisionInterval);
+                navigator.geolocation.clearWatch(watchID)
                 renderDialogueUnlock();
             }
         }
 
         function createCurrentCircle() {
             const circle = L.circle([currentLocation.lat, currentLocation.lon], {
-                color: 'green',
-                fillColor: 'lime',
-                fillOpacity: 0.5,
-                radius: 20
+                stroke: false,
+                color: 'black',
+                fillColor: 'black',
+                fillOpacity: 0.2,
+                radius: 25,
+                interactive: false
             }).addTo(map);
+
+            circle_marker = L.marker([currentLocation.lat, currentLocation.lon], {
+                icon: locationIcon
+            }).addTo(map);
+
+            circle_marker.on("click", function () {
+                current_circle.remove();
+                circle_marker.remove();
+                clearInterval(collisionInterval);
+                navigator.geolocation.clearWatch(watchID)
+                renderDialogueUnlock(true);
+            })
 
             return circle;
         }
-    }
-
-    if (firstCall) {
-        navigator.geolocation.watchPosition(update_player_location);
     }
 
     function update_player_location(position) {
@@ -140,13 +171,20 @@ function show_position(position, firstCall = true) {
         let longitude = position.coords.longitude;
         let latitude = position.coords.latitude;
 
+        player_marker.remove()
         player_circle.remove();
 
         player_circle = L.circle([latitude, longitude], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 10
+            stroke: false,
+            color: 'black',
+            fillColor: 'black',
+            fillOpacity: 0.2,
+            radius: 10,
+            interactive: false
+        }).addTo(map);
+
+        player_marker = L.marker([latitude, longitude], {
+            icon: playerIcon
         }).addTo(map);
     }
 
