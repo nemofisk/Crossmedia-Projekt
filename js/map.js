@@ -224,6 +224,16 @@ function show_position(position, fly) {
 
         const playerMarkerLatLon = player_marker.getLatLng();
         console.log(playerMarkerLatLon);
+
+        var popup = L.popup();
+        function onMarkerClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("Detta är du")
+                .openOn(map);
+        }
+
+        player_marker.on('click', onMarkerClick);
     }
 
 

@@ -16,8 +16,6 @@ const data = [
         dialogueBG: "../images/dialogue/vacation.jpg"
     },
     {
-        // lon: 12.953181,
-        // lat: 56.459266,
         location: "Kungsparken",
         lat: 55.604396,
         lon: 12.992706,
@@ -67,8 +65,8 @@ const data = [
             }
         ],
         passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1935",
-        minigame: wordle,
+        dialoguePassword: "1",
+        minigame: render_quiz,
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -135,7 +133,9 @@ const data = [
                 img: "../images/dialogue/lisa.jpg"
             }
         ],
-        minigame: "wordle",
+        minigame: wordle,
+        passQuestion: "Vilket år står det på skylten?",
+        dialoguePassword: "1",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -261,6 +261,8 @@ const data = [
             },
         ],
         minigame: render_puzzle,
+        passQuestion: "Vilket år står det på skylten?",
+        dialoguePassword: "1",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -619,6 +621,8 @@ const data = [
                 img: "../images/dialogue/player.png"
             },
         ],
+        passQuestion: "Vilket år står det på skylten?",
+        dialoguePassword: "1",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -875,6 +879,8 @@ const data = [
         ],
         dialogueAfter: "",
         minigame: choose_sus,
+        passQuestion: "Vilket år står det på skylten?",
+        dialoguePassword: "1",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -1001,74 +1007,76 @@ const data = [
             {
                 speaker: "Pastor Emma",
                 line: "Hej, vad kan jag hjälpa dig med?",
-                img: "emma.jpg"
+                img: "../images/dialogue/emma.jpg"
             },
             {
                 speaker: "Du",
                 line: "Hej! Jag försöker hitta kiddnapparen till Zlatan då han försvann igårkväll. Jag har fått ett tips om att han har varit här rätt ofta.",
-                img: "player.jpg"
+                img: "../images/dialogue/player.png"
             },
             {
                 speaker: "Pastor Emma",
                 line: "Så hemskt att han har blivit kidnappad, må gud vägleda er.",
-                img: "emma.jpg"
+                img: "../images/dialogue/emma.jpg"
             },
             {
                 speaker: "Du",
                 line: "Minns du när Zlatan var här senast?",
-                img: "player.jpg"
+                img: "../images/dialogue/player.png"
             },
             {
                 speaker: "Pastor Emma",
                 line: "Igår förmiddag, han var här med sin bästa vän för att stämma av det sista inför bröllopet.",
-                img: "emma.jpg"
+                img: "../images/dialogue/emma.jpg"
             },
             {
                 speaker: "Du",
                 line: "Bröllopet??",
-                img: "player.jpg"
+                img: "../images/dialogue/player.png"
             },
             {
                 speaker: "Pastor Emma",
                 line: "Ja, Zlatan och Helena ska gifta sig här om en månad. Hoppas du hittar honom vid liv.",
-                img: "emma.jpg"
+                img: "../images/dialogue/emma.jpg"
             },
             {
                 speaker: "Du",
                 line: "Helena har inte nämnt något om ett bröllop…",
-                img: "player.jpg"
+                img: "../images/dialogue/player.png"
             },
             {
                 speaker: "Pastor Emma",
                 line: "Nä det kanske inte är betydelsefullt för kidnappningen, de har trots allt varit väldigt hemlighetsfulla med bröllopet för att media inte ska få reda på det. Så håll den informationen för dig själv.",
-                img: "emma.jpg"
+                img: "../images/dialogue/emma.jpg"
             },
             {
                 speaker: "Du",
                 line: "Jag förstår... Hur länge var Zlatan och Stefan här igår?",
-                img: "player.jpg"
+                img: "../images/dialogue/player.png"
             },
             {
                 speaker: "Pastor Emma",
                 line: "De begav sig runt 13-tiden, de nämnde inget om vad de skulle göra efteråt.",
-                img: "emma.jpg"
+                img: "../images/dialogue/emma.jpg"
             },
             {
                 speaker: "Du",
                 line: "Var det något du märkte av igår som kändes konstigt, både med Zlatan och hans bästa vän?",
-                img: "player.jpg"
+                img: "../images/dialogue/player.png"
             },
             {
                 speaker: "Pastor Emma",
                 line: "Nää, däremot så var det många samtal som Stefan tog i sin telefon, han kändes inte helt närvarande. Zlatan blev lite irriterad tillslut.",
-                img: "emma.jpg"
+                img: "../images/dialogue/emma.jpg"
             },
             {
                 speaker: "Du",
                 line: "Okej, tack för all hjälp!",
-                img: "player.jpg"
+                img: "../images/dialogue/player.png"
             },
         ],
+        passQuestion: "Vilket år står det på skylten?",
+        dialoguePassword: "1",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -1205,6 +1213,8 @@ const data = [
         ],
         dialogueAfter: "",
         minigame: choose_sus,
+        passQuestion: "Vilket år står det på skylten?",
+        dialoguePassword: "1",
         phoneData: [
             {
                 name: "SHERLOCK",

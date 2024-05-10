@@ -220,23 +220,13 @@ function renderDialogue(beforeGame, afterGame) {
 
 }
 
-/*
-
-Exempel på ett objekt:
-
-{
-    talkingTo: Göran,
-    lines: [
-        {
-            speaker: Göran,
-            line: "Jag är riktigt sus"
-        },
-        {
-            speaker: (Playername),
-            line: "Ja det är du"
-        }
+function endCredits() {
+    const infoArray = [
+        `
+        <div>Denna berättelse om Zlatans försvinnande är nu över.</div>
+        <div>Tack för att du spelade!</div>
+        `
     ]
+
+    renderInfoModal(infoArray);
 }
-
-
-*/
