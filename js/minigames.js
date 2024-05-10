@@ -999,28 +999,28 @@ function choose_sus() {
                         dialogueAfter = {
                             speaker: "Helena",
                             line: "Göran? Det namnet känner jag inte igen, men om han har kidnappat min man hoppas jag att ni sätter dit honom!",
-                            img: "helena.jpg"
+                            img: "../images/dialogue/helena.jpg"
                         }
                     }
                     else if (chosen_suspect == "Sara") {
                         dialogueAfter = {
                             speaker: "Helena",
                             line: "Jaså Sara? Jag har aldrig gillat Sara, men inte trodde jag att hon var kapabel av kidnappning. Ifall hon tagit min älskling hoppas jag verkligen att ni sätter henne bakom lås och bom.",
-                            img: "helena.jpg"
+                            img: "../images/dialogue/helena.jpg"
                         }
                     }
                     else if (chosen_suspect == "Eva") {
                         dialogueAfter = {
                             speaker: "Helena",
                             line: "Eva?? Det låter inte likt henne, jag har själv inte hunnit berätta för henne vad som har hänt, men antar att ni hann före. Hade varit en tragedi om det hade varit min nära vän som huggit mig i ryggen.",
-                            img: "helena.jpg"
+                            img: "../images/dialogue/helena.jpg"
                         }
                     }
                     else if (chosen_suspect == "Stefan") {
                         dialogueAfter = {
                             speaker: "Helena",
                             line: "Stefan!? Tror ni verkligen att Zlatans bäste vän har huggit honom i ryggen? Det vore fruktansvärt om det var så, i så fall hoppas jag verkligen att han får vad han förtjänar.",
-                            img: "helena.jpg"
+                            img: "../images/dialogue/helena.jpg"
                         }
                     }
 
@@ -1029,27 +1029,27 @@ function choose_sus() {
                         {
                             speaker: "Player",
                             line: "Vet du någon som har velat Zlatan illa?",
-                            img: "player.jpg"
+                            img: "../images/dialogue/player.jpg"
                         },
                         {
                             speaker: "Helena",
                             line: "Hmm… Vi har haft problem med en stalker som vi aldrig har lyckats identifiera, jag hoppas inte att det är han som har slagit till…  Jag har heller aldrig gillat Sara, jag misstänker att hon fortfarande är kär i Zlatan. Sen ber jag innerligt att det varken är Eva eller Stefan.",
-                            img: "helena.jpg"
+                            img: "../images/dialogue/helena.jpg"
                         },
                         {
                             speaker: "Helena",
                             line: "Jag ska erkänna att jag haft lite svårt för Stefan, det känns som att han alltid drar med Zlatan på massa idiotiska äventyr. Jag kommer aldrig glömma när Stefan bröt sig in i vårt hus för att väcka Zlatan med en fest på hans födelsedag… Jag blev nog mer rädd än Zlatan.",
-                            img: "helena.jpg"
+                            img: "../images/dialogue/helena.jpg"
                         },
                         {
                             speaker: "Helena",
                             line: "Även om Eva är min nära vän så måste jag erkänna att hon är en aning opålitlig, hennes fixering vid pengar kan ibland äventyra hennes moral. Hon är väldigt svartsjuk och jag har känt av hennes avund på vår ekonomi.",
-                            img: "helena.jpg"
+                            img: "../images/dialogue/helena.jpg"
                         },
                         {
                             speaker: "Player",
                             line: "Tack så mycket, detta kommer vara till hjälp. Dags att bege mig till St Petri Kyrka.",
-                            img: "player.jpg"
+                            img: "../images/dialogue/player.jpg"
                         },
                     ]
 
@@ -1063,7 +1063,7 @@ function choose_sus() {
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har rätt, Stefan är Zlatans kidnappare. De har åkt till vegas för att ha en oförglömlig svensexa inför bröllopet, något som hållits hemligt för alla icke- inblandade. Zlatan är i hyfsat säkert förvar, tack för din insats, du är en sann detektiv.",
-                            img: "lestrade.jpg"
+                            img: "../images/dialogue/lestrade.jpg"
                         }
                     }
                     else if (chosen_suspect == "Göran") {
@@ -1072,7 +1072,7 @@ function choose_sus() {
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig man bakom lås och bom. Göran är visserligen en kuslig stalker, men har ingenting med någon kidnappning att göra. Han kunde inte varit kidnapparen eftersom han tog bilder under förloppet.",
-                            img: "lestrade.jpg"
+                            img: "../images/dialogue/lestrade.jpg"
                         }
                     }
                     else if (chosen_suspect == "Sara") {
@@ -1081,7 +1081,7 @@ function choose_sus() {
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig kvinna bakom lås och bom! Sara har visserligen en ilska riktad mot Zlatan men en eventuell avlivning gällde deras gemensamma hund. Sara kan inte vara skyldig till kidnappningen eftersom har alibi i hennes och Evas vinkväll stunden då kidnappningen ägde rum.",
-                            img: "lestrade.jpg"
+                            img: "../images/dialogue/lestrade.jpg"
                         }
                     }
                     else if (chosen_suspect == "Eva") {
@@ -1090,7 +1090,7 @@ function choose_sus() {
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig kvinna bakom lås och bom! Eva hade visserligen inte tackat nej till en större lösensumma, men hon hade ett alibi från den kvällen då kidnappningen inträffade - hon var med på en vinprovning tillsammans med Sara.",
-                            img: "lestrade.jpg"
+                            img: "../images/dialogue/lestrade.jpg"
                         }
                     }
 
