@@ -966,9 +966,14 @@ function choose_sus() {
         img_url = `--img:url(../images/clues/${name.toLowerCase()}.jpg);`
         sus_div.setAttribute("style", img_url);
 
-        sus_div.innerHTML = `
-            <p class="sus_name">${name}</p>
-        `
+        let p = document.createElement("p");
+        p.classList.add("sus_name");
+        p.textContent = name;
+        sus_div.append(p);
+
+        p.addEventListener("click", e => {
+            e.stopPropagation();
+        })
 
         sus_div.addEventListener("click", (e) => {
 
@@ -981,7 +986,8 @@ function choose_sus() {
             overlay.append(message);
 
             main_page.append(overlay);
-            chosen_suspect = e.target.childNodes[1].textContent;
+            console.log(e.target.childNodes[0].textContent)
+            chosen_suspect = e.target.childNodes[0].textContent;
             message.textContent = `Är du säker på att du vill välja ${chosen_suspect}?`;
             message.innerHTML += `
                 <div class="sus_button_container">
