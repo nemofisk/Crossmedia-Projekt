@@ -1,7 +1,6 @@
 function doneMinigame() {
     removeContentEventModal();
     disableEventModal();
-    check_for_notice(); // behöver köras när storyIndex uppdateras.
     renderDialogue(false, true)
 }
 

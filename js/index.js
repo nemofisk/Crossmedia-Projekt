@@ -33,6 +33,7 @@ function startUp() {
 
     if (!window.localStorage.getItem("storyIndex")) {
         window.localStorage.setItem("storyIndex", 0);
+        window.localStorage.setItem("newMessangers", JSON.stringify([]));
         console.log("no story index... adding");
     }
 }
@@ -74,7 +75,6 @@ function editContentEventModal(content, dialogue) {
 
     }
 
-
     return eventDiv;
 }
 
@@ -99,6 +99,17 @@ function renderInfoModal(contentArray) {
 
     infoModal.querySelector(".closeInfo").addEventListener("click", e => {
         infoModal.remove();
+
+        if (!gameInfoRendered) {
+            gameInfoRendered = true;
+            map.flyTo([currentLocation.lat, currentLocation.lon], 17);
+
+            if (playerCords) {
+                setTimeout(function () {
+                    map.flyTo([playerCords.lat, playerCords.lng], 13)
+                }, 4000)
+            }
+        }
     })
 
     const infoContent = infoModal.querySelector(".modalWrapper > .infoContent");
@@ -169,8 +180,8 @@ function renderGameInfo() {
         <div class="infoContainer">
             <div class="noticeImage"></div>
 
-            <div>Se till att spelet har åtkomst till din plats genom att acceptera notiserna som frågar om din position.</div>
-            <div>Får du inte upp en notis?<br>Testa att gå in i mobilens inställningar och tillåt platsåtkomst för webbläsaren.</div>
+            <div>Platsåtkomst behövs inte för att kunna spela men rekommenderas för en bättre spelupplevelse</div>
+            <div>Får du inte upp en notis för platsåtkomst?<br>Testa att gå in i mobilens inställningar och tillåt platsåtkomst för webbläsaren.</div>
         </div>
         `,
         `
@@ -185,7 +196,7 @@ function renderGameInfo() {
         <div class="infoContainer">
             <div class="locationImage"></div>
 
-            <div>Förstoringsglaset visar platsen du ska ta dig till. Om dialogen inte startar även fast du är vid förstoringsglaset kan du trycka på det för att starta dialogen.</div>
+            <div>Förstoringsglaset visar platsen du ska ta dig till. Om du spelar utan platsåtkomst eller dialogen inte startar även fast du är vid förstoringsglaset kan du trycka på det för att starta dialogen.</div>
         </div>
         
         `,

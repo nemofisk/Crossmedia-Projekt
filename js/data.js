@@ -19,8 +19,8 @@ const data = [
         // lon: 12.953181,
         // lat: 56.459266,
         location: "Kungsparken",
-        lat: 55.60329,
-        lon: 12.992301,
+        lat: 55.604396,
+        lon: 12.992706,
         dialogueBG: "../images/dialogue/parken.jpg",
         dialogueBefore: [
             {
@@ -68,7 +68,7 @@ const data = [
         ],
         passQuestion: "Vilket år står det på skylten?",
         dialoguePassword: "1935",
-        minigame: maze,
+        minigame: wordle,
         phoneData: [
             {
                 name: "SHERLOCK",

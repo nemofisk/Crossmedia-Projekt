@@ -64,7 +64,7 @@ function renderDialogueUnlock(pressed) {
         backButton.addEventListener("click", ev => {
             removeContentEventModal();
             disableEventModal();
-            renderMap()
+            renderMap(false)
         })
 
         backdropDiv.append(backButton);
@@ -197,10 +197,19 @@ function renderDialogue(beforeGame, afterGame) {
                 if (afterGame) {
                     dialogueWindow.removeEventListener("click", writeLine)
                     dialogueWindow.addEventListener("click", e => {
-                        disableEventModal();
-                        removeContentEventModal();
-                        render_nav();
-                        renderMap();
+                        const newStoryIndex = parseInt(window.localStorage.getItem("storyIndex"));
+
+                        if (newStoryIndex == 10) {
+                            window.localStorage.clear()
+                            endCredits();
+                            startUp()
+                        } else {
+                            disableEventModal();
+                            removeContentEventModal();
+                            render_nav();
+                            renderMap();
+                            check_for_notice();
+                        }
                     });
                 }
             }

@@ -1,8 +1,14 @@
-let playerPosition;
 let map;
 let gameInfoRendered = false;
+let watchID;
+let current_circle;
+let circle_marker;
+let collisionInterval;
+let currentLocation;
+let playerCords;
+let doneLocations = [];
 
-function renderMap() {
+function renderMap(fly = true) {
     const helpButton = document.createElement("div");
     helpButton.classList.add("helpButton");
 
@@ -12,71 +18,49 @@ function renderMap() {
 
     if (!gameInfoRendered) {
         renderGameInfo();
-        gameInfoRendered = true;
     }
 
     if (!map) {
         map = L.map("map", { zoomControl: false });
         document.querySelector("#map > .leaflet-control-container").remove()
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 17,
+            minZoom: 9,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        map.setView([55.608839, 12.99497], 13);
     }
-
-    if (!playerPosition) {
-        function coords() {
-            navigator.geolocation.getCurrentPosition(
-                show_position,
-                null,
-                {
-                    enableHighAccuracy: true,
-                    timeout: 200000,
-                    maximumAge: 0
-                }
-            )
-        };
-
-        coords();
-    } else {
-        show_position(playerPosition);
-    }
-}
-
-function show_position(position) {
 
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
-    const currentLocation = data[storyIndex];
+    currentLocation = data[storyIndex];
     console.log(currentLocation);
-
-    let longitude = position.coords.longitude;
-    let latitude = position.coords.latitude;
-
-    map.setView([latitude, longitude], 13);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    var playerIcon = L.icon({
-        iconUrl: "../images/deerhatIcon.png",
-        iconSize: [50, 50]
-    })
 
     var locationIcon = L.icon({
         iconUrl: "../images/magnifyingIcon.png",
         iconSize: [50, 50]
     })
 
-    var player_marker = L.marker([latitude, longitude], {
-        icon: playerIcon
-    }).addTo(map);
+    var locationDoneIcon = L.icon({
+        iconUrl: "../images/doneLocationIcon.png",
+        iconSize: [40, 40]
+    })
 
-    var player_circle = L.circle([latitude, longitude], {
-        stroke: false,
-        color: 'black',
-        fillColor: 'black',
-        fillOpacity: 0.2,
-        radius: 10,
-        interactive: false
-    }).addTo(map);
+    if (currentLocation.location != null) {
+        current_circle = createCurrentCircle();
+        if (gameInfoRendered && fly) {
+            map.flyTo([currentLocation.lat, currentLocation.lon], 17);
+
+            if (playerCords) {
+                setTimeout(function () {
+                    map.flyTo([playerCords.lat, playerCords.lng], 13)
+                }, 4000)
+            }
+        }
+    }
+
+    createDoneLocations();
 
     if (currentLocation.location == null) {
         setTimeout(function () {
@@ -84,82 +68,143 @@ function show_position(position) {
         }, 10000)
     }
 
-    const watchID = navigator.geolocation.watchPosition(update_player_location);
+    function createCurrentCircle() {
+        const circle = L.circle([currentLocation.lat, currentLocation.lon], {
+            stroke: false,
+            color: 'black',
+            fillColor: 'black',
+            fillOpacity: 0.2,
+            radius: 30,
+            interactive: false
+        }).addTo(map);
+
+        circle_marker = L.marker([currentLocation.lat, currentLocation.lon], {
+            icon: locationIcon
+        }).addTo(map);
+
+        circle_marker.on("click", function () {
+            current_circle.remove();
+            circle_marker.remove();
+            if (collisionInterval && watchID) {
+                clearInterval(collisionInterval);
+                navigator.geolocation.clearWatch(watchID)
+            }
+            renderDialogueUnlock(true);
+        })
+
+        return circle;
+    }
+
+    function createDoneLocations() {
+        for (locationM of doneLocations) {
+            locationM.remove()
+        }
+
+        for (let i = 0; i < storyIndex; i++) {
+            const location = data[i];
+
+            if (location.location != "intro" && location.location != null) {
+                const doneMarker = L.marker([location.lat, location.lon], {
+                    icon: locationDoneIcon
+                }).addTo(map);
+
+                var popup = L.popup();
+                function onMarkerClick(e) {
+                    popup
+                        .setLatLng(e.latlng)
+                        .setContent(location.location)
+                        .openOn(map);
+                }
+
+                doneMarker.on('click', onMarkerClick);
+
+                doneLocations.push(doneMarker);
+            }
+        }
+    }
+
+    function coords() {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                show_position(position, fly)
+            },
+            null,
+            {
+                enableHighAccuracy: true,
+                timeout: 200000,
+                maximumAge: 0
+            }
+        )
+    };
+
+    coords();
+
+}
+
+function show_position(position, fly) {
+
+    const storyIndex = parseInt(window.localStorage.getItem("storyIndex"));
+
+    let longitude = position.coords.longitude;
+    let latitude = position.coords.latitude;
+
+    if (gameInfoRendered && storyIndex == 1 && fly) {
+        setTimeout(function () {
+            map.flyTo([latitude, longitude], 13);
+        }, 4000)
+    }
+
+    var playerIcon = L.icon({
+        iconUrl: "../images/deerhatIcon.png",
+        iconSize: [50, 50]
+    })
+
+    var player_marker = L.marker([latitude, longitude], {
+        icon: playerIcon
+    }).addTo(map);
+
+    playerCords = player_marker.getLatLng();
+
+    watchID = navigator.geolocation.watchPosition(update_player_location);
 
     if (currentLocation.location != null) {
-        const current_circle = createCurrentCircle();
-        var circle_marker;
+        const locationLat = currentLocation.lat;
+        const locationLon = currentLocation.lon;
+        const circleRadius = 0.0004;
 
-        const collisionInterval = setInterval(check_collision, 1000)
+        collisionInterval = setInterval(check_collision, 1000)
 
         function check_collision() {
 
             console.log("checking");
 
-            let x_player = player_circle._path.getBoundingClientRect().x;
-            let y_player = player_circle._path.getBoundingClientRect().y;
-            let right_player = player_circle._path.getBoundingClientRect().right;
-            let bottom_player = player_circle._path.getBoundingClientRect().bottom;
+            const circleTop = locationLat + circleRadius;
+            const circleRight = locationLon + circleRadius;
+            const circleBottom = locationLat - circleRadius;
+            const circleLeft = locationLon - circleRadius;
 
-            let x_circle = current_circle._path.getBoundingClientRect().x;
-            let y_circle = current_circle._path.getBoundingClientRect().y;
-            let right_circle = current_circle._path.getBoundingClientRect().right;
-            let bottom_circle = current_circle._path.getBoundingClientRect().bottom;
+            const playerLocation = player_marker.getLatLng();
+            const playerLat = playerLocation.lat;
+            const playerLon = playerLocation.lng;
 
-            let bottomInside = false;
-            let topInside = false;
-            let rightInside = false;
-            let leftInside = false;
+            let xInside = false;
+            let yInside = false;
 
-            if (bottom_player > y_circle && bottom_player < bottom_circle) {
-                bottomInside = true;
-                console.log(bottomInside)
-            }
-            if (x_player < right_circle && x_player > x_circle) {
-                leftInside = true
-                console.log(leftInside)
-            }
-            if (y_player > y_circle && y_player < bottom_circle) {
-                topInside = true
-                console.log(topInside)
-            }
-            if (right_player < right_circle && right_player > x_circle) {
-                rightInside = true
-                console.log(rightInside)
+            if (playerLat < circleTop && playerLat > circleBottom) {
+                yInside = true;
             }
 
-            if (bottomInside && topInside && rightInside && leftInside) {
+            if (playerLon < circleRight && playerLat > circleLeft) {
+                xInside = true;
+            }
+
+            if (xInside && yInside) {
                 current_circle.remove();
                 circle_marker.remove();
                 clearInterval(collisionInterval);
                 navigator.geolocation.clearWatch(watchID)
                 renderDialogueUnlock();
             }
-        }
-
-        function createCurrentCircle() {
-            const circle = L.circle([currentLocation.lat, currentLocation.lon], {
-                stroke: false,
-                color: 'black',
-                fillColor: 'black',
-                fillOpacity: 0.2,
-                radius: 25,
-                interactive: false
-            }).addTo(map);
-
-            circle_marker = L.marker([currentLocation.lat, currentLocation.lon], {
-                icon: locationIcon
-            }).addTo(map);
-
-            circle_marker.on("click", function () {
-                current_circle.remove();
-                circle_marker.remove();
-                clearInterval(collisionInterval);
-                navigator.geolocation.clearWatch(watchID)
-                renderDialogueUnlock(true);
-            })
-
-            return circle;
         }
     }
 
@@ -172,20 +217,13 @@ function show_position(position) {
         let latitude = position.coords.latitude;
 
         player_marker.remove()
-        player_circle.remove();
-
-        player_circle = L.circle([latitude, longitude], {
-            stroke: false,
-            color: 'black',
-            fillColor: 'black',
-            fillOpacity: 0.2,
-            radius: 10,
-            interactive: false
-        }).addTo(map);
 
         player_marker = L.marker([latitude, longitude], {
             icon: playerIcon
         }).addTo(map);
+
+        const playerMarkerLatLon = player_marker.getLatLng();
+        console.log(playerMarkerLatLon);
     }
 
 
