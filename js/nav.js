@@ -1,24 +1,30 @@
+let nav_created;
 function render_nav() {
-    let phone_button = document.createElement("button");
-    phone_button.classList.add("phone_button");
-    let nav = document.createElement("div");
-    nav.classList.add("nav");
-    nav.append(phone_button);
-    document.querySelector("body").append(nav);
+    if(!nav_created) {
+        let phone_button = document.createElement("button");
+        phone_button.classList.add("phone_button");
+        let nav = document.createElement("div");
+        nav.classList.add("nav");
+        nav.append(phone_button);
+        document.querySelector("body").append(nav);
+    
+        let notebook_button = document.createElement("button");
+        notebook_button.classList.add("notebook_button");
+        nav.append(notebook_button);
+    
+        phone_button.addEventListener("click", render_phone_page);
+        notebook_button.addEventListener("click", render_notebook_page);
+    }
 
-    let notebook_button = document.createElement("button");
-    notebook_button.classList.add("notebook_button");
-    nav.append(notebook_button);
-
-    phone_button.addEventListener("click", render_phone_page);
-    notebook_button.addEventListener("click", render_notebook_page);
+    nav_created = true;
 
     check_for_notice();
 }
 
 function check_for_notice() {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
-    let new_messangers = [];
+    let new_messangers = JSON.parse(window.localStorage.getItem("newMessangers"));
+    console.log(new_messangers)
     data[storyIndex].phoneData.forEach(person => {
         person.messages.forEach((message) => {
             if(message.state == "Nytt"){
@@ -28,6 +34,7 @@ function check_for_notice() {
             }
         })
     })
+
     window.localStorage.setItem("newMessangers", JSON.stringify(new_messangers));
     if(new_messangers.length > 0) {
         document.querySelector(".phone_button").classList.add("notice_button");

@@ -999,7 +999,7 @@ function choose_sus() {
             document.querySelector(".yes").addEventListener("click", () => {
                 console.log(chosen_suspect);
                 let dialogueAfter;
-                if (data[storyIndex].location == "NW") {
+                if (data[storyIndex].location == "Nordic Wellness") {
 
                     if (chosen_suspect == "Göran") {
                         dialogueAfter = {

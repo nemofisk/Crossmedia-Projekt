@@ -18,7 +18,7 @@ const data = [
     {
         // lon: 12.953181,
         // lat: 56.459266,
-        location: "parken",
+        location: "Kungsparken",
         lat: 55.60329,
         lon: 12.992301,
         dialogueBG: "../images/dialogue/parken.jpg",
@@ -396,7 +396,6 @@ const data = [
                 img: "../images/dialogue/player.png"
             }
         ],
-        dialogueBG: "john.jpg",
         minigame: render_memory_game,
         phoneData: [
             {
@@ -499,7 +498,7 @@ const data = [
         },
     },
     {
-        location: "epicure",
+        location: "Epicuré",
         lat: 55.603181,
         lon: 12.999978,
         dialogueBG: "../images/dialogue/epicure.jpg",
@@ -858,7 +857,7 @@ const data = [
         },
     },
     {
-        location: "NW",
+        location: "Nordic Wellness",
         lat: 55.605162,
         lon: 13.007086,
         dialogueBG: "../images/dialogue/nw.jpg",
