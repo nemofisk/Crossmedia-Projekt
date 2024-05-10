@@ -898,6 +898,7 @@ function render_quiz() {
         }
 
         button_container.innerHTML = ``;
+        let correct_answer;
 
         quiz[current_question].answers.forEach((answer => {
             questionh3.textContent = quiz[current_question].question;
@@ -905,7 +906,9 @@ function render_quiz() {
             button.classList.add("answer");
             button.innerHTML = answer.answer;
             button_container.append(button);
-
+            if (answer.true) {
+                correct_answer = answer.answer;
+            }
             button.addEventListener("click", e => {
                 let answers = quizDiv.querySelectorAll(".answer");
 
@@ -926,9 +929,19 @@ function render_quiz() {
                     console.log("false");
                     current_question++;
                     button.classList.add("wrong");
+                    
+                    let options = document.querySelectorAll(".answer");
+                    
+                    options.forEach(option => {
+                        console.log(option.textContent);
+                        if(option.textContent == correct_answer) {
+                            option.classList.add("right");
+                        }
+                    })
+
                     setTimeout(() => {
                         update_quiz(quiz, current_question);
-                    }, 1000);
+                    }, 2000);
                 }
             })
         }))
@@ -1034,7 +1047,7 @@ function choose_sus() {
                         {
                             speaker: "Player",
                             line: "Vet du någon som har velat Zlatan illa?",
-                            img: "../images/dialogue/player.jpg"
+                            img: "../images/dialogue/player.png"
                         },
                         {
                             speaker: "Helena",
@@ -1054,7 +1067,7 @@ function choose_sus() {
                         {
                             speaker: "Player",
                             line: "Tack så mycket, detta kommer vara till hjälp. Dags att bege mig till St Petri Kyrka.",
-                            img: "../images/dialogue/player.jpg"
+                            img: "../images/dialogue/player.png"
                         },
                     ]
 
