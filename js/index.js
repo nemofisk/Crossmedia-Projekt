@@ -2,38 +2,44 @@
 TODO:
 CSS:
  - Startpage
-
 JS:
  - Passwords/questions for dialogue unlock
+ - Lägga till maze nånstans
 */
 
 preload_images();
 startUp();
 
 function startUp() {
-    const startUpContainer = document.createElement("div");
-    startUpContainer.classList.add("startUpContainer");
+    if (window.localStorage.getItem("storyIndex") >= 1) {
+        renderMap();
+        render_nav();
+        check_for_notice();
+    }
 
-    const startUpTitle = document.createElement("div");
-    startUpTitle.classList.add("startUpTitle");
-    startUpTitle.textContent = "Malmö Mysteries: Sherlock Holmes";
-    startUpContainer.append(startUpTitle);
-
-    const startButton = document.createElement("button");
-    startButton.classList.add("startUpButton");
-    startButton.textContent = "Starta"
-    startUpContainer.append(startButton)
-    window.localStorage.clear();
-    startButton.addEventListener("click", e => {
-        renderDialogue(false, true);
-    })
-
-    activateEventModal();
-    editContentEventModal(startUpContainer);
-
-    if (!window.localStorage.getItem("storyIndex")) {
+    if (!window.localStorage.getItem("storyIndex") || window.localStorage.getItem("storyIndex") == 0) {
         window.localStorage.setItem("storyIndex", 0);
         window.localStorage.setItem("newMessangers", JSON.stringify([]));
+
+        const startUpContainer = document.createElement("div");
+        startUpContainer.classList.add("startUpContainer");
+
+        const startUpTitle = document.createElement("div");
+        startUpTitle.classList.add("startUpTitle");
+        startUpTitle.textContent = "Malmö Mysteries: Sherlock Holmes";
+        startUpContainer.append(startUpTitle);
+
+        const startButton = document.createElement("button");
+        startButton.classList.add("startUpButton");
+        startButton.textContent = "Starta"
+        startUpContainer.append(startButton)
+
+        startButton.addEventListener("click", e => {
+            renderDialogue(false, true);
+        })
+
+        activateEventModal();
+        editContentEventModal(startUpContainer);
         console.log("no story index... adding");
     }
 }
@@ -57,7 +63,6 @@ function disableEventModal() {
 function editContentEventModal(content, dialogue) {
 
     const eventDiv = document.querySelector("#eventModal");
-
 
     if (!dialogue) {
         eventDiv.innerHTML = "";
@@ -183,6 +188,13 @@ function renderGameInfo() {
             <div>Platsåtkomst behövs inte för att kunna spela men rekommenderas för en bättre spelupplevelse</div>
             <div>Får du inte upp en notis för platsåtkomst?<br>Testa att gå in i mobilens inställningar och tillåt platsåtkomst för webbläsaren.</div>
         </div>
+        `,
+        `
+        <div>
+            Det går även att installera spelet, detta rekommenderas även för den bästa spelupplevelsen. Du gör det på olika sätt beroende på webbläsare.
+        </div>
+        <div>Safari: Klicka på dela-knappen och scrolla till och klicka "lägg till på hemskärmen".</div>
+        <div>Chrome: Du bör få en notis som frågar om du vill installera spelet. Annars kan du klicka på de tre punkterna uppe i högra hörnet och välj "installera".</div>
         `,
         `
         <div>Det finns två ikoner på kartan som du måste hålla reda på:</div>

@@ -87,6 +87,7 @@
 
     background-color: rgba(0, 0, 0, 0.178);
     backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
 
     z-index: 100;
 }
@@ -137,7 +138,8 @@
 .locationImage,
 .phoneImage,
 .notebookImage,
-.helpImage {
+.helpImage,
+.resetButton {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -211,4 +213,22 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url(../images/helpIcon.png);
+}
+
+.resetButton {
+    position: absolute;
+    width: 11vw;
+    height: 10vw;
+    top: 51px;
+    left: -4px;
+    margin: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../images/resetIcon.png);
 }

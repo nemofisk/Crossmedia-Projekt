@@ -7,14 +7,23 @@ let collisionInterval;
 let currentLocation;
 let playerCords;
 let doneLocations = [];
+let markerPlayer;
 
 function renderMap(fly = true) {
     const helpButton = document.createElement("div");
     helpButton.classList.add("helpButton");
-
     helpButton.addEventListener("click", renderGameInfo);
-
     document.body.append(helpButton);
+
+    const resetButton = document.createElement("div");
+    resetButton.classList.add("resetButton");
+    resetButton.addEventListener("click", e => {
+        if (window.confirm("VARNING: Detta startar om spelet helt, vill du fortsätta?")) {
+            window.localStorage.clear();
+            location.reload();
+        }
+    })
+    document.body.append(resetButton);
 
     if (!gameInfoRendered) {
         renderGameInfo();
@@ -38,12 +47,12 @@ function renderMap(fly = true) {
     console.log(currentLocation);
 
     var locationIcon = L.icon({
-        iconUrl: "../images/magnifyingIcon.png",
+        iconUrl: "./images/magnifyingIcon.png",
         iconSize: [50, 50]
     })
 
     var locationDoneIcon = L.icon({
-        iconUrl: "../images/doneLocationIcon.png",
+        iconUrl: "./images/doneLocationIcon.png",
         iconSize: [40, 40]
     })
 
@@ -85,6 +94,9 @@ function renderMap(fly = true) {
         circle_marker.on("click", function () {
             current_circle.remove();
             circle_marker.remove();
+            if (markerPlayer) {
+                markerPlayer.remove();
+            }
             if (collisionInterval && watchID) {
                 clearInterval(collisionInterval);
                 navigator.geolocation.clearWatch(watchID)
@@ -155,7 +167,7 @@ function show_position(position, fly) {
     }
 
     var playerIcon = L.icon({
-        iconUrl: "../images/deerhatIcon.png",
+        iconUrl: "./images/deerhatIcon.png",
         iconSize: [50, 50]
     })
 
@@ -201,6 +213,7 @@ function show_position(position, fly) {
             if (xInside && yInside) {
                 current_circle.remove();
                 circle_marker.remove();
+                player_marker.remove();
                 clearInterval(collisionInterval);
                 navigator.geolocation.clearWatch(watchID)
                 renderDialogueUnlock();
@@ -213,14 +226,16 @@ function show_position(position, fly) {
 
         playerPosition = position;
 
-        let longitude = position.coords.longitude;
-        let latitude = position.coords.latitude;
+        let updLongitude = position.coords.longitude;
+        let updLatitude = position.coords.latitude;
 
         player_marker.remove()
 
-        player_marker = L.marker([latitude, longitude], {
+        player_marker = L.marker([updLatitude, updLongitude], {
             icon: playerIcon
         }).addTo(map);
+
+        markerPlayer = player_marker;
 
         const playerMarkerLatLon = player_marker.getLatLng();
         console.log(playerMarkerLatLon);

@@ -4,13 +4,21 @@ div.dialogueContainer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    backdrop-filter: blur(0px);
-    transition-property: backdrop-filter;
-    transition-duration: 2s;
+    animation-name: blurAnimation;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
 
-.blur {
-    backdrop-filter: blur(10px);
+@keyframes blurAnimation {
+    from {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    to {
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+    }
 }
 
 .dialogueBackground {
@@ -49,6 +57,7 @@ div.dialogueContainer {
     border: 3px solid #422110;
     top: -70px;
     left: -3px;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-radius: 10px 10px 0px 0px;
 }
@@ -89,6 +98,7 @@ div.dialogueContainer {
     background-repeat: no-repeat;
     overflow: hidden;
     background-position: center;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     gap: 30px;
     font-family: "GlacialR";

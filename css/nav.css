@@ -83,6 +83,7 @@ body {
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.178);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     padding: 40px;
     border-radius: 5px;
 }
@@ -269,6 +270,7 @@ body {
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.178);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     display: flex;
     justify-content: center;
     align-items: center;

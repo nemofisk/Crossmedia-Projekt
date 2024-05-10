@@ -80,15 +80,11 @@ function renderDialogue(beforeGame, afterGame) {
     const currentStory = data[storyIndex];
     let dialogue;
 
-    const dialogueContainer = document.createElement("div");
-    dialogueContainer.classList.add("blur")
-
-    setTimeout(function () {
-        dialogueContainer.classList.add("dialogueContainer");
-    }, 1)
-
     activateEventModal();
+    const dialogueContainer = document.createElement("div");
     editContentEventModal(dialogueContainer, true)
+    dialogueContainer.classList.add("dialogueContainer");
+
 
     if (beforeGame) {
         if (!currentStory.dialogueBefore) {
@@ -104,7 +100,7 @@ function renderDialogue(beforeGame, afterGame) {
         window.localStorage.setItem("storyIndex", storyIndex + 1);
     }
 
-    dialogueContainer.addEventListener("transitionend", e => {
+    setTimeout(e => {
         const dialogueWindow = document.createElement("div");
         dialogueWindow.classList.add("dialogueWindow");
         dialogueContainer.append(dialogueWindow);
@@ -216,7 +212,7 @@ function renderDialogue(beforeGame, afterGame) {
         }
 
         writeLine();
-    })
+    }, 2000)
 
 }
 
