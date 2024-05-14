@@ -195,19 +195,20 @@ function show_position(position, fly) {
             const circleBottom = locationLat - circleRadius;
             const circleLeft = locationLon - circleRadius;
 
-            const playerLocation = player_marker.getLatLng();
-            const playerLat = playerLocation.lat;
-            const playerLon = playerLocation.lng;
+            const playerLat = latitude;
+            const playerLon = longitude;
 
             let xInside = false;
             let yInside = false;
 
             if (playerLat < circleTop && playerLat > circleBottom) {
                 yInside = true;
+                console.log("yInside = " + yInside);
             }
 
-            if (playerLon < circleRight && playerLat > circleLeft) {
+            if (playerLon < circleRight && playerLon > circleLeft) {
                 xInside = true;
+                console.log("xInside = " + xInside);
             }
 
             if (xInside && yInside) {
@@ -246,6 +247,8 @@ function show_position(position, fly) {
                 .setLatLng(e.latlng)
                 .setContent("Detta är du")
                 .openOn(map);
+
+            map.flyTo([updLatitude, updLongitude], 13);
         }
 
         player_marker.on('click', onMarkerClick);
@@ -253,13 +256,13 @@ function show_position(position, fly) {
 
 
 
-    // var popup = L.popup();
-    // function onMapClick(e) {
-    //     popup
-    //         .setLatLng(e.latlng)
-    //         .setContent("You clicked the map at " + e.latlng.toString())
-    //         .openOn(map);
-    // }
+    var popup = L.popup();
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(map);
+    }
 
-    // map.on('click', onMapClick);
+    map.on('click', onMapClick);
 }

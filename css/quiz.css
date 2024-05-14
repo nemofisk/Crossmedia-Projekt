@@ -29,7 +29,7 @@ body {
     width: 80vw;
     height: fit-content;
     border-radius: 5px;
-    border: solid;
+    border: 3px solid black;
     font-family: "GlacialR";
 }
 
@@ -49,9 +49,10 @@ body {
     padding: 20px;
     height: fit-content;
     font-size: 5vw;
+    color: black;
     background: white;
     border-radius: 5px;
-    border: solid;
+    border: 3px solid black;
     font-family: "GlacialR";
 }
 
