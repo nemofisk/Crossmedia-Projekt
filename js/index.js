@@ -111,7 +111,7 @@ function renderInfoModal(contentArray) {
 
             if (playerCords) {
                 setTimeout(function () {
-                    map.flyTo([playerCords.lat, playerCords.lng], 13)
+                    map.flyTo([playerCords.lat, playerCords.lng], 17)
                 }, 4000)
             }
         }

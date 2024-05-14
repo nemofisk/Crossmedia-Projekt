@@ -1077,6 +1077,7 @@ const data = [
         ],
         passQuestion: "Vilket år står det på skylten?",
         dialoguePassword: "1",
+        minigame: maze,
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -1404,5 +1405,4 @@ const imageURLs = [
     "./images/dialogue/evaend.jpg",
     "./images/dialogue/goranend.jpg",
     "./images/dialogue/saraend.jpg",
-
 ]

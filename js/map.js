@@ -63,7 +63,7 @@ function renderMap(fly = true) {
 
             if (playerCords) {
                 setTimeout(function () {
-                    map.flyTo([playerCords.lat, playerCords.lng], 13)
+                    map.flyTo([playerCords.lat, playerCords.lng], 17)
                 }, 4000)
             }
         }
@@ -162,7 +162,7 @@ function show_position(position, fly) {
 
     if (gameInfoRendered && storyIndex == 1 && fly) {
         setTimeout(function () {
-            map.flyTo([latitude, longitude], 13);
+            map.flyTo([latitude, longitude], 17);
         }, 4000)
     }
 
