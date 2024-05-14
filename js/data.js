@@ -399,7 +399,7 @@ const data = [
         dialogueAfter: [
             {
                 speaker: "Du",
-                line: "Okej, det verkar som att Stefan brukar hänga på Epicuré vid Gustav Adolfs Torg. Jag beger mig dit.",
+                line: "Okej, det verkar som att Stefans fru Eva brukar hänga på Epicuré vid Gustav Adolfs Torg. Jag beger mig dit.",
                 img: "./images/dialogue/player.png"
             }
         ],
