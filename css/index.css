@@ -13,6 +13,16 @@
     src: url(../fonts/caveat.regular.ttf);
 }
 
+@font-face {
+    font-family: "SacredBridge";
+    src: url(../fonts/SacredBridge.ttf);
+}
+
+
+* {
+    user-select: none
+}
+
 #map {
     height: 100vh;
     width: 100vw;
@@ -26,17 +36,36 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border: 5px solid black;
 
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+    font-family: "GlacialR";
+    position: relative;
+}
+
+.startUpTitle {
+    font-family: "SacredBridge";
+    font-size: 10vw;
+    font-weight: bold;
+    color: #422110;
+    text-shadow: -2px 0 #E9D1AF, 0 2px #E9D1AF, 2px 0 #E9D1AF, 0 -2px #E9D1AF, -2px -2px 10px black;
+}
+
+.startUpElementContainer {
+    display: grid;
+    position: absolute;
+    top: 136px;
+    left: 20px;
 }
 
 .blinking_text {
     font-family: "GlacialR";
-    font-size: 5vw;
+    font-size: 4vw;
+    transition-property: opacity;
+    transition-duration: 1s;
+    justify-self: center;
 }
 
 #eventModal.modalDisabled {
@@ -86,7 +115,7 @@
     backdrop-filter: blur(1.5px);
     -webkit-backdrop-filter: blur(1.5px);
 
-    z-index: 100;
+    z-index: 30;
 }
 
 .modalWrapper {

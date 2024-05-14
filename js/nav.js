@@ -118,11 +118,11 @@ function render_phone_page() {
 
             for (let person of phone_data) {
                 if (person.name == name) {
-                    messages.style.backgroundImage = `url(./images/clues/${person.img})`;
-                    messages.classList.add(person.name[0]);
-                    if (person.messages.length == 1) {
-                        messages.style.flexDirection = "column-reverse";
-                    }
+                    // messages.style.backgroundImage = `url(./images/clues/${person.img})`;
+                    // messages.classList.add(person.name[0]);
+                    // if (person.messages.length == 1) {
+                    //     messages.style.flexDirection = "column-reverse";
+                    // }
                     setTimeout(() => {
                         person.messages.forEach(message => {
 

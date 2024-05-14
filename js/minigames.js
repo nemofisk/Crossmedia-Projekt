@@ -447,10 +447,16 @@ function maze() {
 
             if (cellCol == conditionCol && cellRow == conditionRow) {
                 if (!cell.classList.contains("wall")) {
+                    if (cellCol == 14 && cellRow == 18) {
+                        doneMinigame();
+                    }
                     return true;
                 }
+
                 return false;
             }
+
+
         }
     }
 
@@ -546,6 +552,11 @@ function maze() {
         for (let col = 1; col <= columns; col++) {
             const mazeCell = document.createElement("div");
             mazeCell.classList.add("cell");
+
+            if (col == 14 && row == 18) {
+                mazeCell.classList.add("mazeGoal");
+            }
+
             mazeCell.style.gridColumn = col;
             mazeCell.style.gridRow = row;
 
@@ -977,7 +988,7 @@ function choose_sus() {
         console.log(name);
         img_url = `--img:url(../images/clues/${name.toLowerCase()}.jpg);`
 
-        if(name == "Göran") {
+        if (name == "Göran") {
             img_url = `--img:url(../images/clues/goran.jpg);`
         }
         sus_div.setAttribute("style", img_url);
@@ -1127,4 +1138,11 @@ function choose_sus() {
             })
         })
     })
+
+    const notebookButton = document.createElement("div");
+    notebookButton.classList.add("notebook_button");
+
+    notebookButton.addEventListener("click", render_notebook_page);
+
+    main_page.append(notebookButton);
 }

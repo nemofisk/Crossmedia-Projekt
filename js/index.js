@@ -25,15 +25,45 @@ function startUp() {
         const startUpContainer = document.createElement("div");
         startUpContainer.classList.add("startUpContainer");
 
-        startUpContainer.addEventListener("click", e => {
-            renderDialogue(false, true);
-        })
+        const elementContainer = document.createElement("div");
+        elementContainer.classList.add("startUpElementContainer");
+
+        const startUpTitle = document.createElement("p");
+        startUpTitle.classList.add("startUpTitle");
+        startUpTitle.textContent = "C  ity of Secrets"
 
         let text = document.createElement("p");
         text.classList.add("blinking_text");
-        startUpContainer.append(text);
+        elementContainer.append(startUpTitle)
+        elementContainer.append(text);
+
+
+        startUpContainer.append(elementContainer);
+
+        let textOpacity = 1;
 
         text.textContent = "Klicka på skärmen för att börja..."
+        const intervalID = setInterval(function () {
+            console.log("blinking");
+            if (textOpacity == 1) {
+                textOpacity = 0.3
+                text.style.opacity = textOpacity
+                return;
+            }
+
+            if (textOpacity == 0.3) {
+                textOpacity = 1
+                text.style.opacity = textOpacity
+                return;
+            }
+
+
+        }, 1000)
+
+        startUpContainer.addEventListener("click", e => {
+            clearInterval(intervalID)
+            renderDialogue(false, true);
+        })
 
         activateEventModal();
         editContentEventModal(startUpContainer);

@@ -16,16 +16,25 @@
 }
 
 .cell.wall {
-    background-color: black;
+    background-color: #dfdfdf;
 }
 
 .player {
-    border-radius: 50%;
-    height: 2vw;
-    width: 2vw;
-    background-color: red;
+    height: 6vw;
+    width: 6vw;
     justify-self: center;
     align-self: center;
+    background-image: url(../images/dialogue/player.png);
+    background-size: cover;
+}
+
+.mazeGoal {
+    height: 6vw;
+    width: 6vw;
+    justify-self: center;
+    align-self: center;
+    background-image: url(../images/cross.png);
+    background-size: cover;
 }
 
 .controlsContainer {

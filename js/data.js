@@ -1008,6 +1008,18 @@ const data = [
         lat: 55.606933,
         lon: 13.002585,
         dialogueBG: "./images/dialogue/kyrkan.jpg",
+        dialogueBefore: [
+            {
+                speaker: "Du",
+                line: "Hmm, jag hittar inte prästen.",
+                img: "./images/dialogue/player.png"
+            },
+            {
+                speaker: "Du",
+                line: "Jag får leta runt lite.",
+                img: "./images/dialogue/player.png"
+            }
+        ],
         dialogueAfter: [
             {
                 speaker: "Pastor Emma",
