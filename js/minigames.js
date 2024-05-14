@@ -974,6 +974,9 @@ function choose_sus() {
         main_page.append(sus_div);
 
         let name = suspect.name;
+        if(name == "Göran") {
+            name == "Goran";
+        }
         img_url = `--img:url(../images/clues/${name.toLowerCase()}.jpg);`
         sus_div.setAttribute("style", img_url);
 
@@ -1011,7 +1014,6 @@ function choose_sus() {
                 console.log(chosen_suspect);
                 let dialogueAfter;
                 if (data[storyIndex].location == "Nordic Wellness") {
-
                     if (chosen_suspect == "Göran") {
                         dialogueAfter = {
                             speaker: "Helena",
