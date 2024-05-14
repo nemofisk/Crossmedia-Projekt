@@ -296,3 +296,15 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.S {
+    background-image: url(../images/clues/sherlock.jpg);
+}
+
+.J {
+    background-image: url(../images/clues/john.jpg);
+}
+
+.L {
+    background-image: url(../images/clues/lestrade.jpg);
+}
