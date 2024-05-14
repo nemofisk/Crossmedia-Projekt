@@ -133,10 +133,10 @@ body {
     padding: 10px;
     justify-content: center;
     align-items: center;
-    background: blue;
+    background: rgba(33, 138, 255, 0.9);
     width: fit-content;
     max-width: 60%;
-    border-radius: 5px;
+    border-radius: 10px 10px 10px 0px;
     padding: 10px;
     margin: 0;
     position: relative;
