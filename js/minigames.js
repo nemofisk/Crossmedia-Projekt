@@ -974,10 +974,12 @@ function choose_sus() {
         main_page.append(sus_div);
 
         let name = suspect.name;
-        if(name == "Göran") {
-            name == "Goran";
-        }
+        console.log(name);
         img_url = `--img:url(../images/clues/${name.toLowerCase()}.jpg);`
+
+        if(name == "Göran") {
+            img_url = `--img:url(../images/clues/goran.jpg);`
+        }
         sus_div.setAttribute("style", img_url);
 
         let p = document.createElement("p");

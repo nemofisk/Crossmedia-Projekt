@@ -45,7 +45,7 @@ const data = [
         dialogueAfter: [
             {
                 speaker: "Göran",
-                line: "Nåja. Nu när du gjort din del kan jag berätta vad jag vet. Igår när Zlatan var ute på sin sedvanliga kvällsjobb så satt jag här i parken för att mata lite fåglar. Eftersom jag är fotograf så började jag ta bilder på Zlatan när han sprang förbi, men då händer något fruktansvärt! En maskerad person kommer ut i busken och tar Zlatan, de kör iväg i en rosa skåpbil. Jag lyckades ta en bild på spektaklet.",
+                line: "Nåja. Nu när du gjort din del kan jag berätta vad jag vet. Igår när Zlatan var ute på sin sedvanliga kvällsjogg så satt jag här i parken för att mata lite fåglar. Eftersom jag är fotograf så började jag ta bilder på Zlatan när han sprang förbi, men då händer något fruktansvärt! En maskerad person kommer ut i busken och tar Zlatan, de kör iväg i en rosa skåpbil. Jag lyckades ta en bild på spektaklet.",
                 img: "./images/dialogue/goran.jpg"
             },
             {
@@ -355,6 +355,11 @@ const data = [
         location: null, //John ringer,
         dialogueBG: "./images/dialogue/vacation.jpg",
         dialogueBefore: [
+            {
+                speaker: "John Watson",
+                line: "*RING RING RING*",
+                img: "./images/dialogue/john.jpg"
+            },
             {
                 speaker: "John Watson",
                 line: "Läget? Jag lyckades hitta Stefans nummer men han svarar inte. Testa du att ringa...",
