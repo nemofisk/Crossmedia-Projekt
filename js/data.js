@@ -9,7 +9,7 @@ const data = [
             },
             {
                 speaker: "Sherlock Holmes",
-                line: "Vi är på semester och behöver därför din hjälp att hitta honom, vi har hört talas om dina dektektivskills och har fullt förtroende för att du kan lösa mysteriet. Jag och Watson kan hjälpa dig på vägen om du skulle köra fast. Vi har fått uppgifter om att han senast sågs joggandes i Slottsparken, det kan vara ett bra ställe att börja söka ledtrådar på.",
+                line: "Vi är på semester och behöver därför din hjälp att hitta honom, vi har hört talas om dina detektivskills och har fullt förtroende för att du kan lösa mysteriet. Jag och Watson kan hjälpa dig på vägen om du skulle köra fast. Vi har fått uppgifter om att han senast sågs joggandes i Slottsparken, det kan vara ett bra ställe att börja söka ledtrådar på.",
                 img: "./images/dialogue/sherlock.jpg"
             }
         ],

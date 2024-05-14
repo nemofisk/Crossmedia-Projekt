@@ -118,24 +118,22 @@ function render_phone_page() {
 
             for (let person of phone_data) {
                 if (person.name == name) {
-                    // messages.style.backgroundImage = `url(./images/clues/${person.img})`;
-                    // messages.classList.add(person.name[0]);
-                    // if (person.messages.length == 1) {
-                    //     messages.style.flexDirection = "column-reverse";
-                    // }
-                    setTimeout(() => {
-                        person.messages.forEach(message => {
+                    messages.style.backgroundImage = `url(./images/clues/${person.img})`;
+                    messages.classList.add(person.name[0]);
+                    if (person.messages.length == 1) {
+                        messages.style.flexDirection = "column-reverse";
+                    }
+                    person.messages.forEach(message => {
 
-                            let chat_bubble = document.createElement("div");
-                            chat_bubble.classList.add("chat_bubble");
-                            chat_bubble.innerHTML = `
+                        let chat_bubble = document.createElement("div");
+                        chat_bubble.classList.add("chat_bubble");
+                        chat_bubble.innerHTML = `
                                 <p class="message_text">${message.message}</p>
                                 <p class="message_state">${message.state}</p>
                             `;
-                            messages.append(chat_bubble);
-                        })
-                        document.querySelector(".messages").scrollTop = document.querySelector(".messages").scrollHeight;
-                    }, 1000)
+                        messages.append(chat_bubble);
+                    })
+                    document.querySelector(".messages").scrollTop = document.querySelector(".messages").scrollHeight;
                 }
             }
 
