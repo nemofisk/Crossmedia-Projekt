@@ -22,7 +22,10 @@
 .startUpContainer {
     height: 100vh;
     width: 100vw;
-    background-color: burlywood;
+    background-image: url(../images/frontPage.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     border: 5px solid black;
 
     display: flex;
@@ -31,15 +34,9 @@
     flex-direction: column;
 }
 
-.startUpTitle {
-    width: 255px;
-    font-size: 34px;
-    text-align: center;
-}
-
-.startUpButton {
-    width: 150px;
-    height: 50px;
+.blinking_text {
+    font-family: "GlacialR";
+    font-size: 5vw;
 }
 
 #eventModal.modalDisabled {
