@@ -25,19 +25,15 @@ function startUp() {
         const startUpContainer = document.createElement("div");
         startUpContainer.classList.add("startUpContainer");
 
-        const startUpTitle = document.createElement("div");
-        startUpTitle.classList.add("startUpTitle");
-        startUpTitle.textContent = "Malmö Mysteries: Sherlock Holmes";
-        startUpContainer.append(startUpTitle);
-
-        const startButton = document.createElement("button");
-        startButton.classList.add("startUpButton");
-        startButton.textContent = "Starta"
-        startUpContainer.append(startButton)
-
-        startButton.addEventListener("click", e => {
+        startUpContainer.addEventListener("click", e => {
             renderDialogue(false, true);
         })
+
+        let text = document.createElement("p");
+        text.classList.add("blinking_text");
+        startUpContainer.append(text);
+
+        text.textContent = "Klicka på skärmen för att börja..."
 
         activateEventModal();
         editContentEventModal(startUpContainer);
