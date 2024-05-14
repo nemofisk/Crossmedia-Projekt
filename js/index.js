@@ -18,6 +18,7 @@ function startUp() {
     }
 
     if (!window.localStorage.getItem("storyIndex") || window.localStorage.getItem("storyIndex") == 0) {
+        window.localStorage.setItem("gameInfoRendered", false);
         window.localStorage.setItem("storyIndex", 0);
         window.localStorage.setItem("newMessangers", JSON.stringify([]));
 
@@ -105,14 +106,17 @@ function renderInfoModal(contentArray) {
     infoModal.querySelector(".closeInfo").addEventListener("click", e => {
         infoModal.remove();
 
-        if (!gameInfoRendered) {
-            gameInfoRendered = true;
+        const rendered = JSON.parse(window.localStorage.getItem("gameInfoRendered"))
+        console.log(rendered);
+
+        if (!rendered) {
+            window.localStorage.setItem("gameInfoRendered", true);
             map.flyTo([currentLocation.lat, currentLocation.lon], 17);
 
             if (playerCords) {
                 setTimeout(function () {
                     map.flyTo([playerCords.lat, playerCords.lng], 17)
-                }, 4000)
+                }, 2500)
             }
         }
     })

@@ -217,10 +217,10 @@
 
 .resetButton {
     position: absolute;
-    width: 11vw;
+    width: 12vw;
     height: 10vw;
     top: 51px;
-    left: -4px;
+    left: -6px;
     margin: 5vw;
     display: flex;
     justify-content: center;
@@ -229,6 +229,6 @@
     background: none;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-image: url(../images/resetIcon.png);
 }

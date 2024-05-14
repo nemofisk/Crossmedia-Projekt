@@ -1,5 +1,4 @@
 let map;
-let gameInfoRendered = false;
 let watchID;
 let current_circle;
 let circle_marker;
@@ -25,7 +24,9 @@ function renderMap(fly = true) {
     })
     document.body.append(resetButton);
 
-    if (!gameInfoRendered) {
+    const rendered = JSON.parse(window.localStorage.getItem("gameInfoRendered"))
+
+    if (!rendered) {
         renderGameInfo();
     }
 
@@ -58,7 +59,8 @@ function renderMap(fly = true) {
 
     if (currentLocation.location != null) {
         current_circle = createCurrentCircle();
-        if (gameInfoRendered && fly) {
+        const rendered = JSON.parse(window.localStorage.getItem("gameInfoRendered"))
+        if (rendered && fly) {
             map.flyTo([currentLocation.lat, currentLocation.lon], 17);
 
             if (playerCords) {
@@ -160,10 +162,12 @@ function show_position(position, fly) {
     let longitude = position.coords.longitude;
     let latitude = position.coords.latitude;
 
-    if (gameInfoRendered && storyIndex == 1 && fly) {
+    const rendered = JSON.parse(window.localStorage.getItem("gameInfoRendered"))
+
+    if (rendered && storyIndex == 1 && fly) {
         setTimeout(function () {
             map.flyTo([latitude, longitude], 17);
-        }, 4000)
+        }, 2500)
     }
 
     var playerIcon = L.icon({
