@@ -64,8 +64,8 @@ const data = [
                 img: "./images/dialogue/goran.jpg"
             }
         ],
-        passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1",
+        passQuestion: "Hur många rådjur finns det?",
+        dialoguePassword: "17",
         minigame: render_quiz,
         phoneData: [
             {
@@ -134,8 +134,8 @@ const data = [
             }
         ],
         minigame: wordle,
-        passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1",
+        passQuestion: "Vad står det på skylten ovanför restaurangen förutom Johan P?",
+        dialoguePassword: "fiskrestaurang",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -261,8 +261,8 @@ const data = [
             },
         ],
         minigame: render_puzzle,
-        passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1",
+        passQuestion: "Hur många stjärnor håller mannen på statyn upp?",
+        dialoguePassword: "11",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -626,8 +626,8 @@ const data = [
                 img: "./images/dialogue/player.png"
             },
         ],
-        passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1",
+        passQuestion: "Vilken tid öppnar Epicuré på lördagar? Svara digitalt.",
+        dialoguePassword: "11:30",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -884,8 +884,8 @@ const data = [
         ],
         dialogueAfter: "",
         minigame: choose_sus,
-        passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1",
+        passQuestion: "Vilka siffror har parkeringszonen, titta på skylten till höger om Nordic Wellness.",
+        dialoguePassword: "424",
         phoneData: [
             {
                 name: "SHERLOCK",
@@ -1080,8 +1080,8 @@ const data = [
                 img: "./images/dialogue/player.png"
             },
         ],
-        passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1",
+        passQuestion: "På hur många språk kan man läsa infon på skylten höger om ingången?",
+        dialoguePassword: "3",
         minigame: maze,
         phoneData: [
             {
@@ -1219,8 +1219,8 @@ const data = [
         ],
         dialogueAfter: "",
         minigame: choose_sus,
-        passQuestion: "Vilket år står det på skylten?",
-        dialoguePassword: "1",
+        passQuestion: "Kolla på marken, vilket år är närmast ingången?",
+        dialoguePassword: "1995",
         phoneData: [
             {
                 name: "SHERLOCK",

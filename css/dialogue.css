@@ -180,6 +180,10 @@ div.dialogueContainer {
     gap: 15px;
 }
 
+.passQuestion {
+    text-align: center;
+}
+
 .passInput {
     padding: 5px;
     height: 40px;
