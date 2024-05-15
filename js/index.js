@@ -1,10 +1,9 @@
 /*
 TODO:
-CSS:
- - Startpage
-JS:
- - Passwords/questions for dialogue unlock
- - Lägga till maze nånstans
+    - Mindre vikt på frontpage bilden
+    - Ladda in fonts innan sidan laddas
+    - Vänta med att visa frontpage innan allting laddats?
+
 */
 
 alert("försök 99... minst")
