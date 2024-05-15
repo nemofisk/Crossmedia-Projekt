@@ -199,8 +199,9 @@ function show_position(position, fly) {
             const circleBottom = locationLat - circleRadius;
             const circleLeft = locationLon - circleRadius;
 
-            const playerLat = latitude;
-            const playerLon = longitude;
+            const playerLocation = player_marker.getLatLng();
+            const playerLat = playerLocation.lat;
+            const playerLon = playerLocation.lng;
 
             let xInside = false;
             let yInside = false;

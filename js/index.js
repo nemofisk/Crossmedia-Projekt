@@ -7,6 +7,7 @@ JS:
  - Lägga till maze nånstans
 */
 
+alert("försök 99... minst")
 preload_images();
 startUp();
 

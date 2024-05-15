@@ -62,7 +62,7 @@
 
 .blinking_text {
     font-family: "GlacialR";
-    font-size: clamp(15px, 4vw, 30px);
+    font-size: clamp(15px, 1.5vw, 20px);
     transition-property: opacity;
     transition-duration: 1s;
     justify-self: center;

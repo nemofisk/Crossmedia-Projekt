@@ -77,8 +77,8 @@ function render_phone_page() {
         })
 
         add_contact("SHERLOCK");
-        add_contact("JOHN WATSON");
         add_contact("LESTRADE");
+        add_contact("JOHN WATSON");
 
         function add_contact(name) {
             let contacts = document.querySelector(".contacts");
@@ -99,15 +99,15 @@ function render_phone_page() {
         function render_messages(e) {
             let name = e.target.outerText;
 
-            let notice_index = notices_array.indexOf(name);
-            if (notice_index > -1) { // only splice array when item is found
-                notices_array.splice(notice_index, 1); // 2nd parameter means remove one item only
-            }
-            window.localStorage.setItem("newMessangers", JSON.stringify(notices_array));
+            // let notice_index = notices_array.indexOf(name);
+            // if (notice_index > -1) { // only splice array when item is found
+            //     notices_array.splice(notice_index, 1); // 2nd parameter means remove one item only
+            // }
+            // window.localStorage.setItem("newMessangers", JSON.stringify(notices_array));
 
-            if (notices_array.length < 1) {
-                document.querySelector(".phone_button").classList.remove("notice_button");
-            }
+            // if (notices_array.length < 1) {
+            //     document.querySelector(".phone_button").classList.remove("notice_button");
+            // }
 
             document.querySelector(".current_phone_page").textContent += ` > ${name}`;
             document.querySelector(".contacts").remove();
@@ -117,7 +117,9 @@ function render_phone_page() {
             messages.classList.add("messages");
 
             for (let person of phone_data) {
+                alert(`Name:${name}  Person.name:${person.name}`)
                 if (person.name == name) {
+                    alert("Found")
                     messages.style.backgroundImage = `url(./images/clues/${person.img})`;
                     messages.classList.add(person.name[0]);
                     if (person.messages.length == 1) {
@@ -133,11 +135,13 @@ function render_phone_page() {
                             `;
                         messages.append(chat_bubble);
                     })
-                    document.querySelector(".messages").scrollTop = document.querySelector(".messages").scrollHeight;
+
                 }
             }
 
             phone_page.append(messages);
+
+            document.querySelector(".messages").scrollTop = document.querySelector(".messages").scrollHeight;
 
             let button_container = document.querySelector(".button_container");
             let back_button = document.createElement("button");
