@@ -21,8 +21,8 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 15vw;
-    height: 15vw;
+    width: 10vw;
+    height: 10vw;
     bottom: 0;
     right: 0;
     margin: 5vw;
@@ -39,8 +39,8 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 15vw;
-    height: 15vw;
+    width: 10vw;
+    height: 10vw;
     bottom: 0;
     left: 0;
     margin: 5vw;
@@ -65,13 +65,26 @@ body {
     background-size: cover;
 }
 
-.notice_contact::after {
-    height: 25px;
-    width: 25px;
+.notice_contact::before {
+    height: 20px;
+    width: 20px;
     content: "";
     position: absolute;
-    right: 0;
+    left: -30px;
     background-image: url(../images/notice.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.notice_contact::after {
+    height: 15px;
+    width: 15px;
+    content: "";
+    position: absolute;
+    right: 0px;
+    background-image: url(../images/back.png);
+    transform: rotate(180deg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -90,8 +103,12 @@ body {
 }
 
 .current_phone_page {
-    margin-top: 5vh;
     font-size: 4.5vw;
+    font-weight: bold;
+}
+
+.current_arrow {
+    font-size: 7.4vw;
     font-weight: bold;
 }
 
@@ -110,15 +127,15 @@ body {
     width: 100%;
     position: relative;
     font-size: 4.5vw;
-    border-bottom: solid black 3px;
+    border-bottom: solid black 1px;
 }
 
 .messages {
-    margin-top: 5vh;
+    margin-top: 2.5vh;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    height: 70%;
+    height: 87%;
     width: 100%;
     border-radius: 5px;
     padding: 10px;
@@ -136,7 +153,7 @@ body {
     background: rgba(33, 138, 255, 0.9);
     width: fit-content;
     max-width: 60%;
-    border-radius: 10px 10px 10px 0px;
+    border-radius: 10px;
     padding: 10px;
     margin: 0;
     position: relative;
@@ -152,7 +169,7 @@ body {
 .message_state {
     color: rgba(255, 255, 255, 0.8);
     position: absolute;
-    right: 10px;
+    left: 10px;
     bottom: 10px;
     opacity: .8;
 }
@@ -193,16 +210,17 @@ body {
 }
 
 .notebook_page {
-    background: #f9d697;
+    background-image: url(../images/paper.jpg);
     height: 85vh;
     width: 90vw;
     padding: 40px;
-    border-bottom: solid 2px black;
+    border-bottom: solid 1px black;
     position: relative;
 }
 
 .notebook_page>h3 {
-    border-bottom: solid 2px black;
+    border-bottom: solid 1px black;
+    width: fit-content;
 }
 
 .current_notebook_page {
@@ -211,7 +229,7 @@ body {
 
 .notebook_img {
     position: absolute;
-    top: -20px;
+    top: 0px;
     left: 0;
     height: 50px;
     width: 100%;
@@ -219,19 +237,17 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 1;
 }
 
 .notebook_categories {
-    margin-top: 5vw;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    width: 100%;
     font-family: "Caveat";
 }
 
 .notebook_list {
-    margin-top: 5vw;
     overflow: hidden;
     overflow: scroll;
     height: 65vh;
@@ -247,28 +263,40 @@ body {
 }
 
 .notebook_categories>h3 {
-    border-bottom: solid 3px black;
+    border-bottom: solid 1px black;
+    width: fit-content;
     font-size: 7vw;
 }
 
+.clue {
+    position: relative;
+}
+
 .clue_text {
-    border-bottom: solid 3px black;
+    border-bottom: solid 1px black;
+    width: fit-content;
     font-size: 7vw;
     font-weight: bold;
     font-family: "Caveat";
 }
 
 .description {
+    margin-top: 15px;
     font-size: 5.5vw;
     font-weight: normal;
     font-family: "Caveat";
 }
 
 .notebook_popup_button {
-    font-size: 5vw;
-    font-style: normal;
-    text-decoration: underline;
-    text-align: end;
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    height: 5vw;
+    width: 5vw;
+    background-image: url(../images/img.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .notebook_popup {
@@ -287,6 +315,7 @@ body {
 .notebook_popup_img {
     height: 50vh;
     width: 95vw;
+    border-radius: 10px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

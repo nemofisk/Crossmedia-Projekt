@@ -109,7 +109,7 @@ function render_phone_page() {
             //     document.querySelector(".phone_button").classList.remove("notice_button");
             // }
 
-            document.querySelector(".current_phone_page").textContent += ` > ${name}`;
+            document.querySelector(".current_phone_page").innerHTML = `${name}`;
             document.querySelector(".contacts").remove();
 
             let phone_page = document.querySelector(".phone_page");
@@ -131,8 +131,14 @@ function render_phone_page() {
                         chat_bubble.classList.add("chat_bubble");
                         chat_bubble.innerHTML = `
                                 <p class="message_text">${message.message}</p>
-                                <p class="message_state">${message.state}</p>
                             `;
+
+                        console.log(message.state)
+                        if(message.state == "Nytt") {
+                            chat_bubble.innerHTML += `
+                                <p class="message_state">${message.state}</p>
+                            `
+                        }
                         messages.append(chat_bubble);
                     })
 
@@ -257,11 +263,10 @@ function render_notebook_page() {
                                 <p class="description">${object.description}</p>
                             `;
 
-                            let p = document.createElement("p");
-                            p.textContent = "Se bild..."
-                            p.classList.add("notebook_popup_button");
-                            clue.append(p);
-                            p.addEventListener("click", () => {
+                            let img_button = document.createElement("div");
+                            img_button.classList.add("notebook_popup_button");
+                            clue.append(img_button);
+                            img_button.addEventListener("click", () => {
                                 render_notebook_popup(object);
                             })
 
@@ -295,11 +300,10 @@ function render_notebook_page() {
                                             <p class="description">${clue.description}</p>
                                         `;
                                         if (clue.img) {
-                                            let p = document.createElement("p");
-                                            p.textContent = "Se bild..."
-                                            p.classList.add("notebook_popup_button");
-                                            clue_div.append(p);
-                                            p.addEventListener("click", () => {
+                                            let img_button = document.createElement("div");
+                                            img_button.classList.add("notebook_popup_button");
+                                            clue_div.append(img_button);
+                                            img_button.addEventListener("click", () => {
                                                 render_notebook_popup(clue);
                                             })
                                         }
