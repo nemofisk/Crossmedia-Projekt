@@ -322,7 +322,7 @@ function wordle() {
     const gameDiv = document.createElement("div");
     gameDiv.classList.add("minigameBackdrop")
     gameDiv.setAttribute("id", "wordle-game");
-    editContentEventModal(gameDiv, true)
+    editContentEventModal(gameDiv, false, true)
 
     const rowContainer = document.createElement("div");
     rowContainer.classList.add("row-container")
@@ -355,7 +355,7 @@ function render_memory_game() {
     </div>
     `;
 
-    editContentEventModal(memoryDiv, true);
+    editContentEventModal(memoryDiv, false, true);
 
     let shuffle_numbers = shuffle_array(numbers);
 
@@ -538,7 +538,7 @@ function maze() {
     gameArea.setAttribute("id", "mazeGame");
     gameWrapper.append(gameArea);
 
-    editContentEventModal(gameWrapper, true)
+    editContentEventModal(gameWrapper, false, true)
 
 
     let mapArray = "WWWWWWWWWWWWWWWWWWWWWWWWWWPPPPPWPPPPPPPPPPPWPPPPPWWPWWWWWPWPWWWWWWWPWWWWWPWWPWPPPWPWPPPWPWPPPWPPPWPWWPWPWPWPWWWPWPWPWWWPWPWPWWPWPWPPPWPWPWPWPPPWPWPWPWWPWPWWWWWPWPWPWWWPWPWPWPWWPWPWPPPPPWPWPPPPPPPWPPPWWPWPWPWWWPWPWWWWWWWWWWWPWWPPPPPWPPPWPPPPPPPWPWPPPWWPWWWWWWWWWPWWWWWPWPWPWWWWPWPPPPPPPWPWPPPPPWPWPPPWWPWPWWWWWPWPWPWWWWWPWWWPWWPWPPPWPPPWPWPWPPPPPPPWPWWWWWWPWPWWWWWPWPWPWWWWWPWWPPPPPWPPPPPPPWPWPPPPPPPWWPWWWWWPWWWWWWWPWWWWWWWWWWPPPWPPPWPPPWPWPPPPPPPWPWWWWPWPWWWPWPWPWPWWWWWPWPWWPPPWPPPWPWPWPPPWPPPWPPPWWPWWWWWWWPWWWWWWWPWPWWWPWWPWPPPPPPPWPPPPPWPWPWPPPWWPWPWWWWWWWPWPWPWPWPWWWWWWPWPWPPPPPWPWPWPPPWPPPPPWWPWPWWWPWPWWWPWWWWWWWWWPWWPWPPPPPWPPPWPPPWPPPPPWPWWPWWWWWWWWWPWWWPWPWWWWWPWWPPPWPPPPPWPPPPPWPWPPPPPWWPWWWPWPWWWWWWWWWPWPWWWWWWPPPPPWPPPPPPPPPPPPPPPPPWWWWWWWWWWWWWWWWWWWWWWWWWW"
@@ -690,7 +690,7 @@ function render_puzzle() {
 
     puzzleDiv.append(pieces_box);
 
-    editContentEventModal(puzzleDiv, true);
+    editContentEventModal(puzzleDiv, false, true);
 
     //Creates drag_boxes (pieces)
     for (let i = 0; i < 36; i++) {
@@ -899,7 +899,7 @@ function render_quiz() {
     quizDiv.append(button_container)
     update_quiz(quiz, current_question);
 
-    editContentEventModal(quizDiv, true);
+    editContentEventModal(quizDiv, false, true);
 
     function update_quiz(quiz, current_question) {
         if (quiz[current_question] == "end") {
@@ -975,7 +975,7 @@ function choose_sus() {
     main_page.classList.add("minigameBackdrop");
     main_page.classList.add("parent_choose_sus");
 
-    editContentEventModal(main_page, true);
+    editContentEventModal(main_page, false, true);
 
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
 

@@ -88,62 +88,66 @@ function render_phone_page() {
                 <h4>${name}</h4>
             `;
 
+            contact.setAttribute("id", name[0]);
+
             if (notices_array.includes(name)) {
                 contact.classList.add("notice_contact");
             }
 
             contacts.append(contact);
-            contact.addEventListener("click", render_messages);
         }
 
-        function render_messages(e) {
-            let name = e.target.outerText;
+        const contacts = document.querySelectorAll(".contact");
 
-            // let notice_index = notices_array.indexOf(name);
-            // if (notice_index > -1) { // only splice array when item is found
-            //     notices_array.splice(notice_index, 1); // 2nd parameter means remove one item only
-            // }
-            // window.localStorage.setItem("newMessangers", JSON.stringify(notices_array));
+        contacts.forEach(phoneContact => {
+            phone_data.forEach(dataContact => {
+                if (phoneContact.id == dataContact.name[0]) {
+                    phoneContact.addEventListener("click", ev => {
+                        render_messages(dataContact)
+                    })
+                }
+            })
+        })
 
-            // if (notices_array.length < 1) {
-            //     document.querySelector(".phone_button").classList.remove("notice_button");
-            // }
+        function render_messages(contact) {
 
-            document.querySelector(".current_phone_page").innerHTML = `${name}`;
+            let notice_index = notices_array.indexOf(contact.name);
+            if (notice_index > -1) { // only splice array when item is found
+                notices_array.splice(notice_index, 1); // 2nd parameter means remove one item only
+            }
+            window.localStorage.setItem("newMessangers", JSON.stringify(notices_array));
+
+            if (notices_array.length < 1) {
+                document.querySelector(".phone_button").classList.remove("notice_button");
+            }
+
+            document.querySelector(".current_phone_page").textContent += ` > ${contact.name}`;
             document.querySelector(".contacts").remove();
 
             let phone_page = document.querySelector(".phone_page");
             let messages = document.createElement("div");
             messages.classList.add("messages");
 
-            for (let person of phone_data) {
-                alert(`Name:${name}  Person.name:${person.name}`)
-                if (person.name == name) {
-                    alert("Found")
-                    messages.style.backgroundImage = `url(./images/clues/${person.img})`;
-                    messages.classList.add(person.name[0]);
-                    if (person.messages.length == 1) {
-                        messages.style.flexDirection = "column-reverse";
-                    }
-                    person.messages.forEach(message => {
+            messages.style.backgroundImage = `url(./images/clues/${contact.img})`;
+            if (contact.messages.length == 1) {
+                messages.style.flexDirection = "column-reverse";
+            }
+            contact.messages.forEach(message => {
 
-                        let chat_bubble = document.createElement("div");
-                        chat_bubble.classList.add("chat_bubble");
-                        chat_bubble.innerHTML = `
+                let chat_bubble = document.createElement("div");
+                chat_bubble.classList.add("chat_bubble");
+                chat_bubble.innerHTML = `
                                 <p class="message_text">${message.message}</p>
                             `;
 
-                        console.log(message.state)
-                        if(message.state == "Nytt") {
-                            chat_bubble.innerHTML += `
+                console.log(message.state)
+                if (message.state == "Nytt") {
+                    chat_bubble.innerHTML += `
                                 <p class="message_state">${message.state}</p>
                             `
-                        }
-                        messages.append(chat_bubble);
-                    })
-
                 }
-            }
+                messages.append(chat_bubble);
+            })
 
             phone_page.append(messages);
 
@@ -161,7 +165,9 @@ function render_phone_page() {
             });
         }
     }
+
 }
+
 
 function render_notebook_page() {
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));

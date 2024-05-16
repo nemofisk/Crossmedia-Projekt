@@ -1,8 +1,10 @@
 /*
 TODO:
-    - Mindre vikt på frontpage bilden
-    - Ladda in fonts innan sidan laddas
+    - Mindre vikt på bilder?
+    - Ladda in fonts innan sidan laddas?
     - Vänta med att visa frontpage innan allting laddats?
+    - CSS Minigames
+    - CSS Dialogue
 
 */
 
@@ -87,11 +89,11 @@ function disableEventModal() {
     return eventDiv;
 }
 
-function editContentEventModal(content, dialogue) {
+function editContentEventModal(content, dialogue = false, minigame = false) {
 
     const eventDiv = document.querySelector("#eventModal");
 
-    if (!dialogue) {
+    if (!dialogue && !minigame) {
         eventDiv.innerHTML = "";
         eventDiv.append(content);
     }
@@ -105,6 +107,16 @@ function editContentEventModal(content, dialogue) {
         backgroundDiv.append(content);
         backgroundDiv.style.backgroundImage = `url(${currentStory.dialogueBG})`
 
+    }
+
+    if (minigame) {
+        const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
+        const currentStory = data[storyIndex];
+
+        eventDiv.innerHTML = "<div class='dialogueBackground'></div>";
+        const backgroundDiv = eventDiv.querySelector(".dialogueBackground")
+        backgroundDiv.append(content);
+        backgroundDiv.classList.add("minigameBackground")
     }
 
     return eventDiv;
@@ -205,19 +217,22 @@ function renderInfoModal(contentArray) {
 
 function renderGameInfo() {
     const infoContent = [
-        `<div class="startInfoHead">Välkommen till Malmö Mysteries: Sherlock Holmes!</div>
+        `<div class="startInfoHead">Välkommen till City of Secrets</div>
 
         <div>I detta spelet ska du hjälpa Sherlock Holmes att hitta den försvunne Zlatan Ibrahimovic.</div>
 
-        <div> Navigera dig till de olika platserna som visas på kartan för att prata med vittnen och samla på dig ledtrådar för att lösa mysteriet.</div>
+        <div>Navigera dig till de olika platserna som visas på kartan för att prata med vittnen och samla på dig ledtrådar för att lösa mysteriet.</div>
         `,
         `
+
         <div class="infoContainer">
             <div class="noticeImage"></div>
-
             <div>Platsåtkomst behövs inte för att kunna spela men rekommenderas för en bättre spelupplevelse</div>
-            <div>Får du inte upp en notis för platsåtkomst?<br>Testa att gå in i mobilens inställningar och tillåt platsåtkomst för webbläsaren.</div>
         </div>
+
+
+        <div>Får du inte upp en notis för platsåtkomst?<br><br>Testa att gå in i mobilens inställningar och tillåt platsåtkomst för webbläsaren.</div>
+
         `,
         `
         <div>
@@ -227,7 +242,7 @@ function renderGameInfo() {
         <div>Chrome: Du bör få en notis som frågar om du vill installera spelet. Annars kan du klicka på de tre punkterna uppe i högra hörnet och välj "installera".</div>
         `,
         `
-        <div>Det finns två ikoner på kartan som du måste hålla reda på:</div>
+        <div>Det finns två ikoner på kartan som du bör hålla reda på:</div>
 
         <div class="infoContainer">
             <div class="playerImage"></div>
@@ -246,7 +261,7 @@ function renderGameInfo() {
         <div class="infoContainer">
             <div class="phoneImage"></div>
             
-            <div>Håll även utkik på telefonen efter meddelanden från olika karaktärer.</div>
+            <div>Håll utkik på telefonen efter meddelanden från olika karaktärer.</div>
         </div>
 
         <div class="infoContainer">

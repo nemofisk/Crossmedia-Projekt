@@ -29,7 +29,8 @@ function renderDialogueUnlock(pressed) {
     passButton.textContent = "Enter";
 
     passButton.addEventListener("click", e => {
-        if (passInput.value == password) {
+        console.log(passInput.value);
+        if (passInput.value.toLowerCase() == password) {
             passIcon.classList.add("passUnlocked");
             setTimeout(function () {
                 renderDialogue(true, false)
