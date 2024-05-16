@@ -70,11 +70,11 @@ div.dialogueContainer {
 
 .p-speaker {
     font-family: "GlacialR";
-    font-size: 15px;
+    font-size: 17px;
     width: fit-content;
     position: absolute;
-    top: -25px;
-    left: 64px;
+    top: -27px;
+    left: 66px;
     background-color: #E9D1AF;
     padding: 2px 10px;
     border: 3px solid #422110;
@@ -95,7 +95,7 @@ div.dialogueContainer {
     --bottom-mask-size: 0px;
     top: -28px;
     left: 65.4px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .p-line::-webkit-scrollbar {
