@@ -89,6 +89,7 @@ function render_phone_page() {
             `;
 
             contact.setAttribute("id", name[0]);
+            contact.classList.add("go_to");
 
             if (notices_array.includes(name)) {
                 contact.classList.add("notice_contact");
@@ -121,7 +122,7 @@ function render_phone_page() {
                 document.querySelector(".phone_button").classList.remove("notice_button");
             }
 
-            document.querySelector(".current_phone_page").textContent += ` > ${contact.name}`;
+            document.querySelector(".current_phone_page").textContent = contact.name;
             document.querySelector(".contacts").remove();
 
             let phone_page = document.querySelector(".phone_page");
