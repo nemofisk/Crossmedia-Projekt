@@ -39,7 +39,7 @@
 .letter-box {
     max-height: 50px;
     max-width: 50px;
-    background: transparent;
+    background-color: rgba(255, 255, 255, 0);
     border: 1px solid #000000;
     color: black;
     display: flex;
@@ -49,23 +49,25 @@
     user-select: none;
     height: 12vw;
     width: 12vw;
+    transition-property: background-color;
+    transition-duration: 300ms;
 }
 
 .letter-box.active {
     border: 1px solid #ffffff;
 }
 
-.letter-box.nothing {
+.letter-box.nothingDisplay {
     background-color: #3a3a3c;
     color: white;
 }
 
-.letter-box.wrong {
+.letter-box.wrongDisplay {
     background-color: #b59f3b;
     color: white;
 }
 
-.letter-box.right {
+.letter-box.rightDisplay {
     background-color: #538d4e;
     color: white;
 }
@@ -119,15 +121,15 @@
     user-select: none;
 }
 
-.key-box.right {
+.key-box.rightDisplay {
     background-color: #538d4e;
 }
 
-.key-box.wrong {
+.key-box.wrongDisplay {
     background-color: #b59f3b;
 }
 
-.key-box.nothing {
+.key-box.nothingDisplay {
     background-color: #3a3a3c;
 }
 
