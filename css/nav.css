@@ -270,6 +270,7 @@ body {
 
 .clue {
     position: relative;
+    width: 90%;
 }
 
 .clue_text {
