@@ -1065,7 +1065,7 @@ function choose_sus() {
                         },
                         {
                             speaker: "Helena",
-                            line: "Hmm… Vi har haft problem med en stalker som vi aldrig har lyckats identifiera, jag hoppas inte att det är han som har slagit till…  Jag har heller aldrig gillat Sara, jag misstänker att hon fortfarande är kär i Zlatan. Sen ber jag innerligt att det varken är Eva eller Stefan.",
+                            line: "Hmm… Vi har haft problem med en stalker som vi aldrig har lyckats identifiera, han har aldrig varit våldsam än så länge... jag hoppas inte att det är han som har slagit till…  Jag har heller aldrig gillat Sara, jag misstänker att hon fortfarande är kär i Zlatan. Sen ber jag innerligt att det varken är Eva eller Stefan.",
                             img: "./images/dialogue/helena.jpg"
                         },
                         {
@@ -1095,7 +1095,8 @@ function choose_sus() {
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har rätt, Stefan är Zlatans kidnappare. De har åkt till vegas för att ha en oförglömlig svensexa inför bröllopet, något som hållits hemligt för alla icke- inblandade. Zlatan är i hyfsat säkert förvar, tack för din insats, du är en sann detektiv.",
-                            img: "./images/dialogue/lestrade.jpg"
+                            img: "./images/dialogue/lestrade.jpg",
+                            correct: true
                         }
                     }
                     else if (chosen_suspect == "Göran") {
@@ -1104,7 +1105,8 @@ function choose_sus() {
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig man bakom lås och bom. Göran är visserligen en kuslig stalker, men har ingenting med någon kidnappning att göra. Han kunde inte varit kidnapparen eftersom han tog bilder under förloppet.",
-                            img: "./images/dialogue/lestrade.jpg"
+                            img: "./images/dialogue/lestrade.jpg",
+                            correct: false
                         }
                     }
                     else if (chosen_suspect == "Sara") {
@@ -1112,8 +1114,9 @@ function choose_sus() {
                         dialogueAfter =
                         {
                             speaker: "Kommissarie Lestrade",
-                            line: "Du har satt en oskyldig kvinna bakom lås och bom! Sara har visserligen en ilska riktad mot Zlatan men en eventuell avlivning gällde deras gemensamma hund. Sara kan inte vara skyldig till kidnappningen eftersom har alibi i hennes och Evas vinkväll stunden då kidnappningen ägde rum.",
-                            img: "./images/dialogue/lestrade.jpg"
+                            line: "Du har satt en oskyldig kvinna bakom lås och bom! Sara har visserligen en ilska riktad mot Zlatan men en eventuell avlivning gällde deras gemensamma hund. Sara kan inte vara skyldig till kidnappningen eftersom hon har alibi i hennes och Evas vinkväll stunden då kidnappningen ägde rum.",
+                            img: "./images/dialogue/lestrade.jpg",
+                            correct: false
                         }
                     }
                     else if (chosen_suspect == "Eva") {
@@ -1122,7 +1125,8 @@ function choose_sus() {
                         {
                             speaker: "Kommissarie Lestrade",
                             line: "Du har satt en oskyldig kvinna bakom lås och bom! Eva hade visserligen inte tackat nej till en större lösensumma, men hon hade ett alibi från den kvällen då kidnappningen inträffade - hon var med på en vinprovning tillsammans med Sara.",
-                            img: "./images/dialogue/lestrade.jpg"
+                            img: "./images/dialogue/lestrade.jpg",
+                            correct: false
                         }
                     }
 

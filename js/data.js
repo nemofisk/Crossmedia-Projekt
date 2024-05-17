@@ -9,7 +9,12 @@ const data = [
             },
             {
                 speaker: "Sherlock Holmes",
-                line: "Vi är på semester och behöver därför din hjälp att hitta honom, vi har hört talas om dina detektivskills och har fullt förtroende för att du kan lösa mysteriet. Jag och Watson kan hjälpa dig på vägen om du skulle köra fast. Vi har fått uppgifter om att han senast sågs joggandes i Slottsparken, det kan vara ett bra ställe att börja söka ledtrådar på.",
+                line: "Vi är på semester och behöver därför din hjälp att hitta honom, vi har hört talas om din kompetens och har fullt förtroende för att du kan lösa mysteriet. Jag och Watson kan hjälpa dig på vägen om du skulle köra fast.",
+                img: "./images/dialogue/sherlock.jpg"
+            },
+            {
+                speaker: "Sherlock Holmes",
+                line: "Vi har fått uppgifter om att han senast sågs joggandes i Slottsparken, det kan vara ett bra ställe att börja söka ledtrådar på. Lycka till!",
                 img: "./images/dialogue/sherlock.jpg"
             }
         ],
@@ -23,7 +28,7 @@ const data = [
         dialogueBefore: [
             {
                 speaker: "Du",
-                line: "Hej! Vet du något om ett försvinnande har ägt rum här?",
+                line: "Hej! Vet du något om ett försvinnande som har ägt rum här?",
                 img: "./images/dialogue/player.png"
             },
             {
@@ -38,29 +43,29 @@ const data = [
             },
             {
                 speaker: "Göran",
-                line: "Sakta i backarna! Jag är en av Zlatans närmaste vänner och vet allt om honom, du vet inte den första sak om geniet. Du måste först göra ett Zlatan- quiz för att jag ska svara på några av dina frågor.",
+                line: "Sakta i backarna! Jag är en av Zlatans närmaste vänner och vet allt om honom. Du vet säkert ingenting om dribblaren. Du måste först göra ett Zlatan- quiz för att jag ska svara på dina frågor.",
                 img: "./images/dialogue/goran.jpg"
             }
         ],
         dialogueAfter: [
             {
                 speaker: "Göran",
-                line: "Nåja. Nu när du gjort din del kan jag berätta vad jag vet. Igår när Zlatan var ute på sin sedvanliga kvällsjogg så satt jag här i parken för att mata lite fåglar. Eftersom jag är fotograf så började jag ta bilder på Zlatan när han sprang förbi, men då händer något fruktansvärt! En maskerad person kommer ut i busken och tar Zlatan, de kör iväg i en rosa skåpbil. Jag lyckades ta en bild på spektaklet.",
+                line: "Nåja. Nu när du gjort din del kan jag berätta vad jag vet. Igår när Zlatan var ute på sin sedvanliga kvällsjogg så satt jag här i parken för att mata lite fåglar. Eftersom jag är fotograf så började jag ta bilder på Zlatan när han sprang förbi, men då händer något fruktansvärt! En grupp maskerade personer kommer ut ur buskarna och tar Zlatan, de kör iväg i en rosa skåpbil. Jag lyckades ta en bild på spektaklet.",
                 img: "./images/dialogue/goran.jpg"
             },
             {
                 speaker: "Du",
-                line: "Ojdå, det var värdefull information. Vet du någon som kan ha velat Zlatan illa.",
+                line: "Ojdå, det var värdefull information. Vet du någon som kan ha velat Zlatan illa?",
                 img: "./images/dialogue/player.png"
             },
             {
                 speaker: "Göran",
-                line: "Tjaa sedan Zlatan köpte in dig i Hammarby är väl halva Malmö upprörda, kidnapparen kan vara vem som helst. Men eftersom du frågar mig så ska jag berätta att Sara, Zlatans ex-flickvän, är synnerligen misstänkt i mina ögon. Jag ser henne svänga förbi Zlatans hus ofta, trots att de gjorde slut för nästan tio år sedan.",
+                line: "Tjaa sedan Zlatan köpte in dig i Hammarby är väl halva Malmö upprörda. Kidnapparen kan vara vem som helst. Men eftersom du frågar så ska jag berätta att Sara, Zlatans ex-flickvän, är synnerligen misstänkt i mina ögon. Jag ser henne svänga förbi Zlatans hus ofta, trots att de gjorde slut för nästan tio år sedan.",
                 img: "./images/dialogue/goran.jpg"
             },
             {
                 speaker: "Göran",
-                line: "Stackars tösen kom väl aldrig över honom och nu har hon väl tagit saken i egna händer. Svartsjuka kan göra märkliga saker med oss människor. Jag såg de faktiskt sitta och äta på Johan P vid lilla torg igår. Ryktet säger att diskussionen inte precis var vänlig.",
+                line: "Stackars tösen kom väl aldrig över honom och nu har hon väl tagit saken i egna händer. Svartsjuka kan göra märkliga saker med oss människor. Jag såg de faktiskt sitta och äta på Johan P vid lilla torg igår... från ett avstånd. Det verkade som att diskussionen inte precis var vänlig.",
                 img: "./images/dialogue/goran.jpg"
             }
         ],
@@ -117,14 +122,14 @@ const data = [
             },
             {
                 speaker: "Lisa",
-                line: "Jaa.. Jag hörde definitivt att de bråkades, men inte vad det hela handlade om. Sara verkade väldigt upprörd och när hon ställde sig upp för att gå hörde jag att hon skrev ordet…",
+                line: "Jaa.. Jag hörde definitivt att de bråkades, men jag hörde inte vad det hela handlade om. Sara verkade väldigt upprörd och när hon ställde sig upp för att gå hörde jag att hon bland annat skrek ordet…",
                 img: "./images/dialogue/lisa.jpg"
             }
         ],
         dialogueAfter: [
             {
                 speaker: "Du",
-                line: "Ojdå, detta låter allvarligt! Vet du hur jag kan få tag på Sara?",
+                line: "Ojdå, detta låter allvarligt! Varför skrek hon det tro? Vet du hur jag kan få tag på Sara?",
                 img: "./images/dialogue/player.png"
             },
             {
@@ -234,7 +239,7 @@ const data = [
             },
             {
                 speaker: "Du",
-                line: "Zlatans nära vän Göran misstänker att du kan ha något att göra med hans försvinnande. Att du brukar befinna dig utanför hans hus, vad säger du om det?",
+                line: "Zlatans nära vän Göran misstänker att du kan ha något att göra med hans försvinnande och att du brukar befinna dig utanför hans hus, vad säger du om det?",
                 img: "./images/dialogue/player.png"
             },
             {
@@ -249,7 +254,7 @@ const data = [
             },
             {
                 speaker: "Sara",
-                line: "Okej fine, jag vet en sak. Om du klarar mitt pussel lovar jag att berätta.",
+                line: "Om du klarar att lägga mitt pussel så kan du få en ledtråd om vad bråket handlade om...",
                 img: "./images/dialogue/sara.jpg"
             }
         ],
@@ -392,14 +397,14 @@ const data = [
             },
             {
                 speaker: "Du",
-                line: "Hmmm inget svar... ska se om jag kan hitta lite information på internet...",
+                line: "Hmmm inget svar... ska se om jag kan hitta lite information om Stefan på internet...",
                 img: "./images/dialogue/player.png"
             }
         ],
         dialogueAfter: [
             {
                 speaker: "Du",
-                line: "Okej, det verkar som att Stefans fru Eva brukar hänga på Epicuré vid Gustav Adolfs Torg. Jag beger mig dit.",
+                line: "Okej, det verkar som att Stefans fru Eva brukar hänga på Epicuré vid Gustav Adolfs Torg. Jag får bege mig dit.",
                 img: "./images/dialogue/player.png"
             }
         ],
@@ -517,7 +522,7 @@ const data = [
             },
             {
                 speaker: "Eva",
-                line: "Ja och du är?",
+                line: "Ja, och du är?",
                 img: "./images/dialogue/eva.jpg"
             },
             {
@@ -542,7 +547,7 @@ const data = [
             },
             {
                 speaker: "Du",
-                line: "Ja det är hon som anmält honom försvunnen. Du är alltså fru till Stefan?",
+                line: "Ja, det är hon som har anmält honom försvunnen. Du är alltså fru till Stefan?",
                 img: "./images/dialogue/player.png"
             },
             {
@@ -552,7 +557,7 @@ const data = [
             },
             {
                 speaker: "Du",
-                line: "Jobbar inte du",
+                line: "Jobbar inte du?",
                 img: "./images/dialogue/player.png"
             },
             {
@@ -562,22 +567,22 @@ const data = [
             },
             {
                 speaker: "Du",
-                line: "Okej, just nu försöker jag bara undersöka alla spår. Stefan är okontaktbar, vet du var han befinner sig?",
+                line: "Okej, just nu försöker jag bara undersöka alla spår. Stefan är svarar inte i sin telefon, vet du var han befinner sig?",
                 img: "./images/dialogue/player.png"
             },
             {
                 speaker: "Eva",
-                line: "Åh du missade honom precis, igår på kvällen åkte han på jobbresa till Las Vegas. Var snäll att inte stör honom.",
+                line: "Åh du missade honom precis, igår på kvällen åkte han på jobbresa till Las Vegas. Var snäll coh stör inte honom.",
                 img: "./images/dialogue/eva.jpg"
             },
             {
                 speaker: "Du",
-                line: "Varför skulle jag inte störa honom? Vet du något som du inte berättar, isåfall kan du bli misstänkt för medhjälp till kidnappning.",
+                line: "Varför skulle jag inte störa honom? Vet du något som du inte berättar? Isåfall kan du bli misstänkt för medhjälp till kidnappning.",
                 img: "./images/dialogue/player.png"
             },
             {
                 speaker: "Eva",
-                line: "Du är inte lite fräcka du!! Passa dig asså, du ska inte kontakta honom därför att han är iväg på ett viktigt jobbmöte i Las Vegas som kommer göra oss rika. Han har jobbat på detta projektet länge och varit mycket stressad.",
+                line: "Du är inte lite fräck du!! Passa dig asså, du ska inte kontakta honom eftersom han är iväg på ett viktigt jobbmöte i Las Vegas som kommer göra oss rika. Han har jobbat på detta projektet länge och varit mycket stressad.",
                 img: "./images/dialogue/eva.jpg"
             },
             {
@@ -602,7 +607,7 @@ const data = [
             },
             {
                 speaker: "Du",
-                line: "Okej, då vet jag! Tack för att du tog dig tid, tack för all hjälp!",
+                line: "Okej, då vet jag! Tack för att du tog dig tid och tack för all hjälp!",
                 img: "./images/dialogue/player.png"
             },
             {
@@ -739,7 +744,7 @@ const data = [
             },
             {
                 speaker: "Helena",
-                line: "Har ni hittat Zlatan än?! Hur går det för er? Saknar honom så mycket... Jag är på väg till gymmet, kan ni möta mig där?",
+                line: "Har ni hittat Zlatan än?! Hur går det för er? Saknar honom så mycket... Jag är på väg till gymmet (Nordic Wellness), kan ni möta mig där?",
                 img: "./images/dialogue/helena.jpg"
             },
             {
@@ -1016,7 +1021,7 @@ const data = [
             },
             {
                 speaker: "Du",
-                line: "Jag får leta runt lite.",
+                line: "Jag får leta runt lite...",
                 img: "./images/dialogue/player.png"
             }
         ],
@@ -1220,7 +1225,7 @@ const data = [
         dialogueBefore: [
             {
                 speaker: "Kommissarie Lestrade",
-                line: "Hej! Hoppas det har gått bra för dig! Vill du vänligen berätta vem de är som har kidnappat Zlatan så vi kan gripa den misstänkta och förhoppningsvis få hem honom?",
+                line: "Hej! Hoppas det har gått bra för dig! Vill du vänligen berätta vem de är som har kidnappat Zlatan så vi kan gripa den misstänkta och förhoppningsvis få hem dribblaren?",
                 img: "./images/dialogue/lestrade.jpg"
             },
             {

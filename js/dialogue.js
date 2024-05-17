@@ -195,11 +195,47 @@ function renderDialogue(beforeGame, afterGame) {
                     dialogueWindow.removeEventListener("click", writeLine)
                     dialogueWindow.addEventListener("click", e => {
                         const newStoryIndex = parseInt(window.localStorage.getItem("storyIndex"));
-
+                        
                         if (newStoryIndex == 10) {
-                            window.localStorage.clear()
-                            endCredits();
-                            startUp()
+
+                            if(!dialogue[0].correct) {
+                                let overlay = document.createElement("div");
+                                overlay.classList.add("overlay_sus");
+    
+                                let message = document.createElement("div");
+                                message.classList.add("sus_message");
+    
+                                overlay.append(message);
+    
+                                document.querySelector(".dialogueContainer").append(overlay);
+                                console.log(e.target.childNodes[0].textContent)
+                                chosen_suspect = e.target.childNodes[0].textContent;
+                                message.textContent = `Vill du testa ett annat slut?`;
+                                message.innerHTML += `
+                                    <div class="sus_button_container">
+                                        <button class="sus_button yes">JA</button>
+                                        <button class="sus_button no">NEJ</button>
+                                    </div>
+                                `
+                                
+                                document.querySelector(".yes").addEventListener("click", () => {
+                                    overlay.remove();
+                                    window.localStorage.setItem("storyIndex", 9);
+                                    choose_sus()
+                                })
+    
+                                document.querySelector(".no").addEventListener("click", () => {
+                                    overlay.remove();
+                                    window.localStorage.clear()
+                                    endCredits();
+                                    startUp()
+                                })
+                            } else {
+                                window.localStorage.clear()
+                                    endCredits();
+                                    startUp()
+                            }
+                            
                         } else {
                             disableEventModal();
                             removeContentEventModal();
