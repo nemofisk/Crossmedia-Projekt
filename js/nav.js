@@ -123,6 +123,15 @@ function render_phone_page() {
             }
 
             document.querySelector(".current_phone_page").textContent = contact.name;
+
+            const imgbutton = document.createElement("div");
+            imgbutton.classList.add("notebook_popup_button")
+            imgbutton.classList.add("phoneimg")
+            imgbutton.addEventListener("click", ev => {
+                render_notebook_popup(contact);
+            })
+
+            document.querySelector(".current_phone_page").append(imgbutton)
             document.querySelector(".contacts").remove();
 
             let phone_page = document.querySelector(".phone_page");
@@ -267,7 +276,6 @@ function render_notebook_page() {
                             list.append(clue);
                             clue.innerHTML = `
                                 <h4 class="clue_text">${object.name}<h4>
-                                <p class="description">${object.description}</p>
                             `;
 
                             let img_button = document.createElement("div");
@@ -277,6 +285,10 @@ function render_notebook_page() {
                                 render_notebook_popup(object);
                             })
 
+                            const description = document.createElement("p");
+                            description.textContent = object.description;
+                            description.classList.add("description");
+                            clue.append(description);
                         })
                     }
                     else if (category == "LEDTRÅDAR") {
@@ -304,7 +316,6 @@ function render_notebook_page() {
                                         list.append(clue_div);
                                         clue_div.innerHTML = `
                                             <h4 class="clue_text">${clue.name}</h4>
-                                            <p class="description">${clue.description}</p>
                                         `;
                                         if (clue.img) {
                                             let img_button = document.createElement("div");
@@ -314,6 +325,11 @@ function render_notebook_page() {
                                                 render_notebook_popup(clue);
                                             })
                                         }
+
+                                        const description = document.createElement("p");
+                                        description.textContent = clue.description;
+                                        description.classList.add("description");
+                                        clue_div.append(description);
                                     }
                                 })
 
@@ -328,26 +344,27 @@ function render_notebook_page() {
                     }
                 }
 
-                function render_notebook_popup(object) {
-                    let popup = document.createElement("div");
-                    popup.classList.add("notebook_popup");
-                    body.append(popup);
-
-                    let img = document.createElement("div");
-                    img.classList.add("notebook_popup_img");
-                    popup.append(img);
-                    img.style.backgroundImage = `url(./images/clues/${object.img})`;
-
-                    let close_button = document.createElement("button");
-                    close_button.classList.add("notebook_popup_close");
-
-                    popup.append(close_button);
-
-                    close_button.addEventListener("click", () => {
-                        popup.remove();
-                    })
-                }
             }
         }
     }
+}
+
+function render_notebook_popup(object) {
+    let popup = document.createElement("div");
+    popup.classList.add("notebook_popup");
+    document.body.append(popup);
+
+    let img = document.createElement("div");
+    img.classList.add("notebook_popup_img");
+    popup.append(img);
+    img.style.backgroundImage = `url(./images/clues/${object.img})`;
+
+    let close_button = document.createElement("button");
+    close_button.classList.add("notebook_popup_close");
+
+    popup.append(close_button);
+
+    close_button.addEventListener("click", () => {
+        popup.remove();
+    })
 }

@@ -51,6 +51,8 @@ div.dialogueContainer {
     position: relative;
     padding: 5px;
     display: grid;
+    background-image: url(../images/paper.jpg);
+    background-size: cover;
 }
 
 .talkingHead {
@@ -81,6 +83,8 @@ div.dialogueContainer {
     border-radius: 0px 10px 0px 0px;
     border-bottom: none;
     text-align: center;
+    background-image: url(../images/paper.jpg);
+    background-size: cover;
 }
 
 
@@ -194,6 +198,7 @@ div.dialogueContainer {
 
 .passQuestion {
     text-align: center;
+    max-width: 80vw;
 }
 
 .passInput {

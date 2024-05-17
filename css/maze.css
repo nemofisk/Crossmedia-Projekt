@@ -19,6 +19,10 @@
     background-color: #2e2d2d;
 }
 
+.cell.path {
+    background-color: white;
+}
+
 .player {
     height: 6vw;
     width: 6vw;
@@ -29,12 +33,19 @@
 }
 
 .mazeGoal {
-    height: 6vw;
-    width: 6vw;
-    justify-self: center;
-    align-self: center;
-    background-image: url(../images/cross.png);
-    background-size: cover;
+    position: relative;
+}
+
+.mazeGoal::after {
+    content: "";
+    height: 4vw;
+    width: 5vw;
+    top: 1px;
+    left: -1px;
+    background-image: url(../images/mazeGoal.png);
+    background-size: contain;
+    position: absolute;
+    background-repeat: no-repeat;
 }
 
 .controlsContainer {

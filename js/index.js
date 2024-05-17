@@ -8,7 +8,6 @@ TODO:
 
 */
 
-alert("försök 99... minst")
 preload_images();
 startUp();
 

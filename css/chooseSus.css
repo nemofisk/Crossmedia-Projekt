@@ -6,6 +6,7 @@
     gap: 17px;
     padding: 20px;
     grid-template-rows: repeat(2, 47%);
+    backdrop-filter: blur(10px);
 }
 
 .sus_div {

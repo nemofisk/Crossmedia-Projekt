@@ -17,8 +17,7 @@ function renderMap(fly = true) {
     const resetButton = document.createElement("div");
     resetButton.classList.add("resetButton");
     resetButton.addEventListener("click", e => {
-        if (window.confirm("VARNING: Detta startar om spelet helt, vill du fortsätta?")) {
-            window.localStorage.clear();
+        if (window.confirm("Sidan kommer att laddas om, vill du fortsätta? Allting sparas")) {
             location.reload();
         }
     })
@@ -261,13 +260,13 @@ function show_position(position, fly) {
 
 
 
-    var popup = L.popup();
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(map);
-    }
+    // var popup = L.popup();
+    // function onMapClick(e) {
+    //     popup
+    //         .setLatLng(e.latlng)
+    //         .setContent("You clicked the map at " + e.latlng.toString())
+    //         .openOn(map);
+    // }
 
-    map.on('click', onMapClick);
+    // map.on('click', onMapClick);
 }

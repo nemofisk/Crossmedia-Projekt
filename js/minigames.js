@@ -975,7 +975,7 @@ function choose_sus() {
     main_page.classList.add("minigameBackdrop");
     main_page.classList.add("parent_choose_sus");
 
-    editContentEventModal(main_page, false, true);
+    editContentEventModal(main_page, true, false);
 
     const storyIndex = JSON.parse(window.localStorage.getItem("storyIndex"));
 
@@ -1059,7 +1059,7 @@ function choose_sus() {
                     data[storyIndex].dialogueAfter = [
                         dialogueAfter,
                         {
-                            speaker: "Player",
+                            speaker: "Du",
                             line: "Vet du någon som har velat Zlatan illa?",
                             img: "./images/dialogue/player.png"
                         },
@@ -1079,7 +1079,7 @@ function choose_sus() {
                             img: "./images/dialogue/helena.jpg"
                         },
                         {
-                            speaker: "Player",
+                            speaker: "Du",
                             line: "Tack så mycket, detta kommer vara till hjälp. Dags att bege mig till St Petri Kyrka.",
                             img: "./images/dialogue/player.png"
                         },
