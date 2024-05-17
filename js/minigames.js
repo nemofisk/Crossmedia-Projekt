@@ -159,6 +159,9 @@ function wordle() {
     }
 
     function checkAnswer() {
+        let letterBoxObjects = [];
+        let keyBoxObjects = [];
+
         let answerLetters = [...wordAnswer]
 
         let letterCount = [];
@@ -210,7 +213,14 @@ function wordle() {
             }
 
             if (rightPlace && letterExists) {
-                child.classList.add("right");
+                const boxObj = {
+                    box: child,
+                    addClass: "rightDisplay",
+                    boxnum: parseInt(child.dataset.boxnum)
+                }
+                letterBoxObjects.push(boxObj);
+
+                child.classList.add("wRight");
                 letterCount.forEach(letterObj => {
                     if (boxLetter == letterObj.letter) {
                         letterObj.count--
@@ -220,11 +230,16 @@ function wordle() {
                 const keyboardKeys = document.querySelectorAll(".key-box");
 
                 keyboardKeys.forEach(key => {
-
-
                     if (key.textContent == boxLetter) {
+                        const keyBoxObj = {
+                            keybox: key,
+                            addClass: "rightDisplay",
+                            removeClass: "wrongDisplay"
+                        }
+                        keyBoxObjects.push(keyBoxObj);
+
                         key.classList.remove("wrong");
-                        key.classList.add("right");
+                        key.classList.add("wRight");
                     }
                 })
             }
@@ -237,7 +252,7 @@ function wordle() {
             let inWord = false;
 
             letterCount.forEach(letterObj => {
-                if (boxLetter == letterObj.letter && letterObj.count > 0 && !child.classList.contains("right")) {
+                if (boxLetter == letterObj.letter && letterObj.count > 0 && !child.classList.contains("wRight")) {
                     letterExists = true;
                 }
             })
@@ -249,7 +264,14 @@ function wordle() {
             })
 
             if (inWord && letterExists) {
-                child.classList.add("wrong");
+                const boxObj = {
+                    box: child,
+                    addClass: "wrongDisplay",
+                    boxnum: parseInt(child.dataset.boxnum)
+                }
+                letterBoxObjects.push(boxObj);
+
+                child.classList.add("wWrong");
                 letterCount.forEach(letterObj => {
                     if (boxLetter == letterObj.letter) {
                         letterObj.count--
@@ -259,37 +281,90 @@ function wordle() {
                 const keyboardKeys = document.querySelectorAll(".key-box");
 
                 keyboardKeys.forEach(key => {
-                    if (key.textContent == boxLetter && !key.classList.contains("right")) {
-                        key.classList.add("wrong");
+                    if (key.textContent == boxLetter && !key.classList.contains("wRight")) {
+                        const keyBoxObj = {
+                            keybox: key,
+                            addClass: "wrongDisplay"
+                        }
+
+                        keyBoxObjects.push(keyBoxObj);
+                        key.classList.add("wWrong");
                     }
                 })
             }
 
-            if (!child.classList.contains("right") && !child.classList.contains("wrong")) {
-                child.classList.add("nothing");
+            if (!child.classList.contains("wRight") && !child.classList.contains("wWrong")) {
+                const boxObj = {
+                    box: child,
+                    addClass: "nothingDisplay",
+                    boxnum: parseInt(child.dataset.boxnum)
+                }
+                letterBoxObjects.push(boxObj);
+
+                child.classList.add("wNothing");
 
                 const keyboardKeys = document.querySelectorAll(".key-box");
 
                 keyboardKeys.forEach(key => {
-                    if (key.textContent == boxLetter && !key.classList.contains("right") && !key.classList.contains("wrong")) {
-                        key.classList.add("nothing");
+                    if (key.textContent == boxLetter && !key.classList.contains("wRight") && !key.classList.contains("wWrong")) {
+                        const keyBoxObj = {
+                            keybox: key,
+                            addClass: "nothingDisplay"
+                        }
+                        keyBoxObjects.push(keyBoxObj);
+
+                        key.classList.add("wNothing");
                     }
                 })
             }
         })
 
-        let rightBoxes = 0;
+        letterBoxObjects.sort((boxObj1, boxObj2) => {
+            return boxObj1.boxnum > boxObj2.boxnum
+        })
 
-        for (rowbox of activeRowChildren) {
-            if (rowbox.classList.contains("right")) {
-                rightBoxes++
+        setTimeout(function () {
+            displayAnswers(0);
+        }, 300)
+
+        function displayAnswers(index) {
+            if (index < letterBoxObjects.length) {
+                const box = letterBoxObjects[index].box;
+                const addClass = letterBoxObjects[index].addClass;
+
+                box.classList.add(addClass);
+
+                setTimeout(function () {
+                    displayAnswers(index + 1);
+                }, 300)
+            } else {
+                let rightBoxes = 0;
+
+                for (rowbox of activeRowChildren) {
+                    if (rowbox.classList.contains("wRight")) {
+                        rightBoxes++
+                    }
+                }
+
+                if (rightBoxes == nLetters) {
+                    doneMinigame();
+                } else {
+                    console.log(keyBoxObjects);
+                    keyBoxObjects.forEach(keyObject => {
+                        console.log(keyObject);
+                        const keybox = keyObject.keybox;
+                        const keyAddClass = keyObject.addClass;
+
+                        if (keyObject.removeClass) {
+                            keybox.classList.remove(keyObject.removeClass);
+                        }
+
+                        keybox.classList.add(keyAddClass);
+                    })
+
+                    createNewRow();
+                }
             }
-        }
-
-        if (rightBoxes == nLetters) {
-            doneMinigame();
-        } else {
-            createNewRow();
         }
     }
 
