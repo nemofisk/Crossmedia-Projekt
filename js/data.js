@@ -1386,6 +1386,8 @@ const imageURLs = [
     "./images/wordlewrong.png",
     "./images/right-arrow-disabled.png",
     "./images/right-arrow.png",
+    "./images/frontPage.jpg",
+    "./images/paper.jpg",
 
     "./images/clues/dog.jpg",
     "./images/clues/emma.jpg",
