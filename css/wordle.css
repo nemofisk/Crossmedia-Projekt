@@ -113,6 +113,10 @@
     border: 2px solid black;
 }
 
+.key-box:active {
+    background-color: #aaaaac;
+}
+
 .key-box p {
     margin: 0;
     padding: 0;

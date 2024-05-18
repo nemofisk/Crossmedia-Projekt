@@ -134,6 +134,9 @@ function wordle() {
             keyBox.textContent = letter
 
             keyBox.addEventListener("click", keyEvent)
+            keyBox.addEventListener("click", ev => {
+                ev.stopPropagation();
+            })
 
             keyboardContainer.append(keyBox)
         })
@@ -536,6 +539,7 @@ function maze() {
     }
 
     function goUp(event) {
+        event.stopPropagation();
         const cellIsPath = checkTargetCell(playerObject.col, playerObject.row - 1);
 
         if (cellIsPath) {
@@ -545,6 +549,7 @@ function maze() {
     }
 
     function goDown(event) {
+        event.stopPropagation();
         const cellIsPath = checkTargetCell(playerObject.col, playerObject.row + 1);
 
         if (cellIsPath) {
@@ -554,6 +559,7 @@ function maze() {
     }
 
     function goRight(event) {
+        event.stopPropagation();
         const cellIsPath = checkTargetCell(playerObject.col + 1, playerObject.row);
 
         if (cellIsPath) {
@@ -563,6 +569,7 @@ function maze() {
     }
 
     function goLeft(event) {
+        event.stopPropagation();
         const cellIsPath = checkTargetCell(playerObject.col - 1, playerObject.row);
 
         if (cellIsPath) {
@@ -822,8 +829,6 @@ function render_puzzle() {
 }
 
 //QUIZ
-
-
 function render_quiz() {
     let quiz = [
         {

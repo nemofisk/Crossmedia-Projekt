@@ -30,7 +30,7 @@ function renderDialogueUnlock(pressed) {
 
     passButton.addEventListener("click", e => {
         console.log(passInput.value);
-        if (passInput.value.toLowerCase() == password) {
+        if (passInput.value.trim().toLowerCase() == password) {
             passIcon.classList.add("passUnlocked");
             setTimeout(function () {
                 renderDialogue(true, false)
@@ -195,18 +195,18 @@ function renderDialogue(beforeGame, afterGame) {
                     dialogueWindow.removeEventListener("click", writeLine)
                     dialogueWindow.addEventListener("click", e => {
                         const newStoryIndex = parseInt(window.localStorage.getItem("storyIndex"));
-                        
+
                         if (newStoryIndex == 10) {
 
-                            if(!dialogue[0].correct) {
+                            if (!dialogue[0].correct) {
                                 let overlay = document.createElement("div");
                                 overlay.classList.add("overlay_sus");
-    
+
                                 let message = document.createElement("div");
                                 message.classList.add("sus_message");
-    
+
                                 overlay.append(message);
-    
+
                                 document.querySelector(".dialogueContainer").append(overlay);
                                 console.log(e.target.childNodes[0].textContent)
                                 chosen_suspect = e.target.childNodes[0].textContent;
@@ -217,13 +217,13 @@ function renderDialogue(beforeGame, afterGame) {
                                         <button class="sus_button no">NEJ</button>
                                     </div>
                                 `
-                                
+
                                 document.querySelector(".yes").addEventListener("click", () => {
                                     overlay.remove();
                                     window.localStorage.setItem("storyIndex", 9);
                                     choose_sus()
                                 })
-    
+
                                 document.querySelector(".no").addEventListener("click", () => {
                                     overlay.remove();
                                     window.localStorage.clear()
@@ -232,10 +232,10 @@ function renderDialogue(beforeGame, afterGame) {
                                 })
                             } else {
                                 window.localStorage.clear()
-                                    endCredits();
-                                    startUp()
+                                endCredits();
+                                startUp()
                             }
-                            
+
                         } else {
                             disableEventModal();
                             removeContentEventModal();

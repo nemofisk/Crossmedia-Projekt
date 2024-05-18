@@ -1,13 +1,3 @@
-/*
-TODO:
-    - Mindre vikt på bilder?
-    - Ladda in fonts innan sidan laddas?
-    - Vänta med att visa frontpage innan allting laddats?
-    - CSS Minigames
-    - CSS Dialogue
-
-*/
-
 preload_images();
 startUp();
 
